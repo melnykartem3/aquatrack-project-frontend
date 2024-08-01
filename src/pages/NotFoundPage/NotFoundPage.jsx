@@ -1,9 +1,7 @@
-import css from "./NoFoundPage.module.css"
+import css from './NotFoundPage.module.css';
 
-const NoFoundPage = () => {
-  return (
-    <div className={css.no_page}>Wooops, page is not found!</div>
-  )
-}
+const NotFoundPage = () => {
+  return <div className={css.no_page}>Wooops, page is not found!</div>;
+};
 
-export default NoFoundPage
+export default NotFoundPage;
