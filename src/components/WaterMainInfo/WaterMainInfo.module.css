@@ -33,7 +33,7 @@
     align-items: center;
     background-color: var(--basic-dark-blue);
     border-radius: 30px;
-    padding: 14px 20px;
+    /* padding: 14px 20px; */
     width: 140px;
     height: 46px;
     color: var(--white);

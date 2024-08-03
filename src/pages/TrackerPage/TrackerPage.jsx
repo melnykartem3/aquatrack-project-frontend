@@ -10,7 +10,7 @@ const TrackerPage = () => {
       <Helmet>
           <title>Tracker Page</title>
         </Helmet>
-          <div className={css.home_container}>
+          <div>
               <WaterMainInfo />
               <WaterDetailedInfo/> 
           </div>  
