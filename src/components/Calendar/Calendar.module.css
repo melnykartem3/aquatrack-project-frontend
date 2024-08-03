@@ -1,12 +1,18 @@
-.calendarContainer {
-    width: 100%;
-    box-sizing: border-box;
-}
-
-
 .calendarList {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
 }
 
+@media screen and (min-width: 768px) {
+    .calendarList {
+            gap: 48px;
+        }
+}
+
+@media screen and (min-width: 1440px) {
+.calendarList {
+        gap: 43px;
+    }
+
+}

@@ -3,8 +3,8 @@ import css from './CalendarItem.module.css';
 const CalendarItem = ({ number }) => {
   return (
     <div className={css.calendarItem}>
-      <button className={css.button}>{number}</button>
-      <div className={css.itemPercentage}>100%</div>
+      <button className={css.button}>{number.day}</button>
+      <div className={css.itemPercentage}>{number.value}%</div>
     </div>
   );
 }
