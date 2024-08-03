@@ -1,0 +1,152 @@
+.form {
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.formWrapper {
+    margin-bottom: 16px;
+
+}
+
+
+
+.passwordWrapper {
+    position: relative;
+}
+
+.label {
+    display: block;
+    color: var(--text-grey);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.28;
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+}
+
+
+.input {
+    /* width: 311px; */
+    height: 50px;
+    border-radius: 15px;
+    border: 1px solid rgba(47, 47, 47, 0.2);
+    padding-left: 16px;
+    background-color: transparent;
+    outline: transparent;
+    transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    color: var(--text-grey);
+    font-size: 14px;
+    letter-spacing: -0.01em;
+    line-height: 1.28;
+}
+
+.input:focus {
+    border-color: rgba(47, 47, 47, 0.6);
+
+}
+
+input::placeholder {
+    color: rgba(47, 47, 47, 0.6);
+}
+
+.buttonTogglePassword {
+    display: none;
+}
+
+.errorInput {
+    border-color: var(--red-error);
+    color: var(--red-error);
+}
+
+.errorInput:focus {
+    border-color: var(--red-error);
+
+}
+
+.errorMessage {
+    color: var(--red-error);
+    font-size: 14px;
+    letter-spacing: -0.01em;
+    line-height: 1.28;
+    margin-top: 10px;
+}
+
+.submitButton {
+    padding: 16px 128px;
+    background-color: var(--basic-green);
+    color: var(--basic-dark-blue);
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: -0.01em;
+    line-height: 1.28;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 311px;
+    height: 50px;
+    margin-top: 32px;
+}
+
+
+
+.submitButton:hover {
+    background-color: var(--green-hover);
+}
+
+@media (min-width: 375px) {
+    .input{
+        width:311px;
+    }
+   
+}
+
+
+@media (min-width: 768px) {
+    .label {
+        font-size: 16px;
+        letter-spacing: 1.5;
+    }
+
+    .input {
+        width: 435px;
+        height: 56px;
+        font-size: 16px;
+        line-height: 1.5;
+    }
+
+    .submitButton {
+        padding: 18px 0px;
+        font-size: 16px;
+        line-height: 1.5;
+        width: 436px;
+        height: 60px;
+    }
+
+    .buttonTogglePassword {
+        display: flex;
+        position: absolute;
+        left: 400px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        padding: 0;
+        line-height: 0;
+    }
+
+    .buttonTogglePassword svg {
+        display: flex;
+        width: 20px;
+        height: 20px;
+        color: var(--text-grey);
+    }
+
+    .formWrapper {
+        margin-bottom: 20px;
+    }
+
+}
+
