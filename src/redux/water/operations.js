@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { instance } from '../auth/operations'
+import { instance } from "../../utils/axios";
 
 export const fetchContacts = createAsyncThunk("contacts/fetchAll",
     async (_, thunkAPI) => {
@@ -12,14 +12,14 @@ export const fetchContacts = createAsyncThunk("contacts/fetchAll",
     }
 });
 
-export const addContact = createAsyncThunk(
-  'contacts/addContact',
-  async (finalContact, thunkAPI) => {
+export const addWater = createAsyncThunk(
+  'water/addWater',
+  async (water, thunkAPI) => {
     try {
-      const response = await instance.post('/contacts',  finalContact );
-        return response.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      const response = await instance.post('/water', water);
+      return response.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
     }
   }
 );
@@ -36,12 +36,12 @@ export const deleteContact = createAsyncThunk(
   }
 );
 
-export const changeContact=createAsyncThunk(
-  'contacts/changeContact',
-  async ({ contactId, updateContact },thunkAPI) => {
+export const updateWater = createAsyncThunk(
+  'water/updateWater',
+  async ({ id, ...water }, thunkAPI) => {
     try {
-        const response = await instance.patch(`/contacts/${contactId}`,updateContact);
-        return response.data;
+      const response = await instance.patch(`/water/${id}`, water);
+      return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
