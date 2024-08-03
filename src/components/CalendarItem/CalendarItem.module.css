@@ -1,0 +1,27 @@
+.calendarItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+
+}
+
+.button {
+    border-radius: 50%;
+    background: none;
+    border: none;
+    font-size: 1em;
+    margin-bottom: 5px;
+    background-color: gray;
+    width: 28px;
+    height: 28px;
+    display: flex;
+        align-items: center;
+        justify-content: center;
+}
+
+.itemPercentage {
+    font-size: 10 px;
+    color: gray;
+}

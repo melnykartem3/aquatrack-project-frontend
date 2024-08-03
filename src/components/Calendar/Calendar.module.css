@@ -1,0 +1,21 @@
+.calendarContainer {
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.calendarHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.calendarList {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+}
+
