@@ -1,8 +1,12 @@
+import css from './CalendarItem.module.css';
 
-const CalendarItem = () => {
+const CalendarItem = ({ number }) => {
   return (
-    <div>CalendarItem</div>
-  )
+    <div className={css.calendarItem}>
+      <button className={css.button}>{number.day}</button>
+      <div className={css.itemPercentage}>{number.value}%</div>
+    </div>
+  );
 }
 
 export default CalendarItem
