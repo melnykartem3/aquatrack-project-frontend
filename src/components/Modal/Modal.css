@@ -1,4 +1,4 @@
-.ReactModal__Body--open {
+/* .ReactModal__Body--open {
     overflow: hidden;
 }
 
@@ -29,15 +29,11 @@
     top: 50%;
     left: 50%;
     display: flex;
-    padding: 40px 14px;
     max-height: 90%;
     overflow-y: auto;
     min-width: 343px;
     border-radius: 15px;
-    background-color: rgb(255, 255, 255);
-    box-shadow: 0 4px 50px 0 rgba(0, 0, 0, 0.1);
     transform: translate(-50%, 50%);
-    transition: transform 300ms ease-in-out;
 }
 
 .ReactModal__Content--after-open {
@@ -46,4 +42,4 @@
 
 .ReactModal__Content--before-close {
     transform: translate(-50%, 50%);
-}
+} */

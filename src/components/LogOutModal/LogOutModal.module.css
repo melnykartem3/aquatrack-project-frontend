@@ -1,0 +1,5 @@
+.modal{
+    padding: 40px 14px;
+    display: flex;
+    flex-direction: column;
+};
