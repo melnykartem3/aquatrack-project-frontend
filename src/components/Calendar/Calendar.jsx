@@ -5,10 +5,7 @@ const CalendarNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 
 const Calendar = () => {
   return (
     <div className={css.calendarContainer}>
-      <div className={css.calendarHeader}>
-        <span>Month</span>
-        <span>April, 2024</span>
-      </div>
+      
       <div className={css.calendarList}>
         {CalendarNumbers.map(item => (
           <CalendarItem key={item} number={item} />
