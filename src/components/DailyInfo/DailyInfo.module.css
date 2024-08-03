@@ -1,0 +1,68 @@
+
+@media screen and (max-width: 767px) {
+.container {
+display: flex;
+justify-content: space-between;
+align-items: center;
+width: 343px;
+}
+
+.wraper {
+padding: 20px;
+background-color: var(--background-grey)
+}
+
+.addWaterBtn {
+background-color: transparent;
+border: none;
+font-size: 16px;
+line-height: 1.5;
+letter-spacing: 0.01em;
+text-align: center;
+color: var(--basic-dark-blue);
+display: flex;
+gap: 10px;
+align-items: center;
+}
+
+.plus_icon {
+width: 10px;
+height: 10px;
+background-color: var(--basic-green);
+color: var(--basic-dark-blue);
+padding: 10px;
+border-radius: 50%;
+}
+
+.addWaterBtn:hover .plus_icon,
+.addWaterBtn:focus .plus_icon {
+background-color: var(--basic-dark-blue);
+color: var(--basic-green);
+}
+
+}
+
+@media screen and (min-width: 768px) {
+
+.wraper {
+padding: 32px;
+}
+
+.container {
+width: 640px;
+}
+
+/* Стилі при відкритому Setting, додати клас до Button */
+.openSettingTablet {
+    display: none;
+}
+/* Стилі при відкритому Setting */
+
+}
+
+@media screen and (min-width: 1440px) {
+    .container {
+        width: 608px;
+    }
+}
+

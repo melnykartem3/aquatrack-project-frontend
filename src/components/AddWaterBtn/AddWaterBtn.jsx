@@ -1,7 +1,12 @@
-const AddWaterBtn = () => {
+import { FaPlus } from 'react-icons/fa6';
+
+const AddWaterBtn = ({ containerClassName, buttonClassName, iconClassName }) => {
   return (
-      <button type="button" onClick={() => { console.log('Open Water modal') }}>
-          AddWaterBtn</button>
+    <div className={containerClassName}>
+      <button type="button" className={buttonClassName} onClick={() => { console.log('Open Water modal') }}>
+      <FaPlus className={iconClassName} />
+      Add Water</button>
+    </div>
   )
 }
 
