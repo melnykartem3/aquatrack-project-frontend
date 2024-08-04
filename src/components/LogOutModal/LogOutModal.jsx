@@ -14,13 +14,13 @@ const LogOutModal = ({modalIsOpen,closeModal}) => {
   );
 
   return (
-    <Modal modalIsOpen={modalIsOpen} closeModal={()=>{closeModal()}}>
+    <Modal modalIsOpen={modalIsOpen} closeModal={()=>closeModal()}>
         <div className={css.modal}>
           <h3 className={css.modalHead}>Log out</h3>
           <p className={css.modalText}>Do you really want to leave?</p>
             <div className={css.logOutButtons}>
                 <button className={buttonColorClass}>Log out</button>
-                <button className={buttonGreyClass}>Cancel</button>
+                <button className={buttonGreyClass} onClick={()=>closeModal()}>Cancel</button>
             </div>
         </div>
     </Modal>

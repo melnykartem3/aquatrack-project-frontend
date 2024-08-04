@@ -4,7 +4,6 @@
     width: 344px;
     padding: 40px 19px;
 
-    border: 1px solid #000;
     border-radius: 15px;
 
     background-color: rgb(255, 255, 255);
@@ -27,7 +26,7 @@
 
 .btn{
     width: 100%;
-    height: 46px;
+    padding: 18px 0px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -37,6 +36,8 @@
     font-weight: 700;
     font-size: 14px;
     line-height: 0.7;
+
+    transition: background-color 300ms ease-in-out, color 300ms ease-in-out;
 }
 
 .btnColor{
