@@ -1,21 +1,23 @@
 import ModalReact from 'react-modal';
-import css from "../Modal/Modal.module.css";
+import css from '../Modal/Modal.module.css';
 import clsx from 'clsx';
 import { IoClose } from 'react-icons/io5';
 
 const Modal = ({ modalIsOpen, closeModal, children }) => {
+  const customStyles = {
+    overlay: {
+      backgroundColor: 'rgba(47, 47, 47, 0.6)',
+    },
+  };
 
   const modalClassName = clsx(
     css.modal,
+    css.reactModal_Content,
   );
 
   const overlayClassName = clsx(
     css.ReactModal__Overlay,
     modalIsOpen && css.isOpen,
-  );
-
-  const buttonClass = clsx(
-    css.button
   );
 
   return (
@@ -24,15 +26,16 @@ const Modal = ({ modalIsOpen, closeModal, children }) => {
       overlayClassName={overlayClassName}
       className={modalClassName}
       closeTimeoutMS={300}
-      onRequestClose={() => closeModal()}
+      onRequestClose={closeModal}
       ariaHideApp={false}
+      style={customStyles}
     >
-      <button className={"closeModalBtn"} onClick={() => closeModal()}>
-        <IoClose width="16" height="16"/>
+      <button className={css.closeBtn} onClick={closeModal}>
+        <IoClose className={css.closeIcon} />
       </button>
       {children}
     </ModalReact>
-  )
-}
+  );
+};
 
-export default Modal
+export default Modal;

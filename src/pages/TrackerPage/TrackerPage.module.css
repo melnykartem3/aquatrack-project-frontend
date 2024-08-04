@@ -1,0 +1,13 @@
+.trackerPageWrapper{
+    display: flex;
+    flex-direction: column;
+    gap:16px;
+}
+
+@media screen and (min-width: 1440px) {
+    .trackerPageWrapper {
+        flex-direction: row;
+        gap: 32px;
+    }
+
+}
