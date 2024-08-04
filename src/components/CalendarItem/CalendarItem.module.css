@@ -1,7 +1,7 @@
 .button {
     border-radius: 50%;
     border: none;
-    background-color: gray;
+    background-color: rgba(50, 63, 71, 0.2);
     width: 28px;
     height: 28px;
     display: flex;
@@ -11,6 +11,9 @@
     font-size: 14px;
     color: #323f47;
     margin-bottom: 6px;
+}
+.button.done{
+    background-color: #fff;
 }
 
 .itemPercentage {
@@ -26,6 +29,10 @@
     justify-content: center;
     align-items: center;
     width: calc((100% - 108px)/7);
+}
+.today {
+    background-color: #323f47;
+    color: #9be1a0;
 }
 
 @media screen and (min-width: 768px) {
@@ -45,5 +52,9 @@
     .calendarItem {
         width: calc((100% - 301px)/8);
     }
+        .itemPercentage {
+            font-size: 12px;
+            line-height: 187%;
+        }
 
 }
