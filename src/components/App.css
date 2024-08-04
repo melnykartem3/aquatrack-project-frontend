@@ -1,9 +1,9 @@
-/* #root {
-   width: 1280px;
+#root {
+  width: 1280px;
   margin: 0 auto;
-  padding: 2rem; 
+  padding: 2rem;
   text-align: center;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-} */
+}
