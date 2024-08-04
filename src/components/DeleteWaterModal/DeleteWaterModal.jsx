@@ -15,12 +15,12 @@ const DeleteWaterModal = ({modalIsOpen,closeModal}) => {
 
   return (
     <Modal modalIsOpen={modalIsOpen} closeModal={closeModal}>
-    <div>
+    <div className={css.modal}>
         <h3 className={css.modalHead}>Delete entry</h3>
         <p className={css.modalText}>Are you sure you want to delete the entry?</p>
         <div className={css.logOutButtons}>
                 <button className={buttonColorClass}>Delete</button>
-                <button className={buttonGreyClass}>Cancel</button>
+                <button className={buttonGreyClass} onClick={()=>closeModal()}>Cancel</button>
         </div>
     </div>
     </Modal>

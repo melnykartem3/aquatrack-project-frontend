@@ -7,14 +7,23 @@ import LogOutModal from "../../components/LogOutModal/LogOutModal"
 import { useState } from 'react';
 
 const HomePage = () => {
-  const [modalIsOpen,setModalIsOpen] = useState(false);
+  const [logoutModalIsOpen,setLogoutModalIsOpen] = useState(false);
+  const [deleteModalOpen,setDeleteModalOpen] = useState(false);
 
-  const openModal = () => {
-    setModalIsOpen(true)
+  const openDelModal = () => {
+    setDeleteModalOpen(true);
   };
 
-  const closeModal = () => {
-    setModalIsOpen(false)
+  const closeDelModal = () => {
+    setDeleteModalOpen(false);
+  };
+
+  const openLogModal = () => {
+    setLogoutModalIsOpen(true)
+  };
+
+  const closeLogModal = () => {
+    setLogoutModalIsOpen(false)
   };
 
 
@@ -26,8 +35,10 @@ const HomePage = () => {
       <div>
         <WelcomeSection />
         <AdvantagesSection />
-        <button onClick={()=>openModal()}>open modal</button>
-        <LogOutModal modalIsOpen={modalIsOpen} closeModal={closeModal}></LogOutModal>
+        <button onClick={()=>openLogModal()}>open logout modal</button>
+        <button onClick={()=>openDelModal()}>open delete modal</button>
+        <LogOutModal modalIsOpen={logoutModalIsOpen} closeModal={closeLogModal}></LogOutModal>
+        <DeleteWaterModal modalIsOpen={deleteModalOpen} closeModal={closeDelModal}></DeleteWaterModal>
       </div>
    </>
   )
