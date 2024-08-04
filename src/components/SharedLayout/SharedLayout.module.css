@@ -1,19 +1,32 @@
 .container {
-    max-width: 375px;
-    padding: 16px;
-    margin: 0 auto;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+@media screen and (min-width: 480px) {
+  .container {
+    width: 375px;
+    margin-right: auto;
+    margin-left: auto;
+  }
 }
 
 @media screen and (min-width: 768px) {
-    .container {
-        max-width: 768px;
-        padding: 32px;
-    }
+  .container {
+    width: 768px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .container {
+    width: 1280px;
+  }
 }
 
 @media screen and (min-width: 1440px) {
-    .container {
-        max-width: 1440px;
-    }
-
+  .container {
+    width: 1440px;
+  }
 }
