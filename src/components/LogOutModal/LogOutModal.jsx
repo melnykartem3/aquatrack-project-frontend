@@ -15,7 +15,7 @@ const LogOutModal = ({modalIsOpen,closeModal}) => {
 
   return (
     <Modal modalIsOpen={modalIsOpen} closeModal={()=>{closeModal()}}>
-        <div>
+        <div className={css.modal}>
           <h3 className={css.modalHead}>Log out</h3>
           <p className={css.modalText}>Do you really want to leave?</p>
             <div className={css.logOutButtons}>

@@ -1,14 +1,16 @@
 .modal{
     display: flex;
     flex-direction: column;
-};
+}
 
 .modalHead{
+    color: var(--basic-dark-blue);
+    
     font-weight: 700;
     font-size: 20px;
     margin-bottom: 16px;
 }
-
+  
 .modalText{
     font-weight: 400;
     font-size: 14px;
@@ -17,12 +19,12 @@
 
 .btn{
     width: 100%;
+    height: 46px;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 14px 0px;
 
-    border-radius: 18px;
+    border-radius: 30px;
 
     font-weight: 700;
     font-size: 14px;

@@ -28,7 +28,7 @@ const Modal = ({ modalIsOpen, closeModal, children }) => {
       ariaHideApp={false}
     >
       <button className={"closeModalBtn"} onClick={() => closeModal()}>
-        <IoClose width={16} height={16}/>
+        <IoClose width="16" height="16"/>
       </button>
       {children}
     </ModalReact>
