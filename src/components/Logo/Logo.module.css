@@ -1,0 +1,34 @@
+.logo {
+  padding-top: 24px;
+  padding-left: 16px;
+  width: 114px;
+  height: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 20px;
+  color: hsl(203, 17%, 24%);
+}
+
+/* Mobile */
+@media (min-width: 320px) and (max-width: 374px) {
+}
+
+/* Mobile (від 375px) */
+@media (min-width: 375px) and (max-width: 767px) {
+  .logo {
+    width: 155px;
+    height: 24px;
+  }
+}
+
+/* Tablet та Desktop  */
+@media (min-width: 768px) {
+  .logo {
+    padding-top: 32px;
+    padding-left: 32px;
+    width: 155px;
+    height: 24px;
+    font-size: 24px;
+    line-height: 24px;
+  }
+}
