@@ -1,6 +1,13 @@
-const WaterItem = () => {
+const WaterItem = ({ data }) => {
+  
+  if (data < 1) {
+    return
+  }
+
   return (
-    <div>WaterItem</div>
+    <>
+    
+    </>
   )
 }
 

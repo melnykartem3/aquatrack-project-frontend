@@ -1,10 +1,10 @@
 import UserBar from "../UserBar/UserBar"
 
-const UserPanel = () => {
+const UserPanel = ({setOpenSetting}) => {
   return (
      <>
           <div>Hello,Nadia</div>
-          <UserBar/>
+      <UserBar setOpenSetting={setOpenSetting}/>
      </>
   )
 }
