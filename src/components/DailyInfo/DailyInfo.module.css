@@ -1,0 +1,33 @@
+.plus_icon {
+    background-color: var(--basic-green);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    padding: 7px;
+}
+
+.addWaterBtn {
+    display: flex;
+    gap: 10px;
+    background-color: transparent;
+    align-items: center;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.addWaterBtn_container {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.addWaterBtn_container:hover .plus_icon {
+    background-color: var(--basic-dark-blue);
+    color:var(--white);
+}
+
+
+/* тут додано стилі для кнопки AddWaterButton,яка має інші стилі в Waterlist */

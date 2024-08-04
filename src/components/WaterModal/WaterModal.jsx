@@ -1,16 +1,25 @@
-import Modal from "../Modal/Modal"
-import WaterForm from "../WaterForm/WaterForm"
+import Modal from "../Modal/Modal";
+import WaterForm from "../WaterForm/WaterForm";
+import css from './WaterModal.module.css';
 
-const WaterModal = () => {
+const WaterModal = ({
+  waterModalOpen,
+  closeWaterModal,
+  operationType,
+}) => {
+  const title = operationType === 'add' ? 'Add Water' : 'Edit the entered amount of water';
+  const value = operationType === 'add' ? 'Choose a value:' : 'Correct entered data:';
+
   return (
-    <Modal>
-      <div>
-        <h3>add or edit</h3>
-        <WaterForm/>
+    <Modal modalIsOpen={waterModalOpen} closeModal={closeWaterModal}>
+      <div className={css.waterModal}>
+        <p className={css.modalTitle}>{title}</p>
+        <p className={css.modalValue}>{value}</p>
+        <WaterForm operationType={operationType} />
       </div>
     </Modal>
-  )
-}
+  );
+};
 
 export default WaterModal
 
