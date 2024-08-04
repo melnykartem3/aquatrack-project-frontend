@@ -5,7 +5,7 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: 262px 335px;
-    max-width: 343px;
+    min-width: 343px;
     padding: 24px 16px 32px 16px;
 
     @media (min-device-pixel-ratio: 2),
@@ -51,7 +51,7 @@
 @media screen and (min-width: 768px) {
     .waterMainInfo_wrapper {
             background-image: url('../../img/TrackerPage/transparent_bottle_for_water_1xtab.png');
-            max-width: 704px;
+            min-width: 704px;
             padding: 32px 32px 64px 32px;
             background-size: 374px 477px;
     
@@ -73,7 +73,7 @@
 @media screen and (min-width: 1440px) {
     .waterMainInfo_wrapper {
             background-image: url('../../img/TrackerPage/transparent_bottle_for_water_1xdesk.png');
-            max-width: 672px;
+            min-width: 672px;
             padding-bottom: 64px;
             background-size: 472px 604px;
 

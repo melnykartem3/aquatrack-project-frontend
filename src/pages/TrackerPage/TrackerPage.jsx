@@ -10,11 +10,10 @@ const TrackerPage = () => {
       <Helmet>
           <title>Tracker Page</title>
         </Helmet>
-          <div>
+          <div className={css.trackerPageWrapper}>
               <WaterMainInfo />
               <WaterDetailedInfo/> 
           </div>  
-          
    </>
   )
 }
