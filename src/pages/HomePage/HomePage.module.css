@@ -1,0 +1,12 @@
+.homePage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Desktop */
+@media (min-width: 1440px) {
+  .homePage {
+    flex-direction: row;
+  }
+}
