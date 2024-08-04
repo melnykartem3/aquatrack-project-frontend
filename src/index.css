@@ -50,6 +50,21 @@ button {
   cursor: pointer;
 }
 
+.closeModalBtn{
+  width: 24px;
+  height: 24px;
+
+  position: absolute;
+  top: 20px;
+  right: 14px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: transparent;
+}
+
 img {
   display: block;
   max-width: 100%;

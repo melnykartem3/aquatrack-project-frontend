@@ -1,14 +1,26 @@
 import Modal from "../Modal/Modal";
+import clsx from "clsx";
+import css from "./DeleteWaterModal.module.css"
 
-const DeleteWaterModal = () => {
+const DeleteWaterModal = ({modalIsOpen,closeModal}) => {
+  const buttonColorClass  = clsx(
+    css.btn,
+    css.btnColor
+  );
+
+  const buttonGreyClass = clsx(
+    css.btn,
+    css.btnTransparent
+  );
+
   return (
-    <Modal>
+    <Modal modalIsOpen={modalIsOpen} closeModal={closeModal}>
     <div>
-        <h3>Delete entry</h3>
-        <p>Are you sure you want to delete the entry?</p>
-        <div>
-                <button>Delete</button>
-                <button>Cancel</button>
+        <h3 className={css.modalHead}>Delete entry</h3>
+        <p className={css.modalText}>Are you sure you want to delete the entry?</p>
+        <div className={css.logOutButtons}>
+                <button className={buttonColorClass}>Delete</button>
+                <button className={buttonGreyClass}>Cancel</button>
         </div>
     </div>
     </Modal>

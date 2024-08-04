@@ -1,5 +1,59 @@
 .modal{
-    padding: 40px 14px;
     display: flex;
     flex-direction: column;
 };
+
+.modalHead{
+    font-weight: 700;
+    font-size: 20px;
+    margin-bottom: 16px;
+}
+
+.modalText{
+    font-weight: 400;
+    font-size: 14px;
+    margin-bottom: 28px;
+}
+
+.btn{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 14px 0px;
+
+    border-radius: 18px;
+
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 0.7;
+}
+
+.btnColor{
+    color: var(--basic-dark-blue);
+    background-color: var(--basic-green);
+}
+
+.btnColor:hover{
+    background-color: var(--green-hover);
+}
+
+.btnColor:active{
+    color: var(--disabled-grey);
+    background-color: transparent;
+}
+
+.btnTransparent{
+    color: var(--disabled-grey);
+    background-color: var(--background-grey);
+}
+
+.btnTransparent:hover{
+    color: var(--basic-dark-blue);
+}
+
+.logOutButtons{
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}

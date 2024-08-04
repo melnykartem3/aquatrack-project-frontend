@@ -1,19 +1,26 @@
 import Modal from "../Modal/Modal";
 import css from "./LogOutModal.module.css"
 import clsx from "clsx";
-import { useState } from "react";
 
 const LogOutModal = ({modalIsOpen,closeModal}) => {
-  // const modalClass  = clsx
+  const buttonColorClass  = clsx(
+    css.btn,
+    css.btnColor
+  );
+
+  const buttonGreyClass = clsx(
+    css.btn,
+    css.btnTransparent
+  );
 
   return (
     <Modal modalIsOpen={modalIsOpen} closeModal={()=>{closeModal()}}>
         <div>
-                <h3>Log out</h3>
-                <p >Do you really want to leave?</p>
-            <div>
-                <button>Log out</button>
-                <button>Cancel</button>
+          <h3 className={css.modalHead}>Log out</h3>
+          <p className={css.modalText}>Do you really want to leave?</p>
+            <div className={css.logOutButtons}>
+                <button className={buttonColorClass}>Log out</button>
+                <button className={buttonGreyClass}>Cancel</button>
             </div>
         </div>
     </Modal>

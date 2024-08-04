@@ -1,5 +1,5 @@
 import ModalReact from 'react-modal';
-import css from "./Modal.module.css"
+import css from "../Modal/Modal.module.css";
 import clsx from 'clsx';
 import { IoClose } from 'react-icons/io5';
 
@@ -27,8 +27,8 @@ const Modal = ({ modalIsOpen, closeModal, children }) => {
       onRequestClose={() => closeModal()}
       ariaHideApp={false}
     >
-      <button className={buttonClass} onClick={() => closeModal()}>
-        <IoClose />
+      <button className={"closeModalBtn"} onClick={() => closeModal()}>
+        <IoClose width={16} height={16}/>
       </button>
       {children}
     </ModalReact>
