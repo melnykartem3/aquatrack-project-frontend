@@ -13,8 +13,8 @@ const schema = yup.object().shape({
   waterVolume: yup
     .number()
     .typeError('Enter a valid amount of water')
-    .min(50, 'Minimum amount is 50ml')
-    .max(300, 'Maximum amount is 300ml')
+    .min(50, 'Minimum amount is 50 ml')
+    .max(300, 'Maximum amount is 300 ml')
     .required('Amount is required'),
   time: yup.string().required('Time is required'),
 });
@@ -48,6 +48,7 @@ const WaterForm = ({ closeWaterModal, operationType, item }) => {
   } = useForm({
     resolver: yupResolver(schema),
     defaultValues,
+    mode: 'onChange',
   });
 
   //відображаємо актуальні дані у формі при її відкритті для редагування
@@ -113,11 +114,12 @@ const WaterForm = ({ closeWaterModal, operationType, item }) => {
         </div>
           <p>Recording time:</p>
             <input type="time" name="time" className={css.timeInput} {...register('time')} />
-            {errors.date && <p className={css.error}>{errors.date.message}</p>}
+            {errors.time && <p className={css.error}>{errors.time.message}</p>}
           <p className={css.waterInput}>Enter the value of the water used:</p>
             <input type="number" name="waterVolume" className={css.amountInput} {...register('waterVolume')}
-          onChange={e => setValue('waterVolume', Number(e.target.value))}
+          onChange={e => setValue('waterVolume', Number(e.target.value))} min="50" max="300"
         />
+        {errors.waterVolume && <p className={css.error}>{errors.waterVolume.message}</p>}
         <button className={css.saveBtn} type="submit">Save</button>
       </form>
     );
