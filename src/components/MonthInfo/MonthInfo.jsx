@@ -3,26 +3,35 @@ import Calendar from '../Calendar/Calendar';
 import CalendarPagination from '../CalendarPagination/CalendarPagination';
 import css from './MonthInfo.module.css';
 
-const MonthInfo = ({ handleDateChange }) => {
-  const [currentDate, setCurrentDate] = useState(new Date());
-  const [calendarNumbers, setCalendarNumbers] = useState([]);
-  const [selectedDate, setSelectedDate] = useState(null);
+const monthNames = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
 
+const MonthInfo = ({ handleDateChange }) => {
   const currentDateNow = new Date();
-  const monthNames = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
-  ];
+  const [currentDate, setCurrentDate] = useState(currentDateNow);
+  const [calendarNumbers, setCalendarNumbers] = useState([]);
+  const [selectedDate, setSelectedDate] = useState({
+    day: currentDateNow.getDate(),
+    month: currentDateNow.getMonth(),
+    year: currentDateNow.getFullYear(),
+  });
+
+  const day = currentDateNow.getDate();
+  const currentMonthIndex = currentDate.getMonth();
+  const currentMonth = monthNames[currentMonthIndex];
+  const currentYear = currentDate.getFullYear();
 
   const changeMonth = increment => {
     setCurrentDate(prevDate => {
@@ -31,18 +40,11 @@ const MonthInfo = ({ handleDateChange }) => {
       return newDate;
     });
   };
-  const currentMonthIndex = currentDate.getMonth();
-  const currentMonth = monthNames[currentMonthIndex];
-  const currentYear = currentDate.getFullYear();
+  
 
   const setToCurrentDate = () => {
-    const date = new Date();
-    const day = date.getDate();
-    const month = date.getMonth();
-    const year = date.getFullYear();
-
     setCurrentDate(new Date());
-    setSelectedDate({ day, month, year });
+    setSelectedDate({ day, currentMonthIndex, currentYear });
     handleDateChange(new Date());
   };
 
@@ -61,7 +63,7 @@ const MonthInfo = ({ handleDateChange }) => {
 
   const handleDateChangeTemp = (day, month, year) => {
     const date = new Date(year, month, day);
-    setSelectedDate({ day, month, year });
+    setSelectedDate({ year, month, day });
     handleDateChange(date);
   };
 
