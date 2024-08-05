@@ -1,0 +1,132 @@
+.welcomeSection {
+  border-radius: 30px;
+  margin: 16px;
+  text-align: left;
+  background-color: #f0eff4;
+  box-sizing: border-box;
+}
+
+.content {
+  display: inline-block;
+  width: 311px;
+  height: 226px;
+  margin: 74px 16px 67px 16px;
+  text-align: left;
+}
+
+.text {
+  font-size: 14px;
+  color: #2f2f2f;
+  line-height: 18px;
+}
+
+.header {
+  margin-top: 16px;
+  font-size: 38px;
+  font-weight: bold;
+  color: #323f47;
+  line-height: 38px;
+}
+
+.buttons {
+  display: flex;
+  margin-top: 32px;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 116px;
+  height: 46px;
+  margin-right: 10px;
+  border: 1px solid black;
+  background-color: white;
+  border-radius: 30px;
+  color: #323f47;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 18px;
+  text-decoration: none;
+  transition: background-color 0.3s, border 0.3s;
+}
+
+.button:hover {
+  border: none;
+  background-color: #9be1a0;
+}
+
+/* Mobile */
+@media (min-width: 320px) and (max-width: 374px) {
+}
+
+/* Mobile (від 375px) */
+@media (min-width: 375px) and (max-width: 767px) {
+  .welcomeSection {
+    width: calc(100% - 32px);
+    max-width: 704px;
+    height: 411px;
+    border: none;
+  }
+
+  .header {
+    font-size: 38px;
+    line-height: 38px;
+  }
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+  .welcomeSection {
+    width: 704px;
+    height: 498px;
+    margin: 32px 32px 16px 32px;
+    border: none;
+  }
+
+  .content {
+    margin: 74px 93px 50px 64px;
+  }
+
+  .text {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .header {
+    font-size: 64px;
+    line-height: 70px;
+  }
+
+  .button {
+    width: 169px;
+    height: 60px;
+    margin-right: 16px;
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1440px) {
+  .welcomeSection {
+    width: 672px;
+    height: 736px;
+    margin: 32px;
+    border: none;
+  }
+
+  .content {
+    margin: 188px 61px 188px 64px;
+  }
+
+  .text {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .header {
+    font-size: 80px;
+    line-height: 76px;
+  }
+}
