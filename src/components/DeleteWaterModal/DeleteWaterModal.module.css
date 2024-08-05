@@ -1,18 +1,11 @@
 .modal{
     display: flex;
     flex-direction: column;
-    width: 344px;
-    padding: 40px 19px;
-
-    border-radius: 15px;
-
-    background-color: rgb(255, 255, 255);
-    box-shadow: 0 4px 50px 0 rgba(0, 0, 0, 0.1);
 }
 
 .modalHead{
     color: var(--basic-dark-blue);
-
+    text-align: center;
     font-weight: 700;
     font-size: 20px;
     margin-bottom: 16px;
@@ -22,6 +15,7 @@
     font-weight: 400;
     font-size: 14px;
     margin-bottom: 28px;
+    text-align: center;
 }
 
 .btn{
@@ -72,8 +66,7 @@
 /* TABLET STYLES */
 @media screen and (min-width:768px) {
 .modal{
-    width: 516px;
-    padding: 40px;
+    width: 436px;
 }
 
 .modalHead{
