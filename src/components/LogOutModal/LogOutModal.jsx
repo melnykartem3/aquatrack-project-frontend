@@ -1,8 +1,10 @@
 import Modal from "../Modal/Modal";
 import css from "./LogOutModal.module.css"
 import clsx from "clsx";
+import axios from "axios";
 
 const LogOutModal = ({modalIsOpen,closeModal}) => {
+  
   const buttonColorClass  = clsx(
     css.btn,
     css.btnColor
