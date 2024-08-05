@@ -1,0 +1,79 @@
+.waterForm {
+    display: flex;
+    flex-direction: column;
+}
+
+.waterCounter {
+    display: flex;
+    margin: 8px 0 16px;
+    gap:8px;
+}
+
+p,
+.saveBtn {
+    font-size: 14px;
+    line-height: 1.29;
+    letter-spacing: -0.01em;
+}
+
+.waterAmount {
+    display: flex;
+    border-radius: 30px;
+    align-items: center;
+    justify-content: center;
+    width:81px;
+    height: 40px;
+    color: var(--white);
+    background-color: var(--basic-dark-blue);
+}
+
+.waterCountBtn {
+    background-color: var(--white);
+    padding:0;
+}
+
+.waterInput {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    color: var(--basic-dark-blue);
+}
+
+.timeInput,
+.amountInput {
+    border: 1px solid rgba(47, 47, 47, 0.15);
+    border-radius: 15px;
+    padding: 0 16px;
+    width: 303px;
+    height: 46px;
+    margin: 8px 0 24px;
+}
+
+.saveBtn {
+    border-radius: 30px;
+    padding: 14px 40px;
+    width: 116px;
+    height: 46px;
+    background-color:var(--basic-green);
+    color: var(--basic-dark-blue);
+    font-weight: 700;
+    text-align: center;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.saveBtn:hover {
+    background-color:var(--green-hover);
+}
+
+.error {
+    font-size: 14px;
+    line-height: 1.29;
+    letter-spacing: -0.01em;
+    color:var(--red-error);
+}
+
+/* приховати значок годинника в інпуті time */
+input[type="time"]::-webkit-calendar-picker-indicator {
+    display: none;
+}
