@@ -1,23 +1,28 @@
 import ModalReact from 'react-modal';
 import css from '../Modal/Modal.module.css';
-// import clsx from 'clsx';
+import clsx from 'clsx';
 import { IoClose } from 'react-icons/io5';
 
 const Modal = ({ modalIsOpen, closeModal, children }) => {
-  const customStyles = {
-    overlay: {
-      backgroundColor: 'rgba(47, 47, 47, 0.6)',
+  // const customStyles = {
+  //   overlay: {
+  //     backgroundColor: 'rgba(47, 47, 47, 0.6)',
       
-    },
-  };
+  //   },
+  // };
+
+  const overlayClass = clsx(
+    css.ReactModal_Overlay,
+    modalIsOpen && css.isOpen
+  )
 
   return (
     <ModalReact
       isOpen={modalIsOpen}
       closeTimeoutMS={300}
+      overlayClassName={overlayClass}
       onRequestClose={closeModal}
       ariaHideApp={false}
-      style={customStyles}
       className={css.reactModal_Content}
       bodyOpenClassName={css.ReactModal__Body} 
     >
