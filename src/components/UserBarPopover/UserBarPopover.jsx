@@ -24,7 +24,7 @@ const UserBarPopover = ({ onClose }) => {
       </li>
       <li>
         <button type="button"
-          onClick={() => { console.log('Open logout modal'); openModal()}}>
+          onClick={() => {console.log('Open logout modal'); openModal()}}>
           <FiLogOut /> Log out
         </button>
         <LogOutModal modalIsOpen={modalIsOpen} closeModal={closeModal}></LogOutModal>
