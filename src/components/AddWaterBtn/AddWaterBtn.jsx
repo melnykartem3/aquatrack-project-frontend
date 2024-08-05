@@ -31,5 +31,3 @@ const AddWaterBtn = ({ containerClassName, buttonClassName, iconClassName }) => 
 };
 
 export default AddWaterBtn;
-
-// приймає у вигляді пропсів стилі для кнопки в WaterMainInfo, і для кнопки в DailyInfo

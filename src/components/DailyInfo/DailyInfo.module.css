@@ -1,33 +1,59 @@
-.plus_icon {
-    background-color: var(--basic-green);
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    padding: 7px;
+.container {
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+.wraper {
+padding: 20px;
+background-color: var(--background-grey);
 }
 
 .addWaterBtn {
-    display: flex;
-    gap: 10px;
-    background-color: transparent;
-    align-items: center;
-    font-weight: 700;
-    font-size: 14px;
+background-color: transparent;
+border: none;
+font-size: 16px;
+line-height: 1.5;
+letter-spacing: 0.01em;
+text-align: center;
+color: var(--basic-dark-blue);
+display: flex;
+gap: 10px;
+align-items: center;
+font-weight: 700;
 }
 
-.addWaterBtn_container {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
+.plus_icon {
+box-sizing: content-box;
+width: 15px;
+height: 15px;
+background-color: var(--basic-green);
+color: var(--basic-dark-blue);
+border-radius: 50%;
+padding: 10px;
+transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.addWaterBtn_container:hover .plus_icon {
-    background-color: var(--basic-dark-blue);
-    color:var(--white);
+.addWaterBtn:hover .plus_icon,
+.addWaterBtn:focus .plus_icon {
+background-color: var(--basic-dark-blue);
+color: var(--basic-green);
 }
 
 
-/* тут додано стилі для кнопки AddWaterButton,яка має інші стилі в Waterlist */
+
+@media screen and (min-width: 768px) {
+
+.wraper {
+padding: 32px;
+}
+
+
+/* Стилі при відкритому Setting, додати клас до Button */
+.openSettingTablet {
+    display: none;
+}
+/* Стилі при відкритому Setting */
+
+}
+
