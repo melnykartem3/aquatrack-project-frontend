@@ -1,21 +1,22 @@
-import { Helmet } from "react-helmet-async"
-import WaterMainInfo from "../../components/WaterMainInfo/WaterMainInfo"
-import WaterDetailedInfo from "../../components/WaterDetailedInfo/WaterDetailedInfo"
-import css from './TrackerPage.module.css'
-
+import { Helmet } from 'react-helmet-async';
+import WaterMainInfo from '../../components/WaterMainInfo/WaterMainInfo';
+import WaterDetailedInfo from '../../components/WaterDetailedInfo/WaterDetailedInfo';
+import css from './TrackerPage.module.css';
 
 const TrackerPage = () => {
   return (
     <>
       <Helmet>
-          <title>Tracker Page</title>
-        </Helmet>
-          <div className={css.trackerPageWrapper}>
-              <WaterMainInfo />
-              <WaterDetailedInfo/> 
-          </div>  
-   </>
-  )
-}
+        <title>Tracker Page</title>
+      </Helmet>
+      <div className={css.trackerPageWrapper}>
+        <WaterMainInfo />
+        <div className={css.waterDetailedInfoWrapper}>
+          <WaterDetailedInfo />
+        </div>
+      </div>
+    </>
+  );
+};
 
-export default TrackerPage
+export default TrackerPage;

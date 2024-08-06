@@ -1,29 +1,33 @@
-import WaterItem from "../WaterItem/WaterItem"
-import css from './WaterList.module.css'
-
-// отримати список води за обраний день
+import WaterItem from '../WaterItem/WaterItem';
+import wateritems from './water.json';
+import css from './WaterList.module.css';
 
 const WaterList = ({ changeDate }) => {
-  // console.log(changeDate);
+  const getWaterItemsForDate = date => {
+    return wateritems.filter(item => item.date === date);
+  };
 
-  const wateritems = [];
-  // тут буде функція, щоб отримати список за changeDate
+  const filteredWaterItems = getWaterItemsForDate(changeDate);
 
-  if (wateritems.length < 1) {
-    return
-  }
+  if (filteredWaterItems.length < 1) {
     return (
-      //тут список який рендерить через map WaterItem 
-      <>
-        <ul className={css.list}>
-          {wateritems.map((item) => (
-                <li className={css.listItem} key={item.id}>
-                    <WaterItem data={item} />
-                </li>
-            ))}
-        </ul>
-      </>
-  )
-}
+      <h3 className={css.title}>
+        There is no consumed water for the selected day
+      </h3>
+    );
+  }
 
-export default WaterList
+  return (
+    <>
+      <ul className={css.list}>
+        {filteredWaterItems.map(item => (
+          <li className={css.listItem} key={item.id}>
+            <WaterItem data={item} />
+          </li>
+        ))}
+      </ul>
+    </>
+  );
+};
+
+export default WaterList;

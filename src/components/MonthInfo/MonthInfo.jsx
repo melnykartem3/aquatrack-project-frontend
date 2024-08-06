@@ -3,24 +3,35 @@ import Calendar from '../Calendar/Calendar';
 import CalendarPagination from '../CalendarPagination/CalendarPagination';
 import css from './MonthInfo.module.css';
 
-const MonthInfo = () => {
-  const [currentDate, setCurrentDate] = useState(new Date());
-  const [calendarNumbers, setCalendarNumbers] = useState([]);
+const monthNames = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
+
+const MonthInfo = ({ handleDateChange }) => {
   const currentDateNow = new Date();
-  const monthNames = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
-  ];
+  const [currentDate, setCurrentDate] = useState(currentDateNow);
+  const [calendarNumbers, setCalendarNumbers] = useState([]);
+  const [selectedDate, setSelectedDate] = useState({
+    day: currentDateNow.getDate(),
+    month: currentDateNow.getMonth(),
+    year: currentDateNow.getFullYear(),
+  });
+
+  const day = currentDateNow.getDate();
+  const currentMonthIndex = currentDate.getMonth();
+  const currentMonth = monthNames[currentMonthIndex];
+  const currentYear = currentDate.getFullYear();
 
   const changeMonth = increment => {
     setCurrentDate(prevDate => {
@@ -29,12 +40,12 @@ const MonthInfo = () => {
       return newDate;
     });
   };
-  const currentMonthIndex = currentDate.getMonth(); 
-  const currentMonth = monthNames[currentMonthIndex];
-  const currentYear = currentDate.getFullYear();
+  
 
   const setToCurrentDate = () => {
     setCurrentDate(new Date());
+    setSelectedDate({ day, currentMonthIndex, currentYear });
+    handleDateChange(new Date());
   };
 
   const getDaysInMonth = (year, month) => {
@@ -50,6 +61,12 @@ const MonthInfo = () => {
     setCalendarNumbers(numbers);
   }, [lastDay]);
 
+  const handleDateChangeTemp = (day, month, year) => {
+    const date = new Date(year, month, day);
+    setSelectedDate({ year, month, day });
+    handleDateChange(date);
+  };
+
   return (
     <div className={css.containerCalendar}>
       <CalendarPagination
@@ -63,6 +80,8 @@ const MonthInfo = () => {
         currentDate={currentDateNow}
         currentMonthIndex={currentMonthIndex}
         currentYear={currentYear}
+        handleDateChange={handleDateChangeTemp}
+        selectedDate={selectedDate}
       />
     </div>
   );

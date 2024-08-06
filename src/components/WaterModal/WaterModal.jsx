@@ -15,7 +15,7 @@ const WaterModal = ({
       <div className={css.waterModal}>
         <p className={css.modalTitle}>{title}</p>
         <p className={css.modalValue}>{value}</p>
-        <WaterForm operationType={operationType} />
+        <WaterForm operationType={operationType} closeWaterModal={closeWaterModal} />
       </div>
     </Modal>
   );

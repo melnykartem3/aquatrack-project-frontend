@@ -9,7 +9,7 @@
   --transition-delay: 500ms;
   --default-delay: 250ms;
   --disabled-grey: #bcbcbc;
-  --text-grey-white: #2F2F2F99;
+  --text-grey-white: #2f2f2f99;
 }
 
 body {
@@ -67,6 +67,7 @@ button {
 
 img {
   display: block;
-  max-width: 100%;
+  /* max-width: 100%; */
   height: auto;
 }
+
