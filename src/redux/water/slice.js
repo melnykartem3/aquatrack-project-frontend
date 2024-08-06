@@ -1,21 +1,20 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { initialState } from "./initialState";
+import { createSlice } from '@reduxjs/toolkit';
+import { initialState } from './initialState';
 
-// const handleRejected = (state) => {
+// const handleRejected = state => {
 //   state.isLoading = false;
 //   state.error = true;
-// }
+// };
 
-// const handlePending = (state) => {
+// const handlePending = state => {
 //   state.isLoading = true;
 //   state.error = false;
-// }
+// };
 
 const slice = createSlice({
   name: 'water',
   initialState: initialState,
-    extraReducers: (builder) =>
-    builder },
-);
+  extraReducers: builder => builder,
+});
 
 export const waterReducer = slice.reducer;
