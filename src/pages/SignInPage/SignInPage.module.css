@@ -1,115 +1,107 @@
 .container {
-    padding-left: 16px;
-    padding-right: 16px;
-    display: flex;
+  padding-left: 16px;
+  padding-right: 16px;
+  display: flex;
 }
 
 .leftWrapper {
-
-    background-color: var(--background-grey);
-    border-radius: 30px;
-    padding: 24px 16px 170px 16px;
+  background-color: var(--background-grey);
+  border-radius: 30px;
+  padding: 24px 16px 170px 16px;
 }
 
 .rightWrapper {
-    display: none;
-    background-color: purple;
+  display: none;
 }
 
 .title {
-    font-size: 32px;
-    line-height: 1;
-    letter-spacing: -0.01em;
-    color: var(--basic-dark-blue);
-    margin-bottom: 32px;
+  font-size: 32px;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  color: var(--basic-dark-blue);
+  margin-bottom: 32px;
+  margin-top: 172px;
 }
 
 .textWrapper {
-    text-align: center;
+  text-align: center;
 }
 
 .alreadyHaveAccount {
-    color: rgba(47, 47, 47, 0.5);
-    font-size: 14px;
+  color: rgba(47, 47, 47, 0.5);
+  font-size: 14px;
 }
 
 .signInLink {
-    color: var(--text-grey);
-    font-size: 14px;
-    text-decoration: underline;
-    font-weight: 700;
-
+  color: var(--text-grey);
+  font-size: 14px;
+  text-decoration: underline;
+  font-weight: 700;
 }
 
 .signInLink:hover {
-    color: var(--green-hover);
-    text-decoration: none;
+  color: var(--green-hover);
+  text-decoration: none;
 }
 
-
-
 @media screen and (min-width: 375px) {
-    .container {
-        width: 375px;
-        margin-right: auto;
-        margin-left: auto;
-    }
+  .container {
+    width: 375px;
+    margin-right: auto;
+    margin-left: auto;
+  }
 
-    .leftWrapper {
-        width: 343px;
-    }
+  .leftWrapper {
+    width: 343px;
+  }
 }
 
 @media (min-width: 768px) {
-    .container {
-        width: 768px;
-        padding-left: 32px;
-        padding-right: 32px;
-    }
+  .container {
+    width: 768px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
 
-    .leftWrapper {
-        width: 704px;
-        padding-left: 32px;
-        padding-right: 32px;
-    }
+  .leftWrapper {
+    width: 704px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
 
-    .alreadyHaveAccount {
+  .alreadyHaveAccount {
+    font-size: 16px;
+  }
 
-        font-size: 16px;
-    }
+  .signInLink {
+    font-size: 16px;
+  }
 
-    .signInLink {
-        font-size: 16px;
-    }
+  .titleFormWrapper {
+    display: flex;
+    flex-direction: column;
+  }
 
-    .titleFormWrapper {
-        display: flex;
-        flex-direction: column;
-
-    }
-
-    .title {
-        font-size: 36px;
-
-        margin-left: 102px;
-    }
-
-
+  .title {
+    font-size: 36px;
+    margin-top: 225px;
+    margin-left: 102px;
+  }
 }
 
 @media (min-width: 1440px) {
-    .container {
-        width: 1440px;
-        gap: 32px;
-    }
+  .container {
+    width: 1440px;
+    gap: 32px;
+  }
 
-    .title {
+  .title {
+    margin-top: 113px;
+    margin-left: 86px;
+  }
 
-        margin-left: 86px;
-    }
-
-    .rightWrapper {
-        display: flex;
-        width: 704px;
-    }
+  .rightWrapper {
+    display: flex;
+    width: 704px;
+  }
 }
