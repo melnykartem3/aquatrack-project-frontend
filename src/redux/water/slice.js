@@ -21,7 +21,7 @@ const slice = createSlice({
       .addCase(addWater.pending, handlePending)
       .addCase(addWater.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.dailyItems.push(action.payload);
+        state.dailyItems.push(action.payload.data);
       })
       .addCase(addWater.rejected, handleRejected)
       
