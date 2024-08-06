@@ -30,5 +30,7 @@ const AddWaterBtn = ({ containerClassName, buttonClassName, iconClassName }) => 
   );
 };
 
+export default AddWaterBtn;
+
 
 
