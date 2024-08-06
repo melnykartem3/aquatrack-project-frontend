@@ -5,13 +5,13 @@ instance.defaults.baseURL = 'https://aquatrack-project-backend.onrender.com/';
 
 export const registerUser = createAsyncThunk(
   'auth/signup',
-  async (formData, thunkApi) => {
+  async (formData, thunkAPI) => {
     try {
       const response = await instance.post('/auth/signup', formData);
-
+      await thunkAPI.dispatch(login(formData)).unwrap();
       return response.data;
     } catch (error) {
-      return thunkApi.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
   },
 );
@@ -21,11 +21,7 @@ export const login = createAsyncThunk(
   async (loginData, thunkAPI) => {
     try {
       const response = await instance.post('/auth/signin', loginData);
-      const { accessToken } = response.data.data;
-      const userData = { accessToken };
-      localStorage.setItem('user', JSON.stringify(userData));
-
-      return userData;
+      return response.data.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

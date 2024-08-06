@@ -45,10 +45,12 @@ const SignUpForm = () => {
 
     try {
       await dispatch(registerUser(formData)).unwrap();
+      await dispatch(
+        login({ email: formData.email, password: formData.password }),
+      ).unwrap();
       reset();
       navigate('/tracker');
     } catch (error) {
-      console.error('Registration error:', error); // Додаємо логування
       toast.error('User with this email already exists.');
     }
   };

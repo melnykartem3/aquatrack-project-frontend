@@ -28,19 +28,16 @@ const slice = createSlice({
       .addCase(registerUser.pending, handlePending)
       .addCase(registerUser.fulfilled, (state, action) => {
         state.isLoading = false;
+      })
+      .addCase(registerUser.rejected, handleRejected)
+      // Login
+      .addCase(login.pending, handlePending)
+      .addCase(login.fulfilled, (state, action) => {
+        state.isLoading = false;
         state.user = action.payload.user;
         state.accessToken = action.payload.accessToken;
         state.isLoggedIn = true;
       })
-      .addCase(registerUser.rejected, handleRejected)
-      //login
-      .addCase(login.pending, handlePending)
-      .addCase(login.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.accessToken = action.payload.accessToken;
-        state.isLoggedIn = true;
-      })
-      .addCase(login.rejected, handleRejected)
 
       // logout
       .addCase(logout.pending, handlePending)
