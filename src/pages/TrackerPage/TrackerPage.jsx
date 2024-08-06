@@ -1,12 +1,12 @@
-import { Helmet } from 'react-helmet-async';
-import WaterMainInfo from '../../components/WaterMainInfo/WaterMainInfo';
-import WaterDetailedInfo from '../../components/WaterDetailedInfo/WaterDetailedInfo';
-import css from './TrackerPage.module.css';
+import { Helmet } from "react-helmet-async"
+import WaterMainInfo from "../../components/WaterMainInfo/WaterMainInfo"
+import WaterDetailedInfo from "../../components/WaterDetailedInfo/WaterDetailedInfo"
+import css from './TrackerPage.module.css'
+import { Toaster } from "react-hot-toast"
 
 const TrackerPage = () => {
   return (
     <>
-      <Helmet>
         <title>Tracker Page</title>
       </Helmet>
       <div className={css.trackerPageWrapper}>
