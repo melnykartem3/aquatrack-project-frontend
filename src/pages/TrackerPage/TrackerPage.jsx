@@ -4,20 +4,19 @@ import WaterDetailedInfo from "../../components/WaterDetailedInfo/WaterDetailedI
 import css from './TrackerPage.module.css'
 import { Toaster } from "react-hot-toast"
 
-
 const TrackerPage = () => {
   return (
     <>
-      <Helmet>
-          <title>Tracker Page</title>
-        </Helmet>
-      <Toaster />
-          <div className={css.trackerPageWrapper}>
-              <WaterMainInfo />
-              <WaterDetailedInfo/> 
-          </div>  
-   </>
-  )
-}
+        <title>Tracker Page</title>
+      </Helmet>
+      <div className={css.trackerPageWrapper}>
+        <WaterMainInfo />
+        <div className={css.waterDetailedInfoWrapper}>
+          <WaterDetailedInfo />
+        </div>
+      </div>
+    </>
+  );
+};
 
-export default TrackerPage
+export default TrackerPage;
