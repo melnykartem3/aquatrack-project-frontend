@@ -1,4 +1,3 @@
-import './App.css';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { lazy } from 'react';
@@ -7,6 +6,7 @@ import { Route, Routes } from 'react-router-dom';
 import RestrictedRoute from './RestrictedRoute/RestrictedRoute';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import SharedLayout from './SharedLayout/SharedLayout';
+import Modal from './Modal/Modal';
 
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
 const SignUpPage = lazy(() => import('../pages/SignUpPage/SignUpPage'));

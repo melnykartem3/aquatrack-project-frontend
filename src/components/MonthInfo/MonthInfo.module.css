@@ -1,0 +1,18 @@
+.containerCalendar {
+    max-width: 303px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media screen and (min-width: 768px) {
+    .containerCalendar {
+        max-width: 640px;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .containerCalendar {
+        max-width: 608px;
+    }
+
+}
