@@ -32,6 +32,7 @@ const slice = createSlice({
         state.isLoading = false;
         state.isLoggedIn = true;
         state.accessToken = action.payload.accessToken;
+        console.log("logged in")
       })
       .addCase(login.rejected, handleRejected)
       
@@ -53,6 +54,8 @@ const slice = createSlice({
       // logout
       .addCase(logout.pending, handlePending)
       .addCase(logout.fulfilled, () => {
+        console.log("logout")
+
         return initialState;
       })
       .addCase(logout.rejected, handleRejected)

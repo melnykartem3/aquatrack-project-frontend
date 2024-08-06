@@ -26,7 +26,7 @@ const Modal = ({ modalIsOpen, closeModal, children }) => {
       className={css.reactModal_Content}
       bodyOpenClassName={css.ReactModal__Body} 
     >
-      <button className={css.closeBtn} onClick={closeModal}>
+      <button className={css.closeBtn} onClick={()=>closeModal()}>
         <IoClose className={css.closeIcon} />
       </button>
       {children}

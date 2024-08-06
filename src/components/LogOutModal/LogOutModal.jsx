@@ -8,11 +8,7 @@ import axios from "axios";
 const LogOutModal = ({modalIsOpen,closeModal}) => {
   const dispatch = useDispatch();
 
-  const handleClick = () => {
-    dispatch(logout());
-  };
-
-  const buttonColorClass  = clsx(
+  const buttonColorClass = clsx(
     css.btn,
     css.btnColor
   );
@@ -28,8 +24,8 @@ const LogOutModal = ({modalIsOpen,closeModal}) => {
           <h3 className={css.modalHead}>Log out</h3>
           <p className={css.modalText}>Do you really want to leave?</p>
             <div className={css.logOutButtons}>
-                <button className={buttonColorClass} onClick={handleClick}>Log out</button>
-                <button className={buttonGreyClass} onClick={()=>closeModal()}>Cancel</button>
+                <button type="button" className={buttonColorClass} onClick={()=>console.log("dispatch")}>Log out</button>
+                <button type="button" className={buttonGreyClass} onClick={()=>closeModal()}>Cancel</button>
             </div>
         </div>
     </Modal>

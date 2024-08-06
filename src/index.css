@@ -50,7 +50,7 @@ button {
   cursor: pointer;
 }
 
-.closeModalBtn{
+/* .closeModalBtn{
   width: 24px;
   height: 24px;
 
@@ -63,7 +63,7 @@ button {
   align-items: center;
 
   background-color: transparent;
-}
+} */
 
 img {
   display: block;
