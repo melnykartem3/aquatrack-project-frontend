@@ -12,18 +12,18 @@ const WaterDetailedInfo = () => {
   const [openSetting, setOpenSetting] = useState(false);
 
   //функція handleChange для зміни дати передати в monthInfo і викликати при onChange
-  //  const handleDateChange = (event) => {
-  //   setChangeDate(new Date(event.target.value));
-  // }; 
+   const handleDateChange = (event) => {
+     setChangeDate(new Date(event));     
+  }; 
   // console.log(handleDateChange());
 
   return (
-      <section>
-        <UserPanel setOpenSetting={setOpenSetting} />
-        <DailyInfo changeDate={changeDate} openSetting={openSetting} />
-        <MonthInfo />
-      </section>
-  )
+    <section>
+      <UserPanel setOpenSetting={setOpenSetting} />
+      <DailyInfo changeDate={changeDate} openSetting={openSetting} />
+      <MonthInfo handleDateChange={handleDateChange} />
+    </section>
+  );
 }
 
 export default WaterDetailedInfo
