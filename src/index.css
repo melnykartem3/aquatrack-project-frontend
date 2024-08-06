@@ -9,7 +9,7 @@
   --transition-delay: 500ms;
   --default-delay: 250ms;
   --disabled-grey: #bcbcbc;
-  --text-grey-white: #2F2F2F99;
+  --text-grey-white: #2f2f2f99;
 }
 
 body {
@@ -48,5 +48,26 @@ a {
 button {
   border: none;
   cursor: pointer;
+}
+
+.closeModalBtn{
+  width: 24px;
+  height: 24px;
+
+  position: absolute;
+  top: 20px;
+  right: 14px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: transparent;
+}
+
+img {
+  display: block;
+  /* max-width: 100%; */
+  height: auto;
 }
 

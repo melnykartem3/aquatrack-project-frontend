@@ -11,13 +11,25 @@ const WaterList = ({ changeDate }) => {
     return <h3 className={css.title}>There is no consumed water for the selected day</h3>
   }
   return (
+// отримати список води за обраний день
+
+  const wateritems = [];
+  // тут буде функція, щоб отримати список за changeDate
+
+  if (wateritems.length < 1) {
+    return <h3 className={css.title}>There is no consumed water for the selected day</h3>
+  }
+    return (
+      //тут список який рендерить через map WaterItem 
+      <>
         <ul className={css.list}>
           {wateritems.map((item) => (
                 <li className={css.listItem} key={item.id}>
                     <WaterItem data={item} />
                 </li>
             ))}
-      </ul>
+        </ul>
+      </>
   )
 }
 

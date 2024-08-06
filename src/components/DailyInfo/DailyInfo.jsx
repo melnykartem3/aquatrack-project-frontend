@@ -5,7 +5,6 @@ import clsx from 'clsx';
 import css from './DailyInfo.module.css'
 
 const DailyInfo = ({ changeDate, openSetting }) => {
-
     return (
         <div className={css.wraper}>
             <div className={css.container}>
@@ -18,4 +17,3 @@ const DailyInfo = ({ changeDate, openSetting }) => {
     )
 }
 
-export default DailyInfo

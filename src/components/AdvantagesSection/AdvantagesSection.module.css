@@ -34,7 +34,6 @@
 .icon {
   width: 26.4px;
   height: 28px;
-  position: relative;
 }
 
 .icon:nth-child(1) {
@@ -48,19 +47,11 @@
 
 .icon:nth-child(3) {
   margin-left: -8px;
+  z-index: 1;
 }
 
 .span {
   color: #9be1a0;
-}
-
-.advantagesListContainer {
-  position: absolute;
-  top: 265px;
-  right: 16px;
-  bottom: 32px;
-  left: 159px;
-  box-sizing: border-box;
 }
 
 .advantagesList {
@@ -76,6 +67,12 @@
   font-weight: bold;
   line-height: 8px;
   color: #2f2f2f;
+  position: absolute;
+  top: 265px;
+  right: 16px;
+  bottom: 32px;
+  left: 159px;
+  box-sizing: border-box;
 }
 
 .li_1,
@@ -137,7 +134,7 @@
     left: 32px;
   }
 
-  .advantagesListContainer {
+  .advantagesList {
     top: 80%;
     right: 5%;
     bottom: 5%;
@@ -174,18 +171,15 @@
     height: 47px;
   }
 
-  .advantagesListContainer {
-    top: 336px;
-    right: 32px;
-    bottom: 32px;
-    left: 430px;
-  }
-
   .advantagesList {
     width: 242px;
     height: 78px;
     font-size: 12px;
     line-height: 12px;
+    top: 336px;
+    right: 32px;
+    bottom: 32px;
+    left: 430px;
   }
 
   .li_1,
@@ -226,10 +220,10 @@
     left: 32px;
   }
 
-  .advantagesListContainer {
+  .advantagesList {
     top: 594px;
     right: 32px;
     bottom: 64px;
-    left: 430px;
+    left: 398px;
   }
 }

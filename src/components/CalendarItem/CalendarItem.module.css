@@ -1,7 +1,10 @@
+button{
+    background-color: transparent;
+}
 .button {
     border-radius: 50%;
     border: none;
-    background-color: gray;
+    background-color: rgba(50, 63, 71, 0.2);
     width: 28px;
     height: 28px;
     display: flex;
@@ -11,6 +14,10 @@
     font-size: 14px;
     color: #323f47;
     margin-bottom: 6px;
+}
+
+.done {
+    background-color: #fff;
 }
 
 .itemPercentage {
@@ -26,6 +33,16 @@
     justify-content: center;
     align-items: center;
     width: calc((100% - 108px)/7);
+}
+
+.today {
+    border: #323f47 2px solid;
+    color: #9be1a0;
+}
+
+.selected {
+    background-color: #323f47;
+    color: #9be1a0;
 }
 
 @media screen and (min-width: 768px) {
@@ -44,6 +61,11 @@
 @media screen and (min-width: 1440px) {
     .calendarItem {
         width: calc((100% - 301px)/8);
+    }
+
+    .itemPercentage {
+        font-size: 12px;
+        line-height: 187%;
     }
 
 }
