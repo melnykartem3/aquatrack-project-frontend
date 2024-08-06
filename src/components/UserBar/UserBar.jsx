@@ -4,6 +4,7 @@ import { useClickAway } from 'react-use';
 import UserBarPopover from '../UserBarPopover/UserBarPopover';
 import css from './UserBar.module.css';
 
+
 const UserBar = ({ setOpenSetting }) => {
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
   const itemRef = useRef(null);

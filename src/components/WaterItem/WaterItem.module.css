@@ -1,0 +1,64 @@
+.wrapper {
+    height: 120px;
+    overflow: hidden;
+}
+
+.container {
+    background-color: var(--white);
+    padding: 18px 14px;
+    border-radius: 15px;
+    width: 149px;
+    height: 74px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.iconChangeDelete {
+    fill: var(--white);
+    stroke: var(--text-grey);
+}
+
+.iconsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.ml {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1;
+}
+
+.time {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1;
+}
+
+.button {
+    width: 14px;
+    height: 14px;
+    background-color: inherit;
+    padding: 0;
+}
+
+@media screen and (min-width: 768px) { 
+    .container {
+        width: 192px;
+        height: 86px;
+        gap: 20px;
+
+    }
+    .ml {
+            font-size: 15px;
+        }
+}
