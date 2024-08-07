@@ -12,6 +12,7 @@ const handlePending = (state) => {
   state.error = null;
 }
 
+
 const slice = createSlice({
   name: 'water',
   initialState: initialState,
@@ -36,6 +37,5 @@ const slice = createSlice({
     
   },
 });
-
 
 export const waterReducer = slice.reducer;
