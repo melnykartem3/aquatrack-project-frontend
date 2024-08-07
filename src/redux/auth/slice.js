@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { login, logout, register } from './operations';
+import { login, logout, registerUser } from './operations';
 import { initialState } from './initialState';
 
 const handleRejected = (state, action) => {
@@ -27,11 +27,11 @@ const slice = createSlice({
   extraReducers: builder => {
     builder
       //register
-      .addCase(register.pending, handlePending)
-      .addCase(register.fulfilled, (state, action) => {
+      .addCase(registerUser.pending, handlePending)
+      .addCase(registerUser.fulfilled, (state, action) => {
         state.isLoading = false;
       })
-      .addCase(register.rejected, handleRejected)
+      .addCase(registerUser.rejected, handleRejected)
       // Login
       .addCase(login.pending, handlePending)
       .addCase(login.fulfilled, (state, action) => {
