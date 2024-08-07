@@ -9,7 +9,6 @@ import { useDispatch } from 'react-redux';
 import { login, registerUser } from '../../redux/auth/operations.js';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
-
 const schema = yup.object().shape({
   email: yup
     .string()
@@ -24,11 +23,9 @@ const schema = yup.object().shape({
     .oneOf([yup.ref('password'), null], 'Passwords must match')
     .required('Repeat Password is required'),
 });
-
 const SignUpForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showRepeatPassword, setShowRepeatPassword] = useState(false);
-  // const navigate = useNavigate();
   const {
     register,
     reset,
@@ -37,24 +34,19 @@ const SignUpForm = () => {
   } = useForm({
     resolver: yupResolver(schema),
   });
-
   const dispatch = useDispatch();
-
   const onSubmit = async data => {
     const { repeatPassword, ...formData } = data;
-
     try {
       await dispatch(registerUser(formData)).unwrap();
       await dispatch(
         login({ email: formData.email, password: formData.password }),
       ).unwrap();
       reset();
-      // navigate('/tracker');
     } catch (error) {
       toast.error('User with this email already exists.');
     }
   };
-
   return (
     <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
       <div className={css.formWrapper}>
@@ -69,7 +61,6 @@ const SignUpForm = () => {
           <p className={css.errorMessage}>{errors.email.message}</p>
         )}
       </div>
-
       <div className={css.formWrapper}>
         <label className={css.label}>Password</label>
         <div className={css.passwordWrapper}>
@@ -91,7 +82,6 @@ const SignUpForm = () => {
           <p className={css.errorMessage}>{errors.password.message}</p>
         )}
       </div>
-
       <div className={css.formWrapper}>
         <label className={css.label}>Repeat Password</label>
         <div className={css.passwordWrapper}>
@@ -113,12 +103,10 @@ const SignUpForm = () => {
           <p className={css.errorMessage}>{errors.repeatPassword.message}</p>
         )}
       </div>
-
       <button className={css.submitButton} type="submit">
         Sign Up
       </button>
     </form>
   );
 };
-
 export default SignUpForm;

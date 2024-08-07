@@ -9,7 +9,6 @@ import clsx from 'clsx';
 import css from './SignInForm.module.css';
 import { login } from '../../redux/auth/operations.js';
 import { useNavigate } from 'react-router-dom';
-
 const schema = yup.object().shape({
   email: yup
     .string()
@@ -20,7 +19,6 @@ const schema = yup.object().shape({
     .min(8, 'Password must be at least 8 characters')
     .required('Password is required'),
 });
-
 const SignInForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const {
@@ -32,7 +30,6 @@ const SignInForm = () => {
     resolver: yupResolver(schema),
   });
   const dispatch = useDispatch();
-
   const onSubmit = async data => {
     try {
       await dispatch(login(data)).unwrap();
@@ -41,7 +38,6 @@ const SignInForm = () => {
       toast.error('Login failed: ' + error.message);
     }
   };
-
   return (
     <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
       <div className={css.formWrapper}>
@@ -56,7 +52,6 @@ const SignInForm = () => {
           <p className={css.errorMessage}>{errors.email.message}</p>
         )}
       </div>
-
       <div className={css.formWrapper}>
         <label className={css.label}>Password</label>
         <div className={css.passwordWrapper}>
@@ -78,12 +73,10 @@ const SignInForm = () => {
           <p className={css.errorMessage}>{errors.password.message}</p>
         )}
       </div>
-
       <button className={css.submitButton} type="submit">
         Sign In
       </button>
     </form>
   );
 };
-
 export default SignInForm;
