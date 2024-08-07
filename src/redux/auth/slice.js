@@ -20,6 +20,8 @@ const slice = createSlice({
     },
     accessToken: null,
     isLoggedIn: false,
+    isRefreshing: false,
+    error: null,
   },
 
   extraReducers: builder => {

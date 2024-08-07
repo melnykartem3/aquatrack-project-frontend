@@ -6,7 +6,7 @@ import { FiEyeOff, FiEye } from 'react-icons/fi';
 import css from './SignUpForm.module.css';
 import clsx from 'clsx';
 import { useDispatch } from 'react-redux';
-import { registerUser } from '../../redux/auth/operations.js';
+import { login, registerUser } from '../../redux/auth/operations.js';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 
@@ -28,7 +28,7 @@ const schema = yup.object().shape({
 const SignUpForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showRepeatPassword, setShowRepeatPassword] = useState(false);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const {
     register,
     reset,
@@ -49,7 +49,7 @@ const SignUpForm = () => {
         login({ email: formData.email, password: formData.password }),
       ).unwrap();
       reset();
-      navigate('/tracker');
+      // navigate('/tracker');
     } catch (error) {
       toast.error('User with this email already exists.');
     }

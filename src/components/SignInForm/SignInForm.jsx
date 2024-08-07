@@ -23,7 +23,6 @@ const schema = yup.object().shape({
 
 const SignInForm = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const navigate = useNavigate();
   const {
     register,
     reset,
@@ -38,7 +37,6 @@ const SignInForm = () => {
     try {
       await dispatch(login(data)).unwrap();
       reset();
-      navigate('/tracker');
     } catch (error) {
       toast.error('Login failed: ' + error.message);
     }

@@ -11,8 +11,8 @@ export const instance = axios.create({
   },
 });
 
-export const setToken = (token) => {
-  instance.defaults.headers.common.Authorization = `Bearer ${token}`;
+export const setToken = (accessToken) => {
+  instance.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
 };
 
 export const clearToken = () => {
