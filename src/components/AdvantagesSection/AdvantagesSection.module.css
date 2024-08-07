@@ -92,6 +92,11 @@
   color: white;
 }
 
+.li_uk {
+  width: 81px;
+  padding: 0 15px;
+}
+
 .dotIcon {
   display: flex;
   justify-content: center;

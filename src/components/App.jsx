@@ -7,6 +7,7 @@ import RestrictedRoute from './RestrictedRoute/RestrictedRoute';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import SharedLayout from './SharedLayout/SharedLayout';
 import Modal from './Modal/Modal';
+import LanguageSwitcher from './LanguageSwitcher/LanguageSwitcher';
 
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
 const SignUpPage = lazy(() => import('../pages/SignUpPage/SignUpPage'));
@@ -23,6 +24,7 @@ function App() {
 
   return (
     <>
+    <LanguageSwitcher />
       <SharedLayout>
         <Routes>
           <Route path="/" element={<HomePage />} />

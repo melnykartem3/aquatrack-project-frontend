@@ -51,6 +51,10 @@
   transition: background-color 0.3s, border 0.3s;
 }
 
+.buttonUk {
+  padding: 0.6em 1.2em;
+}
+
 .button:hover {
   border: none;
   background-color: #9be1a0;
