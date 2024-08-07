@@ -1,6 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { clearToken, instance, setToken } from '../../utils/axios';
-
 export const registerUser = createAsyncThunk(
   'auth/signup',
   async (formData, thunkAPI) => {
