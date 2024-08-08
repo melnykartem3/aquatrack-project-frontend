@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { initialState } from "./initialState";
-import { addWater, updateWater } from "./operations";
+import { addWater, updateWater, fetchWaterList } from "./operations";
 
 const handleRejected = (state,action) => {
   state.isLoading = false;
@@ -34,7 +34,14 @@ const slice = createSlice({
       if (index !== -1) {state.dailyItems[index] = action.payload;}
       })
       .addCase(updateWater.rejected,handleRejected)
-    
+      
+       // отримання списку води
+      .addCase(fetchWaterList.pending, handlePending)
+      .addCase(fetchWaterList.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.dailyItems = action.payload;
+      })
+      .addCase(fetchWaterList.rejected, handleRejected);
   },
 });
 

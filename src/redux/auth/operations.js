@@ -15,10 +15,10 @@ export const registerUser = createAsyncThunk(
 );
 
 export const login = createAsyncThunk(
-  'auth/login',
+  'auth/signin',
   async (credentials, thunkAPI) => {
     try {
-      const response = await instance.post('/auth/login', credentials);
+      const response = await instance.post('/auth/signin', credentials);
       const { accessToken } = response.data;
       setToken(accessToken);
       return response.data;

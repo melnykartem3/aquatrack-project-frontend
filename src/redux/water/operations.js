@@ -12,6 +12,18 @@ export const fetchContacts = createAsyncThunk("contacts/fetchAll",
     }
 });
 
+export const fetchWaterList = createAsyncThunk(
+  'water/fetchWaterList',
+  async (userId, thunkAPI) => {
+    try {
+      const response = await instance.get(`/water?${userId}`);
+      return response.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
+
 export const addWater = createAsyncThunk(
   'water/addWater',
   async (water, thunkAPI) => {

@@ -5,11 +5,6 @@
   margin-bottom: 24px;
 }
 
-.line {
-  padding-bottom: 24px;
-  background-color: var(--background-grey);
-}
-
 .wraper {
   padding: 20px;
   background-color: var(--background-grey);

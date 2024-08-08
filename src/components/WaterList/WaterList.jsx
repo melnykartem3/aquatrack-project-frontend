@@ -1,11 +1,20 @@
 import WaterItem from '../WaterItem/WaterItem';
-import wateritems from './water.json';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import {fetchWaterList} from '../../redux/water/operations.js'
 import css from './WaterList.module.css';
 
-const WaterList = ({ changeDate }) => {
+const WaterList = ({ changeDate, userId }) => {
+  const dispatch = useDispatch();
+  const wateritems = useSelector((state) => state.water.dailyItems);
+
   const getWaterItemsForDate = date => {
     return wateritems.filter(item => item.date === date);
   };
+
+  useEffect(() => {
+    dispatch(fetchWaterList(userId));
+  }, [dispatch, userId]);
 
   const filteredWaterItems = getWaterItemsForDate(changeDate);
 
