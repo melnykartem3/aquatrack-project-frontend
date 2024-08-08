@@ -16,12 +16,12 @@ const schema = yup.object().shape({
     .positive('Weight must be positive!')
     .min(1, 'Weight must be at least 10 kg!')
     .max(300, 'Weight must be less than 300 kg!'),
-  dailyTimeActivity: yup
+  timeSports: yup
     .number()
     .positive('Daily time activity must be positive!')
     .min(0)
     .max(8, 'Daily time activity must be less than 8 hours!'),
-  dailyNorma: yup
+  waterRate: yup
     .number()
     .positive('Daily norma must be positive!')
     .min(0)
@@ -43,21 +43,21 @@ const UserSettingsForm = () => {
   const userAvatarRef = useRef(null);
   const dispatch = useDispatch();
 
-  const { name, gender, avatar, weight, email, dailyTimeActivity, dailyNorma } =
+  const { name, gender, avatar, weight, email, timeSports, waterRate } =
     useSelector(selectUser);
 
   useEffect(() => {
-    if (name && gender && avatar && weight && dailyTimeActivity && dailyNorma && email) {
+    if (name && gender && avatar && weight && timeSports && waterRate && email) {
       setValue('name', name);
       setValue('gender', gender);
       setValue('weight', weight);
-      setValue('dailyTimeActivity', dailyTimeActivity);
-      setValue('dailyNorma', dailyNorma);
+      setValue('timeSports', timeSports);
+      setValue('waterRate', waterRate);
       if (userAvatarRef.current) {
         userAvatarRef.current.src = avatar;
       }
     }
-  }, [name, gender, avatar, weight, dailyTimeActivity, dailyNorma, email, setValue]);
+  }, [name, gender, avatar, weight, timeSports, waterRate, email, setValue]);
 
   const onSubmit = data => {
     const formData = new FormData();
@@ -91,11 +91,11 @@ const UserSettingsForm = () => {
     if (userWeight > 0 && userSportTime > 0) {
       if (userGender === 'woman') {
         normaWater = roundUpToTwoDecimalPlaces(userWeight * 0.03 + userSportTime * 0.4, 3);
-        setValue('dailyNorma', normaWater);
+        setValue('waterRate', normaWater);
         return normaWater;
       } else if (userGender === 'man') {
         normaWater = roundUpToTwoDecimalPlaces(userWeight * 0.04 + userSportTime * 0.6);
-        setValue('dailyNorma', normaWater);
+        setValue('waterRate', normaWater);
         return normaWater;
       }
     } else {
@@ -105,7 +105,7 @@ const UserSettingsForm = () => {
 
   let userGender = watch('gender');
   let userWeight = watch('weight');
-  let userSportTime = watch('dailyTimeActivity');
+  let userSportTime = watch('timeSports');
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -224,12 +224,12 @@ const UserSettingsForm = () => {
             <input
               type="number"
               step="any"
-              name="dailyTimeActivity"
-              {...register('dailyTimeActivity')}
+              name="timeSports"
+              {...register('timeSports')}
               className={`${css.userInfoField} ${css.inputText}`}
             />
-            {errors.dailyTimeActivity && (
-              <p className={`${css.inputText} ${css.error}`}>{errors.dailyTimeActivity.message}</p>
+            {errors.timeSports && (
+              <p className={`${css.inputText} ${css.error}`}>{errors.timeSports.message}</p>
             )}
           </label>
         </div>
@@ -245,12 +245,12 @@ const UserSettingsForm = () => {
             <input
               type="number"
               step="any"
-              name="dailyNorma"
-              {...register('dailyNorma')}
+              name="waterRate"
+              {...register('waterRate')}
               className={`${css.userInfoField} ${css.inputText}`}
             />
-            {errors.dailyNorma && (
-              <p className={`${css.inputText} ${css.error}`}>{errors.dailyNorma.message}</p>
+            {errors.waterRate && (
+              <p className={`${css.inputText} ${css.error}`}>{errors.waterRate.message}</p>
             )}
           </label>
         </div>
