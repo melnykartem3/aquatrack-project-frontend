@@ -12,17 +12,22 @@ export const fetchContacts = createAsyncThunk("contacts/fetchAll",
     }
 });
 
-export const fetchWaterList = createAsyncThunk(
-  'water/fetchWaterList',
-  async (userId, thunkAPI) => {
+export const fetchWaterListDaily = createAsyncThunk(
+  'water/fetchWaterListDaily',
+  async ({date, userId}, thunkAPI) => {
     try {
-      const response = await instance.get(`/water?${userId}`);
+      const response = await instance.get(`/water/perDay`, {
+        date,
+        userId
+      });
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
   }
 );
+
+// ще зробити феч за сьогодні і видалення 
 
 export const addWater = createAsyncThunk(
   'water/addWater',
