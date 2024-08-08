@@ -12,8 +12,8 @@ const SignInPage = () => {
       <Helmet>
         <title>SignIn Page</title>
       </Helmet>
-      <div className={css.container}>
-        <div className={css.leftWrapper}>
+      <div className={css.containerPage}>
+        <div className={css.signInSection}>
           <Logo />
           <h2 className={css.title}>Sign In</h2>
           <SignInForm />
@@ -26,7 +26,7 @@ const SignInPage = () => {
             </Link>
           </div>
         </div>
-        <div className={css.rightWrapper}>
+        <div className={css.advSectionWrapper}>
           {' '}
           <AdvantagesSection />
         </div>
