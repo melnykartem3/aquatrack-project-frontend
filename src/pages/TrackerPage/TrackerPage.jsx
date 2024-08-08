@@ -3,10 +3,17 @@ import WaterMainInfo from '../../components/WaterMainInfo/WaterMainInfo';
 import WaterDetailedInfo from '../../components/WaterDetailedInfo/WaterDetailedInfo';
 import css from './TrackerPage.module.css';
 import { useDispatch } from 'react-redux';
-import { logout } from '../../redux/auth/operations';
+import { getUser, logout, refresh } from '../../redux/auth/operations';
+import { useEffect } from 'react';
 
 const TrackerPage = () => {
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getUser());
+    dispatch(refresh());
+  }, [dispatch]);
+
   return (
     <>
       <Helmet>
@@ -18,7 +25,6 @@ const TrackerPage = () => {
           <WaterDetailedInfo />
         </div>
         <button onClick={()=>(dispatch(logout()))}>logout </button>
-        <button>refresh </button>
       </div>
     </>
   );

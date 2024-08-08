@@ -31,19 +31,23 @@ export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
     return thunkAPI.rejectWithValue(error.message);
   }
 });
-// export const refreshUser = createAsyncThunk(
-//   "auth/refresh",
-//   async (_, thunkApi) => {
-//     const state = thunkApi.getState();
-//     const token = state.auth.accessToken;
-//     if (token === null) {
-//       return thunkApi.rejectWithValue('Unable to fetch user');
-//     }
-//     try {
-//       const response = await instance.get("/users/current");
-//       return response.data;
-//     } catch (error) {
-//       return thunkApi.rejectWithValue(error.message);
-//     }
-//   }
-// );
+export const refresh = createAsyncThunk(
+  'auth/refresh',
+  async (_, thunkApi) => {
+    try {
+      const { data } = await instance.post('/auth/refresh');
+      return data.data;
+    } catch (error) {
+    return thunkApi.rejectWithValue(error.message);
+  }
+  }
+);
+export const getUser = createAsyncThunk('auth/current',
+  async (_, thunkAPI) => {
+  try {
+    const { data } = await instance.get('/auth/current');
+    return data;
+  } catch (e) {
+    return thunkAPI.rejectWithValue(e.message);
+  }
+});
