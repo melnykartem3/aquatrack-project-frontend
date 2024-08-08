@@ -1,7 +1,7 @@
 import axios from 'axios';
 export const instance = axios.create({
-  // baseURL: 'https://aquatrack-project-backend.onrender.com/',
-  baseURL: 'http://localhost:3000',
+  baseURL: 'https://aquatrack-project-backend.onrender.com/',
+  // baseURL: 'http://localhost:3000',
   withCredentials: true,
   headers: {
     Accept: 'application/json',
