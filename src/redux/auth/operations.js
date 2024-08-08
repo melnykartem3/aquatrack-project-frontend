@@ -1,48 +1,42 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { instance, setToken, clearToken } from '../../utils/axios';
-
+import { clearToken, instance, setToken } from '../../utils/axios';
 export const registerUser = createAsyncThunk(
-  'auth/register',
-  async (formData, thunkApi) => {
+  'auth/signup',
+  async (formData, thunkAPI) => {
     try {
-      const response = await instance.post('/users/register', formData);
-
+      const response = await instance.post('/auth/signup', formData);
       return response.data;
     } catch (error) {
-      return thunkApi.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
   },
 );
-
 export const login = createAsyncThunk(
-  'auth/signin',
-  async (credentials, thunkAPI) => {
+
+  'auth/login',
+  async (loginData, thunkAPI) => {
     try {
-      const response = await instance.post('/auth/signin', credentials);
-      const { accessToken } = response.data;
-      setToken(accessToken);
-      return response.data;
+      const response = await instance.post('/auth/signin', loginData);
+      setToken(response.data.data.accessToken);
+      return response.data.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.response.data || error.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
   },
 );
-
 export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
     await instance.post('/auth/logout');
     clearToken();
   } catch (error) {
-    return thunkAPI.rejectWithValue(error.response.data || error.message);
+    return thunkAPI.rejectWithValue(error.message);
   }
 });
-
 // export const refreshUser = createAsyncThunk(
 //   "auth/refresh",
 //   async (_, thunkApi) => {
 //     const state = thunkApi.getState();
-//     const token = state.auth.token;
-
+//     const token = state.auth.accessToken;
 //     if (token === null) {
 //       return thunkApi.rejectWithValue('Unable to fetch user');
 //     }
