@@ -36,6 +36,7 @@ export const refresh = createAsyncThunk(
   async (_, thunkApi) => {
     try {
       const { data } = await instance.post('/auth/refresh');
+      setToken(data.data.accessToken);
       return data.data;
     } catch (error) {
     return thunkApi.rejectWithValue(error.message);

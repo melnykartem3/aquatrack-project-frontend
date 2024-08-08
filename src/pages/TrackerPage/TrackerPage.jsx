@@ -5,14 +5,16 @@ import css from './TrackerPage.module.css';
 import { useDispatch } from 'react-redux';
 import { getUser, logout, refresh } from '../../redux/auth/operations';
 import { useEffect } from 'react';
-
+import { useSelector } from 'react-redux';
+import { selectIsRefreshing } from '../../redux/auth/selectors';
 const TrackerPage = () => {
   const dispatch = useDispatch();
-
+ const isRefreshing = useSelector(selectIsRefreshing);
   useEffect(() => {
-    dispatch(getUser());
-    dispatch(refresh());
-  }, [dispatch]);
+    // dispatch(getUser());
+    if (!isRefreshing) {dispatch(refresh());
+  }
+  }, [dispatch,isRefreshing]);
 
   return (
     <>
