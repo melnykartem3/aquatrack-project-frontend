@@ -3,7 +3,7 @@ import ChooseDate from '../ChooseDate/ChooseDate';
 import WaterList from '../WaterList/WaterList';
 import css from './DailyInfo.module.css';
 
-const DailyInfo = ({ changeDate, openSetting }) => {
+const DailyInfo = ({ changeDate, openSetting, userId }) => {
   return (
     <div className={css.wraper}>
       <div className={css.container}>
@@ -16,7 +16,7 @@ const DailyInfo = ({ changeDate, openSetting }) => {
         />
       </div>
         </div>
-      <WaterList changeDate={changeDate} />
+      <WaterList changeDate={changeDate} userId={userId} />
     </div>
   );
 };

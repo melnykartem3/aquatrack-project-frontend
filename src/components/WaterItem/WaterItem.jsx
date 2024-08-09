@@ -1,7 +1,10 @@
 import css from './WaterItem.module.css';
 import Icon from '../Icon/Icon.jsx';
 
-const WaterItem = ({ data }) => {
+const WaterItem = ({ data, formatDate }) => {
+
+  const time = formatDate(data.date);
+
   if (data < 1) {
     return;
   }
@@ -10,8 +13,8 @@ const WaterItem = ({ data }) => {
     <div className={css.container}>
       <Icon id="icon-glass" className={css.icon} width="32" height="32" />
       <div className={css.info}>
-        <p className={css.ml}>250 ml</p>
-        <p className={css.time}>11:00 AM</p>
+        <p className={css.ml}>{data.waterVolume}</p>
+        <p className={css.time}>{time}</p>
       </div>
       <div className={css.iconsContainer}>
         <button className={css.button}>

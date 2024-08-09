@@ -52,7 +52,8 @@ export const getUser = createAsyncThunk('auth/current',
   } catch (e) {
     return thunkAPI.rejectWithValue(e.message);
   }
-});
+  });
+
 export const updateUser = createAsyncThunk(
   'auth/update',
   async (user, thunkAPI) => {

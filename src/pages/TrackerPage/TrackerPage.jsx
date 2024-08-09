@@ -6,15 +6,25 @@ import { useDispatch } from 'react-redux';
 import { getUser, logout, refresh } from '../../redux/auth/operations';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { selectIsRefreshing } from '../../redux/auth/selectors';
+import { selectIsRefreshing, selectUser } from '../../redux/auth/selectors';
+
 const TrackerPage = () => {
   const dispatch = useDispatch();
- const isRefreshing = useSelector(selectIsRefreshing);
+  const isRefreshing = useSelector(selectIsRefreshing);
+  const user = useSelector(selectUser);
+  const userId = user._id;
+
   useEffect(() => {
-    // dispatch(getUser());
+    dispatch(getUser());
+    
     if (!isRefreshing) {dispatch(refresh());
   }
   }, [dispatch,isRefreshing]);
+
+  useEffect(() => {
+    console.log(user);
+    
+  }, [user])
 
   return (
     <>
@@ -24,7 +34,7 @@ const TrackerPage = () => {
       <div className={css.trackerPageWrapper}>
         <WaterMainInfo />
         <div className={css.waterDetailedInfoWrapper}>
-          <WaterDetailedInfo />
+          <WaterDetailedInfo userId={userId} />
         </div>
         <button onClick={()=>(dispatch(logout()))}>logout </button>
       </div>

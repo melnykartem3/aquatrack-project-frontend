@@ -3,7 +3,7 @@ import MonthInfo from "../MonthInfo/MonthInfo"
 import UserPanel from "../UserPanel/UserPanel"
 import { useState } from "react"
 
-const WaterDetailedInfo = () => {
+const WaterDetailedInfo = ({userId}) => {
 
   // стан з MonthInfo, обрана користувачем дата
   const [changeDate, setChangeDate] = useState(null);  
@@ -21,7 +21,7 @@ const WaterDetailedInfo = () => {
   return (
     <section>
       <UserPanel setOpenSetting={setOpenSetting} />
-      <DailyInfo changeDate={changeDate} openSetting={openSetting} />
+      <DailyInfo changeDate={changeDate} openSetting={openSetting} userId={userId} />
       <MonthInfo handleDateChange={handleDateChange} />
     </section>
   );

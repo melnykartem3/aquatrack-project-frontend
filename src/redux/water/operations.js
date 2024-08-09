@@ -13,12 +13,15 @@ export const fetchContacts = createAsyncThunk("contacts/fetchAll",
 });
 
 export const fetchWaterListDaily = createAsyncThunk(
-  'water/fetchWaterListDaily',
-  async ({date, userId}, thunkAPI) => {
+  'water/perDay',
+  async ({userId, date}, thunkAPI) => {
     try {
-      const response = await instance.get(`/water/perDay`, {
-        date,
-        userId
+      const response = await instance.get(`/water/perDay`, { 
+        params: {
+          userId, 
+          day: date
+        }
+        
       });
       return response.data;
     } catch (e) {

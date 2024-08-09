@@ -1,12 +1,14 @@
 import WaterItem from '../WaterItem/WaterItem';
-// import wateritems from './water.json';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import {fetchWaterListDaily} from '../../redux/water/operations.js'
+import { useEffect, useState } from 'react';
+import { fetchWaterListDaily } from '../../redux/water/operations.js';
 import css from './WaterList.module.css';
+import { isSameDay } from "date-fns";
+import { nanoid } from 'nanoid';
 
-const WaterList = ({ changeDate }) => {
-
+const WaterList = ({ changeDate, userId }) => {
+  
+  // форматування дати 
   const formatDate = (date) => {
     const d = new Date(date);
     const year = d.getFullYear();
@@ -16,28 +18,31 @@ const WaterList = ({ changeDate }) => {
     return `${year}-${month}-${day}`;
   }
   
-  const formattedDate = formatDate(changeDate);
-  console.log(formattedDate);
-
-  const formattedToday = formatDate(new Date());
-  console.log(formattedToday);
+  const [date, setDate] = useState(formatDate(new Date()));
   
-  const dispatch = useDispatch();
-  const wateritems = useSelector((state) => state.water.dailyItems);
-
-  const getWaterItemsForDate = date => {
-    return wateritems.filter(item => item.date === date);
-  };
-
-  const userId = '66b37db860445d4b5699e7ac';
-
   useEffect(() => {
-    dispatch(fetchWaterListDaily({ formattedToday, userId }));
-  }, [dispatch, formattedToday]);
+    const today = new Date();
+    if (!changeDate || isSameDay(changeDate, today)) {
+      setDate(today);
+    } else {
+      setDate(formatDate(changeDate));
+    }
+  }, [changeDate]);
 
-  const filteredWaterItems = getWaterItemsForDate(changeDate);
+  const dispatch = useDispatch();
+  
+  const wateritems = useSelector((state) => state.water.dailyItems.data);
+  console.log(wateritems);
+ 
+  useEffect(() => {
+    dispatch(fetchWaterListDaily({ userId, date }));
+  }, [dispatch, userId, date]);
 
-  if (filteredWaterItems.length < 1) {
+
+  if (!wateritems) {
+    return
+  }
+  if (wateritems.length < 1) {
     return (
       <h3 className={css.title}>
         There is no consumed water for the selected day
@@ -49,9 +54,9 @@ const WaterList = ({ changeDate }) => {
   return (
     <>
       <ul className={css.list}>
-        {filteredWaterItems.map(item => (
-          <li className={css.listItem} key={item.id}>
-            <WaterItem data={item} />
+        {wateritems.map(item => (
+          <li className={css.listItem} key={nanoid()}>
+            <WaterItem data={item} formatDate={formatDate} />
           </li>
         ))}
       </ul>
