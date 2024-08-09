@@ -12,6 +12,7 @@ const WaterDetailedInfo = () => {
   const [openSetting, setOpenSetting] = useState(false);
 
   //функція handleChange для зміни дати передати в monthInfo і викликати при onChange
+
    const handleDateChange = (event) => {
      setChangeDate(new Date(event));     
   }; 

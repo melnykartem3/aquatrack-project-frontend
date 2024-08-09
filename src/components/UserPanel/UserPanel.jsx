@@ -1,12 +1,15 @@
-import UserBar from "../UserBar/UserBar"
+import UserBar from '../UserBar/UserBar';
+import css from './UserPanel.module.css';
 
-const UserPanel = ({setOpenSetting}) => {
+const UserPanel = ({ setOpenSetting }) => {
   return (
-     <>
-          <div>Hello,Nadia</div>
-      <UserBar setOpenSetting={setOpenSetting}/>
-     </>
-  )
-}
+    <div className={css.panelWrapper}>
+      <h2 className={css.title}>
+        Hello<span className={css.secondaryText}>, User!</span>
+      </h2>
+      <UserBar setOpenSetting={setOpenSetting} />
+    </div>
+  );
+};
 
-export default UserPanel
+export default UserPanel;

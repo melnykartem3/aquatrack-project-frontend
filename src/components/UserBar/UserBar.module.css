@@ -1,0 +1,43 @@
+.userBarWrapper {
+  width: 137px;
+  height: 100%;
+  margin-top: 20px;
+}
+
+.nameParagraph {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.01em;
+  color: var(--white);
+  width: 43px;
+  margin-left: 12px;
+}
+
+.userBarButton {
+  padding: 0;
+  width: 137px;
+  height: 50px;
+  background-color: var(--basic-dark-blue);
+  border-radius: 30px;
+  margin-bottom: 2px;
+}
+
+.btnWrapper {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  gap: 8px;
+  align-items: center;
+}
+
+.icon {
+  fill: var(--white);
+  justify-content: center;
+}
+
+.iconUser {
+  width: 38px;
+  height: 38px;
+  color: var(--white);
+}

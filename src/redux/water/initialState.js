@@ -1,6 +1,9 @@
 export const initialState = {
-    dailyItems: null,
-    monthlyItems: null,
+    dailyItems: {
+        dayItems: [],
+        totalWaterVolume:null
+    },
+    monthlyItems: [],
     currentDate: new Date().toISOString(),
     currentMonth: null,
     isLoading: false,

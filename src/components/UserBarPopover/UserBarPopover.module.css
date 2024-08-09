@@ -1,0 +1,59 @@
+.popoverList {
+  border-radius: 15px;
+  min-width: 137px;
+  height: 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 4px 50px 0 rgba(0, 0, 0, 0.1);
+  background-color: var(--white);
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.popoverList.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.popoverListItem {
+  display: flex;
+  margin-top: 14px;
+  margin-left: 20px;
+}
+
+.popoverListItem:last-child {
+  margin-top: 8px;
+  margin-bottom: 14px;
+}
+
+.popoverBtnSetting {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 1.49;
+  color: var(--text-grey);
+}
+
+.popoverBtnLogOut {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 1.49;
+  color: rgba(50, 63, 71, 0.4);
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.popoverBtnLogOut:hover,
+.popoverBtnLogOut:focus {
+  color: var(--text-grey);
+}
+
+.icon {
+  margin-right: 8px;
+}

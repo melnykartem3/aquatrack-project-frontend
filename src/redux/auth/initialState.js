@@ -1,4 +1,4 @@
-export const initialState = {
+export const INITIAL_STATE = {
   user: {
     name: null,
     email: null,

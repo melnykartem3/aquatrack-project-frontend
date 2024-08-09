@@ -1,6 +1,7 @@
 import Logo from '../Logo/Logo';
 import { Link } from 'react-router-dom';
 import css from './WelcomeSection.module.css';
+import clsx from 'clsx';
 
 const WelcomeSection = () => {
   return (
@@ -10,10 +11,10 @@ const WelcomeSection = () => {
         <p className={css.text}>Record daily water intake and track</p>
         <h1 className={css.header}> Water consumption tracker</h1>
         <div className={css.buttons}>
-          <Link to="/signup" className={css.button}>
+          <Link to="/signup" className={clsx(css.button, css.buttonTryTracker)}>
             Try Tracker
           </Link>
-          <Link to="/signin" className={css.button}>
+          <Link to="/signin" className={clsx(css.button, css.buttonSignIn)}>
             Sign In
           </Link>
         </div>

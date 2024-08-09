@@ -5,6 +5,7 @@
     color: var(--basic-dark-blue);
     line-height: 1.2;
     letter-spacing: 0.01em;
+    width: 99px;
 }    
 
 /* Стилі при відкритому Setting, додати клас до Н3 */

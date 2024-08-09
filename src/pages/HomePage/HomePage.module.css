@@ -2,11 +2,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 16px;
+}
+
+@media (min-width: 768px) {
 }
 
 /* Desktop */
 @media (min-width: 1440px) {
   .homePage {
     flex-direction: row;
+    gap: 32px;
   }
 }

@@ -18,6 +18,7 @@
 
 .plus_icon {
     color: var(--white);
+    transition: color 300ms ease-in-out;
 }
 
 .addWaterBtn_container {
@@ -40,6 +41,7 @@
     font-weight: 700;
     font-size: 14px;
     margin-top: 42px;
+    transition: color 300ms ease-in-out;
 }
 
 .addWaterBtn_container:hover .addWaterBtn,

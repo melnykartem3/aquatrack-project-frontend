@@ -6,6 +6,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { addWater, updateWater } from '../../redux/water/operations';
+import toast from 'react-hot-toast';
 
 
 // схема валідації
@@ -73,16 +74,32 @@ const WaterForm = ({ closeWaterModal, operationType, item }) => {
       date: date.toISOString(),
     }
 
+//нотифікаціz для користувача і закрити модальне вікно closeWaterModal
        if (operationType === 'add') {
-         dispatch(addWater(water));
-      console.log('Add Water:', water);
+         dispatch(addWater(water))
+         .unwrap()
+         .then(() => {
+           toast.success('You successfully add a water record!');
+           console.log('Add Water:', water);
+      })
+      .catch(error => {
+        toast.error('Failed to add water record!');
+      });
+      closeWaterModal();
        } else {
-         dispatch(updateWater({ id: item._id, ...water }));
-      console.log('Edit Water:', water);
+         dispatch(updateWater({ waterId: item._id, ...water }))
+        .unwrap()
+         .then(() => {
+           toast.success('You successfully update a water record!');
+           console.log('Edit Water:', water);
+      })
+      .catch(error => {
+        toast.error('Failed to update water record!');
+      });
+      closeWaterModal();
         }
   };
   
-  //тут ще потрібно зробити логіку опрацювання відповіді з бекенду для нотифікації для користувача і закрити модальне вікно closeWaterModal
 
   
   //кнопка збіьшення води
@@ -98,30 +115,32 @@ const WaterForm = ({ closeWaterModal, operationType, item }) => {
     };
 
     return (
-      <form className={css.waterForm} onSubmit={handleSubmit(onSubmit)}>
-        <div>
-          <p>Amount of water:</p>
-          <div className={css.waterCounter}>
-            <button type="button"  className={css.waterCountBtn}  onClick={minusWaterVolume}>
-              <CiCircleMinus size={42} />
-            </button>
-            <div className={css.waterAmount}>{`${watch('waterVolume')} ml`}</div>
-            <button type="button" className={css.waterCountBtn}  onClick={plusWaterVolume}>
-              <CiCirclePlus  size={42} />
-            </button>
+      <>
+        <form className={css.waterForm} onSubmit={handleSubmit(onSubmit)}>
+          <div>
+            <p>Amount of water:</p>
+            <div className={css.waterCounter}>
+              <button type="button"  className={css.waterCountBtn}  onClick={minusWaterVolume}>
+                <CiCircleMinus size={42} />
+              </button>
+              <div className={css.waterAmount}>{`${watch('waterVolume')} ml`}</div>
+              <button type="button" className={css.waterCountBtn}  onClick={plusWaterVolume}>
+                <CiCirclePlus  size={42} />
+              </button>
+            </div>
+            {errors.waterVolume && (<p className={css.error}>{errors.waterVolume.message}</p>)}
           </div>
-          {errors.waterVolume && (<p className={css.error}>{errors.waterVolume.message}</p>)}
-        </div>
-          <p>Recording time:</p>
-            <input type="time" name="time" className={css.timeInput} {...register('time')} />
-            {errors.time && <p className={css.error}>{errors.time.message}</p>}
-          <p className={css.waterInput}>Enter the value of the water used:</p>
-            <input type="number" name="waterVolume" className={css.amountInput} {...register('waterVolume')}
-          onChange={e => setValue('waterVolume', Number(e.target.value))} min="50" max="300"
-        />
-        {errors.waterVolume && <p className={css.error}>{errors.waterVolume.message}</p>}
-        <button className={css.saveBtn} type="submit">Save</button>
-      </form>
+            <p>Recording time:</p>
+              <input type="time" name="time" className={css.timeInput} {...register('time')} />
+              {errors.time && <p className={css.error}>{errors.time.message}</p>}
+            <p className={css.waterInput}>Enter the value of the water used:</p>
+              <input type="number" name="waterVolume" className={css.amountInput} {...register('waterVolume')}
+            onChange={e => setValue('waterVolume', Number(e.target.value))} min="50" max="300"
+          />
+          {errors.waterVolume && <p className={css.error}>{errors.waterVolume.message}</p>}
+          <button className={css.saveBtn} type="submit">Save</button>
+        </form>
+      </>
     );
   };
 
