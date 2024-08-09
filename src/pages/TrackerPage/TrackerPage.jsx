@@ -26,7 +26,7 @@ const TrackerPage = () => {
         <div className={css.waterDetailedInfoWrapper}>
           <WaterDetailedInfo />
         </div>
-        <button onClick={()=>(dispatch(logout()))}>logout </button>
+        {/* <button onClick={()=>(dispatch(logout()))}>logout </button> */}
       </div>
     </>
   );

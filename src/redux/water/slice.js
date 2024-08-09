@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { initialState } from "./initialState";
-import { addWater, updateWater } from "./operations";
+import { addWater, updateWater, getWaterForMonth } from './operations';
 
 const handleRejected = (state,action) => {
   state.isLoading = false;
@@ -25,15 +25,26 @@ const slice = createSlice({
         state.dailyItems.dayItems.push(action.payload.data);
       })
       .addCase(addWater.rejected, handleRejected)
-      
+
       //редагування води
       .addCase(updateWater.pending, handlePending)
       .addCase(updateWater.fulfilled, (state, action) => {
         state.isLoading = false;
-      const index = state.dailyItems.dayItems.findIndex(item => item._id === action.payload._id);
-      if (index !== -1) {state.dailyItems.dayItems[index] = action.payload;}
+        const index = state.dailyItems.dayItems.findIndex(
+          item => item._id === action.payload._id,
+        );
+        if (index !== -1) {
+          state.dailyItems.dayItems[index] = action.payload;
+        }
       })
-      .addCase(updateWater.rejected,handleRejected)
+      .addCase(updateWater.rejected, handleRejected)
+      .addCase(getWaterForMonth.pending, handlePending)
+      .addCase(getWaterForMonth.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.monthlyItems = action.payload;
+      })
+      .addCase(getWaterForMonth.rejected, handleRejected);
+      
     
   },
 });
