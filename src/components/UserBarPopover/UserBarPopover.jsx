@@ -3,11 +3,12 @@ import { CiSettings } from 'react-icons/ci';
 import { FiLogOut } from 'react-icons/fi';
 import LogOutModal from '../LogOutModal/LogOutModal';
 import css from './UserBarPopover.module.css';
+import UserSettingsModal from '../UserSettingsModal/UserSettingsModal';
 
 const UserBarPopover = ({ onClose }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
-
+const [modalSettingIsOpen, setModalSettingIsOpen] = useState(false);
   useEffect(() => {
     setIsVisible(true);
   }, []);
@@ -15,9 +16,15 @@ const UserBarPopover = ({ onClose }) => {
   const openModal = () => {
     setModalIsOpen(true);
   };
+  const openSettingModal = () => {
+    setModalSettingIsOpen(true);
+  };
 
   const closeModal = () => {
     setModalIsOpen(false);
+  };
+  const closeSettingModal = () => {
+    setModalSettingIsOpen(false);
   };
 
   return (
@@ -33,6 +40,10 @@ const UserBarPopover = ({ onClose }) => {
         >
           <CiSettings className={css.icon} /> Setting
         </button>
+        <UserSettingsModal
+          modalIsOpen={modalIsOpen}
+          closeModal={closeModal}
+        ></UserSettingsModal>
       </li>
       <li className={css.popoverListItem}>
         <button
