@@ -18,8 +18,8 @@ const SignUpPage = () => {
       <Helmet>
         <title>SignUp Page</title>
       </Helmet>
-      <div className={css.container}>
-        <div className={css.leftWrapper}>
+      <div className={css.containerPage}>
+        <div className={css.signUpSection}>
           <Logo />
           <h2 className={css.title}>Sign Up</h2>
           <SignUpForm />
@@ -32,7 +32,7 @@ const SignUpPage = () => {
             </Link>
           </div>
         </div>
-        <div className={css.rightWrapper}>
+        <div className={css.advSectionWrapper}>
           {' '}
           <AdvantagesSection />
         </div>

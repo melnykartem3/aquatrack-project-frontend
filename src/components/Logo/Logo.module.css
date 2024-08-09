@@ -1,6 +1,11 @@
 .logo {
-  padding-top: 24px;
-  padding-left: 16px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.11;
+  color: var(--basic-dark-blue);
+}
+
+.logo {
   width: 114px;
   height: 20px;
   font-size: 18px;
@@ -24,8 +29,6 @@
 /* Tablet та Desktop  */
 @media (min-width: 768px) {
   .logo {
-    padding-top: 32px;
-    padding-left: 32px;
     width: 155px;
     height: 24px;
     font-size: 24px;
