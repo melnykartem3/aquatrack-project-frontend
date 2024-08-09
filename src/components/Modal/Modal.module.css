@@ -52,9 +52,8 @@
 
 .reactModal_Content {
   position: absolute;
-  top: 20%;
+  top: 50%;
   left: 50%;
-  /* display: flex; */
   padding: 40px 20px;
   max-height: 90%;
   overflow-y: auto;
@@ -62,7 +61,7 @@
   border-radius: 15px;
   background-color: var(--white);
   box-shadow: 0 4px 50px 0 rgba(0, 0, 0, 0.1);
-  transform: translate(-50%, 10%);
+  transform: translate(-50%, -50%);
   transition: transform 300ms ease-in-out;
 }
 
