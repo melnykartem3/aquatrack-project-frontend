@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import css from './CalendarPagination.module.css';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa6';
 
@@ -7,9 +6,9 @@ const CalendarPagination = ({
   currentMonth,
   currentYear,
   setToCurrentDate,
+  isActive,
+  setIsActive,
 }) => {
-  const [isActive, setIsActive] = useState(true);
-
   const toggleClass = () => {
     setIsActive(!isActive);
   };
@@ -17,7 +16,7 @@ const CalendarPagination = ({
   return (
     <div className={css.calendarHeader}>
       <button onClick={setToCurrentDate}>
-        <span className={css.month}>Month</span>
+        <span className={css.month}>{isActive ? "Month" : "Statistics"}</span>
       </button>
 
       <div className={css.CalendarPaginationFa}>

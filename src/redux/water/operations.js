@@ -1,16 +1,17 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import { instance } from "../../utils/axios";
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { instance } from '../../utils/axios';
 
-export const fetchContacts = createAsyncThunk("contacts/fetchAll",
-    async (_, thunkAPI) => {
+export const fetchContacts = createAsyncThunk(
+  'contacts/fetchAll',
+  async (_, thunkAPI) => {
     try {
-        const response = await instance.get('/contacts');
-        return response.data;
+      const response = await instance.get('/contacts');
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
     }
-    catch (error) {
-        return thunkAPI.rejectWithValue(error.message);
-    }
-});
+  },
+);
 
 export const fetchWaterListDaily = createAsyncThunk(
   'water/perDay',
@@ -41,19 +42,7 @@ export const addWater = createAsyncThunk(
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
-  }
-);
-
-export const deleteContact = createAsyncThunk(
-  'contacts/deleteContact',
-  async (contactId, thunkAPI) => {
-    try {
-        const response = await instance.delete(`/contacts/${contactId}`);
-        return response.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
+  },
 );
 
 export const updateWater = createAsyncThunk(
@@ -65,5 +54,17 @@ export const updateWater = createAsyncThunk(
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
-  }
+  },
+);
+
+export const getWaterForMonth = createAsyncThunk(
+  'water/perMonth',
+  async (month, thunkAPI) => {
+    try {
+      const response = await instance.get(`water/perMonth`, {params: { month },}); //2024-08
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  },
 );
