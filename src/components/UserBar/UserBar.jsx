@@ -14,9 +14,9 @@ const UserBar = ({ setOpenSetting }) => {
     setOpenSetting(!isPopoverOpen);
   };
 
-  useClickAway(itemRef, () => {
-    setIsPopoverOpen(false);
-  });
+  // useClickAway(itemRef, () => {
+  //   setIsPopoverOpen(false);
+  // });
 
   return (
     <div className={css.userBarWrapper} ref={itemRef}>
