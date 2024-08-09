@@ -7,6 +7,17 @@
     max-width: 390px;
 }
 
+::-webkit-scrollbar {
+    background-color: var(--white);
+    height: 8px;
+    border-radius: 30px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--basic-dark-blue);
+    border-radius: 30px;
+    height: 8px;
+}
 
 .wrapper {
     padding-top: 24px;
@@ -70,6 +81,7 @@ line-height: 1;
     gap: 8px;
     flex-wrap: nowrap;
     overflow-x: auto;
+    padding-bottom: 24px;
 }
 
 @media screen and (min-width: 768px) { 

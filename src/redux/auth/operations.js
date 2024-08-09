@@ -12,6 +12,7 @@ export const registerUser = createAsyncThunk(
   },
 );
 export const login = createAsyncThunk(
+
   'auth/login',
   async (loginData, thunkAPI) => {
     try {
@@ -44,6 +45,17 @@ export const refresh = createAsyncThunk(
   }
   }
 );
+
+export const getUser = createAsyncThunk('auth/current',
+  async (_, thunkAPI) => {
+  try {
+    const { data } = await instance.get('/auth/current');
+    return data;
+  } catch (e) {
+    return thunkAPI.rejectWithValue(e.message);
+  }
+  });
+
 
 export const updateUser = createAsyncThunk(
   'auth/update',
