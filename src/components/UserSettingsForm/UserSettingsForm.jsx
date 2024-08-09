@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { icons as sprite } from '../../assets/index.js';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from '../../redux/auth/selectors.js';
-import { refreshUser } from '../../redux/auth/operations.js';
+import { refresh } from '../../redux/auth/operations.js';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
@@ -47,7 +47,15 @@ const UserSettingsForm = () => {
     useSelector(selectUser);
 
   useEffect(() => {
-    if (name && gender && avatar && weight && timeSports && waterRate && email) {
+    if (
+      name &&
+      gender &&
+      avatar &&
+      weight &&
+      timeSports &&
+      waterRate &&
+      email
+    ) {
       setValue('name', name);
       setValue('gender', gender);
       setValue('weight', weight);
@@ -68,7 +76,7 @@ const UserSettingsForm = () => {
 
     formData.append('userAvatar', userAvatarRef.current.src);
 
-    dispatch(refreshUser(formData));
+    dispatch(refresh(formData));
 
     console.log(Object.fromEntries(formData.entries()));
   };
@@ -90,11 +98,16 @@ const UserSettingsForm = () => {
     let normaWater = 0;
     if (userWeight > 0 && userSportTime > 0) {
       if (userGender === 'woman') {
-        normaWater = roundUpToTwoDecimalPlaces(userWeight * 0.03 + userSportTime * 0.4, 3);
+        normaWater = roundUpToTwoDecimalPlaces(
+          userWeight * 0.03 + userSportTime * 0.4,
+          3,
+        );
         setValue('waterRate', normaWater);
         return normaWater;
       } else if (userGender === 'man') {
-        normaWater = roundUpToTwoDecimalPlaces(userWeight * 0.04 + userSportTime * 0.6);
+        normaWater = roundUpToTwoDecimalPlaces(
+          userWeight * 0.04 + userSportTime * 0.6,
+        );
         setValue('waterRate', normaWater);
         return normaWater;
       }
@@ -110,7 +123,12 @@ const UserSettingsForm = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className={css.userAvatarContainer}>
-        <img src="" alt="User avatar" ref={userAvatarRef} className={css.userAvatar} />
+        <img
+          src=""
+          alt="User avatar"
+          ref={userAvatarRef}
+          className={css.userAvatar}
+        />
         <button className={css.uploadPhotoBtn}>
           <div className={css.btnIconContainer}>
             <svg width="20" height="20">
@@ -156,7 +174,9 @@ const UserSettingsForm = () => {
           </fieldset>
         </div>
         <div className={css.userInfoContainer}>
-          <label className={`${css.userInfoLabel} ${css.inputTitle} ${css.inputText}`}>
+          <label
+            className={`${css.userInfoLabel} ${css.inputTitle} ${css.inputText}`}
+          >
             Your name
             <input
               type="text"
@@ -165,7 +185,9 @@ const UserSettingsForm = () => {
               className={`${css.userInfoField} ${errors.name && css.error}`}
             />
             {errors.name && (
-              <p className={`${css.inputText} ${css.error}`}>{errors.name.message}</p>
+              <p className={`${css.inputText} ${css.error}`}>
+                {errors.name.message}
+              </p>
             )}
           </label>
 
@@ -178,7 +200,9 @@ const UserSettingsForm = () => {
               className={`${css.userInfoField} ${css.inputText}`}
             />
             {errors.email && (
-              <p className={`${css.inputText} ${css.error}`}>{errors.email.message}</p>
+              <p className={`${css.inputText} ${css.error}`}>
+                {errors.email.message}
+              </p>
             )}
           </label>
         </div>
@@ -186,19 +210,24 @@ const UserSettingsForm = () => {
           <h3 className={`${css.inputTitle}`}>My daily norma</h3>
           <div className={css.normaWaterContainer}>
             <div>
-              <h4 className={`${css.normaGenderTitle} ${css.inputText}`}>For woman:</h4>
+              <h4 className={`${css.normaGenderTitle} ${css.inputText}`}>
+                For woman:
+              </h4>
               <p className={css.greenText}>V=(M*0,03) + (T*0,4)</p>
             </div>
             <div>
-              <h4 className={`${css.normaGenderTitle} ${css.inputText}`}>For man:</h4>
+              <h4 className={`${css.normaGenderTitle} ${css.inputText}`}>
+                For man:
+              </h4>
               <p className={css.greenText}>V=(M*0,04) + (T*0,6)</p>
             </div>
           </div>
           <div className={css.normaWaterTextContainer}>
             <p className={`${css.normaWaterText} ${css.formulaDescription}`}>
-              <span className={css.greenText}>*</span> V is the volume of the water norm in liters
-              per day, M is your body weight, T is the time of active sports, or another type of
-              activity commensurate in terms of loads (in the absence of these, you must set 0)
+              <span className={css.greenText}>*</span> V is the volume of the
+              water norm in liters per day, M is your body weight, T is the time
+              of active sports, or another type of activity commensurate in
+              terms of loads (in the absence of these, you must set 0)
             </p>
           </div>
           <div>
@@ -216,7 +245,9 @@ const UserSettingsForm = () => {
               className={`${css.userInfoField} ${css.inputText}`}
             />
             {errors.weight && (
-              <p className={`${css.inputText} ${css.error}`}>{errors.weight.message}</p>
+              <p className={`${css.inputText} ${css.error}`}>
+                {errors.weight.message}
+              </p>
             )}
           </label>
           <label className={`${css.userInfoLabel} ${css.inputText}`}>
@@ -229,7 +260,9 @@ const UserSettingsForm = () => {
               className={`${css.userInfoField} ${css.inputText}`}
             />
             {errors.timeSports && (
-              <p className={`${css.inputText} ${css.error}`}>{errors.timeSports.message}</p>
+              <p className={`${css.inputText} ${css.error}`}>
+                {errors.timeSports.message}
+              </p>
             )}
           </label>
         </div>
@@ -250,7 +283,9 @@ const UserSettingsForm = () => {
               className={`${css.userInfoField} ${css.inputText}`}
             />
             {errors.waterRate && (
-              <p className={`${css.inputText} ${css.error}`}>{errors.waterRate.message}</p>
+              <p className={`${css.inputText} ${css.error}`}>
+                {errors.waterRate.message}
+              </p>
             )}
           </label>
         </div>
