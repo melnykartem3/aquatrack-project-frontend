@@ -13,6 +13,26 @@ export const fetchContacts = createAsyncThunk(
   },
 );
 
+export const fetchWaterListDaily = createAsyncThunk(
+  'water/perDay',
+  async ({userId, date}, thunkAPI) => {
+    try {
+      const response = await instance.get(`/water/perDay`, { 
+        params: {
+          userId, 
+          day: date
+        }
+        
+      });
+      return response.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
+
+// ще зробити феч за сьогодні і видалення 
+
 export const addWater = createAsyncThunk(
   'water/addWater',
   async (water, thunkAPI) => {

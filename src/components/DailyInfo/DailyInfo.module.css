@@ -5,11 +5,6 @@
   margin-bottom: 24px;
 }
 
-.line {
-  padding-bottom: 24px;
-  background-color: var(--background-grey);
-}
-
 .wraper {
   padding: 20px;
   background-color: var(--background-grey);
@@ -39,6 +34,7 @@
   border-radius: 50%;
   padding: 10px;
   transition: background-color 0.3s ease, color 0.3s ease;
+}
 
   .addWaterBtn:hover .plus_icon,
   .addWaterBtn:focus .plus_icon {
@@ -57,4 +53,3 @@
     }
     /* Стилі при відкритому Setting */
   }
-}

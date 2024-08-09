@@ -1,3 +1,7 @@
+svg {
+  fill: currentColor;
+}
+
 .trackerPageWrapper {
   display: flex;
   flex-direction: column;

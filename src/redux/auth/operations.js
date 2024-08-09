@@ -12,6 +12,7 @@ export const registerUser = createAsyncThunk(
   },
 );
 export const login = createAsyncThunk(
+
   'auth/login',
   async (loginData, thunkAPI) => {
     try {
@@ -37,12 +38,14 @@ export const refresh = createAsyncThunk(
     try {
       const { data } = await instance.post('/auth/refresh');
       setToken(data.data.accessToken);
-      return data.data;
+      const response= await instance.get('/auth/current');
+      return response.data;
     } catch (error) {
     return thunkApi.rejectWithValue(error.message);
   }
   }
 );
+
 export const getUser = createAsyncThunk('auth/current',
   async (_, thunkAPI) => {
   try {
@@ -51,7 +54,9 @@ export const getUser = createAsyncThunk('auth/current',
   } catch (e) {
     return thunkAPI.rejectWithValue(e.message);
   }
-});
+  });
+
+
 export const updateUser = createAsyncThunk(
   'auth/update',
   async (user, thunkAPI) => {

@@ -1,24 +1,28 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { initialState } from "./initialState";
-import { addWater, updateWater, getWaterForMonth } from './operations';
+import { createSlice } from '@reduxjs/toolkit';
+import { initialState } from './initialState';
+import {
+  addWater,
+  updateWater,
+  getWaterForMonth,
+  fetchWaterListDaily,
+} from './operations';
 
-const handleRejected = (state,action) => {
+const handleRejected = (state, action) => {
   state.isLoading = false;
   state.error = action.payload;
-}
+};
 
-const handlePending = (state) => {
+const handlePending = state => {
   state.isLoading = true;
   state.error = null;
-}
-
+};
 
 const slice = createSlice({
   name: 'water',
   initialState: initialState,
-     extraReducers: builder => {
+  extraReducers: builder => {
     builder
-      //додавання води
+      // Додавання води
       .addCase(addWater.pending, handlePending)
       .addCase(addWater.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -26,7 +30,7 @@ const slice = createSlice({
       })
       .addCase(addWater.rejected, handleRejected)
 
-      //редагування води
+      // Редагування води
       .addCase(updateWater.pending, handlePending)
       .addCase(updateWater.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -38,15 +42,24 @@ const slice = createSlice({
         }
       })
       .addCase(updateWater.rejected, handleRejected)
+
+      // Отримання води за місяць
       .addCase(getWaterForMonth.pending, handlePending)
       .addCase(getWaterForMonth.fulfilled, (state, action) => {
         state.isLoading = false;
         state.monthlyItems = action.payload;
       })
-      .addCase(getWaterForMonth.rejected, handleRejected);
-      
-    
+      .addCase(getWaterForMonth.rejected, handleRejected)
+
+      // Отримання списку води за день
+      .addCase(fetchWaterListDaily.pending, handlePending)
+      .addCase(fetchWaterListDaily.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.dailyItems = action.payload;
+      })
+      .addCase(fetchWaterListDaily.rejected, handleRejected);
   },
 });
 
 export const waterReducer = slice.reducer;
+
