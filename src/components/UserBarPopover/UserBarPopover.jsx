@@ -28,39 +28,39 @@ const [modalSettingIsOpen, setModalSettingIsOpen] = useState(false);
   };
 
   return (
-    <ul className={`${css.popoverList} ${isVisible ? css.show : ''}`}>
-      <li className={css.popoverListItem}>
-        <button
-          className={css.popoverBtnSetting}
-          type="button"
-          onClick={() => {
-            console.log('Open setting modal');
-            onClose();
-          }}
-        >
-          <CiSettings className={css.icon} /> Setting
-        </button>
-        <UserSettingsModal
-          modalIsOpen={modalIsOpen}
-          closeModal={closeModal}
-        ></UserSettingsModal>
-      </li>
-      <li className={css.popoverListItem}>
-        <button
-          className={css.popoverBtnLogOut}
-          type="button"
-          onClick={() => {
-            openModal();
-          }}
-        >
-          <FiLogOut className={css.icon} /> Log out
-        </button>
-        <LogOutModal
-          modalIsOpen={modalIsOpen}
-          closeModal={closeModal}
-        ></LogOutModal>
-      </li>
-    </ul>
+    <>
+      <ul className={`${css.popoverList} ${isVisible ? css.show : ''}`}>
+        <li className={css.popoverListItem}>
+          <button
+            className={css.popoverBtnSetting}
+            type="button"
+            onClick={() => { openSettingModal();    }}
+          >
+            <CiSettings className={css.icon} /> Setting
+          </button>
+        </li>
+        <li className={css.popoverListItem}>
+          <button
+            className={css.popoverBtnLogOut}
+            type="button"
+            onClick={() => {
+              openModal();
+            }}
+          >
+            <FiLogOut className={css.icon} /> Log out
+          </button>
+          
+        </li>
+      </ul>
+      <UserSettingsModal 
+            modalSettingIsOpen={modalSettingIsOpen}
+            closeSettingModal={closeSettingModal}
+          ></UserSettingsModal>
+      <LogOutModal
+            modalIsOpen={modalIsOpen}
+            closeModal={closeModal}
+          ></LogOutModal>
+    </>
   );
 };
 
