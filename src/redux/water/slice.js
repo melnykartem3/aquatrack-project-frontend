@@ -12,6 +12,7 @@ const handlePending = (state) => {
   state.error = null;
 }
 
+
 const slice = createSlice({
   name: 'water',
   initialState: initialState,
@@ -21,7 +22,7 @@ const slice = createSlice({
       .addCase(addWater.pending, handlePending)
       .addCase(addWater.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.dailyItems.push(action.payload.data);
+        state.dailyItems.dayItems.push(action.payload.data);
       })
       .addCase(addWater.rejected, handleRejected)
       
@@ -29,13 +30,12 @@ const slice = createSlice({
       .addCase(updateWater.pending, handlePending)
       .addCase(updateWater.fulfilled, (state, action) => {
         state.isLoading = false;
-      const index = state.dailyItems.findIndex(item => item._id === action.payload._id);
-      if (index !== -1) {state.dailyItems[index] = action.payload;}
+      const index = state.dailyItems.dayItems.findIndex(item => item._id === action.payload._id);
+      if (index !== -1) {state.dailyItems.dayItems[index] = action.payload;}
       })
       .addCase(updateWater.rejected,handleRejected)
     
   },
 });
-
 
 export const waterReducer = slice.reducer;
