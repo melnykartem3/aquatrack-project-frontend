@@ -29,7 +29,9 @@ const slice = createSlice({
       })
       // logout
       .addCase(logout.pending, handlePending)
-      .addCase(logout.fulfilled, () => { return INITIAL_STATE; })
+      .addCase(logout.fulfilled, () => {
+        return INITIAL_STATE;
+      })
       .addCase(logout.rejected, handleRejected)
       //refresh
       .addCase(refresh.pending, handlePending, state => {
@@ -46,21 +48,11 @@ const slice = createSlice({
         state.isRefreshing = true;
       })
 
-      // getUser
-      .addCase(getUser.pending, handlePending)
-      .addCase(getUser.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.user = { ...state.user, ...action.payload.data.user };
-      })
-      .addCase(getUser.rejected, handleRejected)
-
       // updateUser
       .addCase(updateUser.pending, handlePending)
       .addCase(updateUser.fulfilled, (state, action) => {
-
         state.isLoading = false;
         state.user = { ...state.user, ...action.payload.data.user };
-        
       })
       .addCase(updateUser.rejected, handleRejected);
   },
