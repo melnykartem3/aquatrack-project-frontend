@@ -26,9 +26,13 @@ svg {
   .trackerPageWrapper {
     padding: 32px 0;
   }
+
+  .waterDetailedInfoWrapper {
+    padding: 32px;
+  }
 }
 @media screen and (min-width: 1440px) {
-.waterDetailedInfoWrapper {
+  .waterDetailedInfoWrapper {
     width: 672px;
   }
 }

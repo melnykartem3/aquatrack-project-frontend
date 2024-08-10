@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { CiSettings } from 'react-icons/ci';
 import { FiLogOut } from 'react-icons/fi';
 import LogOutModal from '../LogOutModal/LogOutModal';
@@ -8,14 +8,26 @@ import UserSettingsModal from '../UserSettingsModal/UserSettingsModal';
 const UserBarPopover = ({ onClose }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
-const [modalSettingIsOpen, setModalSettingIsOpen] = useState(false);
+  const [modalSettingIsOpen, setModalSettingIsOpen] = useState(false);
+
+  const popoverRef = useRef(null);
+
   useEffect(() => {
     setIsVisible(true);
+    const handleClickOutside = event => {
+      if (popoverRef.current && !popoverRef.current.contains(event.target)) {
+        setIsVisible(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
   const openModal = () => {
     setModalIsOpen(true);
   };
+
   const openSettingModal = () => {
     setModalSettingIsOpen(true);
   };
@@ -23,18 +35,29 @@ const [modalSettingIsOpen, setModalSettingIsOpen] = useState(false);
   const closeModal = () => {
     setModalIsOpen(false);
   };
+
   const closeSettingModal = () => {
     setModalSettingIsOpen(false);
   };
 
+  const toggleVisibility = () => {
+    setIsVisible(prev => !prev);
+  };
+
   return (
     <>
-      <ul className={`${css.popoverList} ${isVisible ? css.show : ''}`}>
+      <ul
+        ref={popoverRef}
+        className={`${css.popoverList} ${isVisible ? css.show : ''}`}
+      >
         <li className={css.popoverListItem}>
           <button
             className={css.popoverBtnSetting}
             type="button"
-            onClick={() => { openSettingModal();    }}
+            onClick={() => {
+              openSettingModal();
+              toggleVisibility();
+            }}
           >
             <CiSettings className={css.icon} /> Setting
           </button>
@@ -45,21 +68,18 @@ const [modalSettingIsOpen, setModalSettingIsOpen] = useState(false);
             type="button"
             onClick={() => {
               openModal();
+              toggleVisibility();
             }}
           >
             <FiLogOut className={css.icon} /> Log out
           </button>
-          
         </li>
       </ul>
-      <UserSettingsModal 
-            modalSettingIsOpen={modalSettingIsOpen}
-            closeSettingModal={closeSettingModal}
-          ></UserSettingsModal>
-      <LogOutModal
-            modalIsOpen={modalIsOpen}
-            closeModal={closeModal}
-          ></LogOutModal>
+      <UserSettingsModal
+        modalSettingIsOpen={modalSettingIsOpen}
+        closeSettingModal={closeSettingModal}
+      />
+      <LogOutModal modalIsOpen={modalIsOpen} closeModal={closeModal} />
     </>
   );
 };
