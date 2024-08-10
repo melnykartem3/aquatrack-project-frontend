@@ -1,9 +1,9 @@
 import axios from 'axios';
-import {store} from '../redux/store'
+import { store } from '../redux/store';
 import { refresh } from '../redux/auth/operations';
 export const instance = axios.create({
-  // baseURL: 'https://aquatrack-project-backend.onrender.com/',
-  baseURL: 'http://localhost:3001',
+  baseURL: 'https://aquatrack-project-backend.onrender.com/',
+  // baseURL: 'http://localhost:3001',
   withCredentials: true,
   headers: {
     Accept: 'application/json',
@@ -33,7 +33,10 @@ const processQueue = (error, token = null) => {
 
 instance.interceptors.request.use(
   async config => {
-    if (!config.url.includes('/auth/register') && !config.url.includes('/auth/login')) {
+    if (
+      !config.url.includes('/auth/register') &&
+      !config.url.includes('/auth/login')
+    ) {
       const state = store.getState();
       const token = state.auth.accessToken;
       if (token) {
@@ -44,7 +47,7 @@ instance.interceptors.request.use(
   },
   error => {
     return Promise.reject(error);
-  }
+  },
 );
 
 instance.interceptors.response.use(
@@ -77,41 +80,43 @@ instance.interceptors.response.use(
         return new Promise((resolve, reject) => {
           pendingRequests.push({ resolve, reject });
         })
-        .then(token => {
-          originalRequest.headers.Authorization = `Bearer ${token}`;
-          return instance(originalRequest);
-        })
-        .catch(err => {
-          return Promise.reject(err);
-        });
+          .then(token => {
+            originalRequest.headers.Authorization = `Bearer ${token}`;
+            return instance(originalRequest);
+          })
+          .catch(err => {
+            return Promise.reject(err);
+          });
       }
 
       isRefreshing = true;
 
       return new Promise((resolve, reject) => {
-        store.dispatch(refresh()).then(resultAction => {
-          if (refresh.fulfilled.match(resultAction)) {
-            setToken(resultAction.payload.accessToken);
-            originalRequest.headers.Authorization = `Bearer ${resultAction.payload.accessToken}`;
-            processQueue(null, resultAction.payload.accessToken);
-            resolve(instance(originalRequest));
-          } else {
+        store
+          .dispatch(refresh())
+          .then(resultAction => {
+            if (refresh.fulfilled.match(resultAction)) {
+              setToken(resultAction.payload.accessToken);
+              originalRequest.headers.Authorization = `Bearer ${resultAction.payload.accessToken}`;
+              processQueue(null, resultAction.payload.accessToken);
+              resolve(instance(originalRequest));
+            } else {
+              clearToken();
+              processQueue(resultAction.payload, null);
+              reject(resultAction.payload);
+            }
+          })
+          .catch(refreshError => {
             clearToken();
-            processQueue(resultAction.payload, null);
-            reject(resultAction.payload);
-          }
-        })
-        .catch(refreshError => {
-          clearToken();
-          processQueue(refreshError, null);
-          reject(refreshError);
-        })
-        .finally(() => {
-          isRefreshing = false;
-        });
+            processQueue(refreshError, null);
+            reject(refreshError);
+          })
+          .finally(() => {
+            isRefreshing = false;
+          });
       });
     }
 
     return Promise.reject(error);
-  }
+  },
 );
