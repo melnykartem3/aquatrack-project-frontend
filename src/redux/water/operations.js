@@ -15,11 +15,10 @@ export const fetchContacts = createAsyncThunk(
 
 export const fetchWaterListDaily = createAsyncThunk(
   'water/perDay',
-  async ({userId, date}, thunkAPI) => {
+  async ({date}, thunkAPI) => {
     try {
       const response = await instance.get(`/water/perDay`, { 
         params: {
-          userId, 
           day: date
         }
         
