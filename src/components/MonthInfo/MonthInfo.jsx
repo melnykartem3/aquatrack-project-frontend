@@ -30,9 +30,9 @@ const MonthInfo = ({ handleDateChange }) => {
     year: currentDateNow.getFullYear(),
   });
   const [isActive, setIsActive] = useState(true);
+  
   const monthlyItems = useSelector(selectWater) || [];
 
-  // const day = currentDateNow.getDate();
   const currentMonthIndex = currentDate.getMonth();
   const currentMonth = monthNames[currentMonthIndex];
   const currentYear = currentDate.getFullYear();
