@@ -20,6 +20,10 @@
     stroke: var(--text-grey);
 }
 
+.icon {
+    stroke: none;
+}
+
 .iconsContainer {
     display: flex;
     flex-direction: column;

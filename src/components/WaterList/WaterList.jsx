@@ -21,7 +21,7 @@ const WaterList = ({ changeDate, userId }) => {
   const [date, setDate] = useState(formatDate(new Date()));
   
   useEffect(() => {
-    const today = new Date();
+    const today = formatDate(new Date());
     if (!changeDate || isSameDay(changeDate, today)) {
       setDate(today);
     } else {
@@ -32,24 +32,19 @@ const WaterList = ({ changeDate, userId }) => {
   const dispatch = useDispatch();
   
   const wateritems = useSelector((state) => state.water.dailyItems.data);
-  console.log(wateritems);
- 
+
   useEffect(() => {
     dispatch(fetchWaterListDaily({ userId, date }));
   }, [dispatch, userId, date]);
 
 
   if (!wateritems) {
-    return
-  }
-  if (wateritems.length < 1) {
     return (
       <h3 className={css.title}>
         There is no consumed water for the selected day
       </h3>
     );
 }
-
 
   return (
     <>
