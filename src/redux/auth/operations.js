@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { clearToken, instance, setToken } from '../../utils/axios';
+import {instance} from '../../utils/axios';
 export const registerUser = createAsyncThunk(
   'auth/signup',
   async (formData, thunkAPI) => {
@@ -17,7 +17,6 @@ export const login = createAsyncThunk(
   async (loginData, thunkAPI) => {
     try {
       const response = await instance.post('/auth/signin', loginData);
-      setToken(response.data.data.accessToken);
       return response.data.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -27,7 +26,6 @@ export const login = createAsyncThunk(
 export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
     await instance.post('/auth/logout');
-    clearToken();
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
   }
@@ -37,9 +35,7 @@ export const refresh = createAsyncThunk(
   async (_, thunkApi) => {
     try {
       const { data } = await instance.post('/auth/refresh');
-      setToken(data.data.accessToken);
-      const response= await instance.get('/auth/current');
-      return response.data;
+      return data.data;
     } catch (error) {
     return thunkApi.rejectWithValue(error.message);
   }

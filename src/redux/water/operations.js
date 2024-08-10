@@ -1,18 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { instance } from '../../utils/axios';
 
-export const fetchContacts = createAsyncThunk(
-  'contacts/fetchAll',
-  async (_, thunkAPI) => {
-    try {
-      const response = await instance.get('/contacts');
-      return response.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  },
-);
-
 export const fetchWaterListDaily = createAsyncThunk(
   'water/perDay',
   async ({date}, thunkAPI) => {
@@ -61,7 +49,7 @@ export const getWaterForMonth = createAsyncThunk(
   async (month, thunkAPI) => {
     try {
       const response = await instance.get(`water/perMonth`, {params: { month },}); //2024-08
-      return response.data;
+      return response.data.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

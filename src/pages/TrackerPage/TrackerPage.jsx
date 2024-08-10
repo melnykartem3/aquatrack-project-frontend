@@ -3,27 +3,25 @@ import WaterMainInfo from '../../components/WaterMainInfo/WaterMainInfo';
 import WaterDetailedInfo from '../../components/WaterDetailedInfo/WaterDetailedInfo';
 import css from './TrackerPage.module.css';
 import { useDispatch } from 'react-redux';
-import { refresh } from '../../redux/auth/operations';
+import { getUser} from '../../redux/auth/operations';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { selectIsRefreshing, selectUser } from '../../redux/auth/selectors';
+import { selectUser } from '../../redux/auth/selectors';
 
 const TrackerPage = () => {
   const dispatch = useDispatch();
-  const isRefreshing = useSelector(selectIsRefreshing);
 
   const user = useSelector(selectUser);
   const userId = user._id;
 
   useEffect(() => {
-    if (!isRefreshing) {
-      dispatch(refresh());
+   dispatch(getUser());
     }
-  }, [dispatch, isRefreshing]);
+  , [dispatch]);
 
-  useEffect(() => {
-    console.log(user);
-  }, [user]);
+  // useEffect(() => {
+  //   console.log(user);
+  // }, [user]);
 
   return (
     <>
