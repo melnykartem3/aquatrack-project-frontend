@@ -26,8 +26,7 @@ const Calendar = ({
   }, [dispatch, month]);
 
   const waterRate = useSelector(selectWaterRate) * 1000;
-  const monthlyItems = useSelector(selectWater) || [];
-  if (monthlyItems.length == 0) dispatch(getWaterForMonth(month));
+  const monthlyItems = useSelector(selectWater);
 
   const currentDay = currentDate.getDate();
   const CalendarObjects = CalendarNumbers.map(day => {

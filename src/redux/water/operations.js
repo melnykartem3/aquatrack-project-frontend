@@ -50,7 +50,7 @@ export const getWaterForMonth = createAsyncThunk(
   async (month, thunkAPI) => {
     try {
       const response = await instance.get(`water/perMonth`, {params: { month },}); //2024-08
-      return response.data;
+      return response.data.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

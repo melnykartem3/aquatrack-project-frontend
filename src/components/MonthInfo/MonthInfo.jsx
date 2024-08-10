@@ -31,7 +31,7 @@ const MonthInfo = ({ handleDateChange }) => {
   });
   const [isActive, setIsActive] = useState(true);
   
-  const monthlyItems = useSelector(selectWater) || [];
+  const monthlyItems = useSelector(selectWater);
 
   const currentMonthIndex = currentDate.getMonth();
   const currentMonth = monthNames[currentMonthIndex];
