@@ -6,7 +6,7 @@ import css from './WaterList.module.css';
 import { isSameDay } from "date-fns";
 import { nanoid } from 'nanoid';
 
-const WaterList = ({ changeDate, userId }) => {
+const WaterList = ({ changeDate}) => {
   
   // форматування дати 
   const formatDate = (date) => {
@@ -31,14 +31,14 @@ const WaterList = ({ changeDate, userId }) => {
 
   const dispatch = useDispatch();
   
-  const wateritems = useSelector((state) => state.water.dailyItems.data);
-
+  const wateritems = useSelector((state) => state.water.dailyItems.dayItems);
+  
   useEffect(() => {
-    dispatch(fetchWaterListDaily({ userId, date }));
-  }, [dispatch, userId, date]);
+    dispatch(fetchWaterListDaily({  date }));
+  }, [dispatch, date]);
 
 
-  if (!wateritems) {
+  if (!wateritems || wateritems.length === 0) {
     return (
       <h3 className={css.title}>
         There is no consumed water for the selected day

@@ -13,7 +13,7 @@ const WaterItem = ({ data, formatDate }) => {
     <div className={css.container}>
       <Icon id="icon-glass" className={css.icon} width="32" height="32" />
       <div className={css.info}>
-        <p className={css.ml}>{data.waterVolume}</p>
+        <p className={css.ml}>{data.waterVolume} ml</p>
         <p className={css.time}>{time}</p>
       </div>
       <div className={css.iconsContainer}>
