@@ -1,8 +1,9 @@
+import svg from '../../images/favicon/icons.svg'
 
-const Icon = ({ id, className, width, height }) => {
+const Icon = ({ id, style, width, height }) => {
        return (
-           <svg className={className} width={width} height={height}>
-               <use xlinkHref={`/src/images/favicon/icons.svg#${id}`} />
+           <svg width={width} height={height} style={style}>
+               <use href={`${svg}#${id}`}/>
            </svg>
        );
    };
