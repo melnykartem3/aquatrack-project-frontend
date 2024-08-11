@@ -55,7 +55,8 @@ const slice = createSlice({
       .addCase(fetchWaterListDaily.pending, handlePending)
       .addCase(fetchWaterListDaily.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.dailyItems = action.payload;
+        state.dailyItems.dayItems = action.payload.data;
+        state.dailyItems.totalWaterVolume = action.payload.totalWaterVolume;
       })
       .addCase(fetchWaterListDaily.rejected, handleRejected);
   },

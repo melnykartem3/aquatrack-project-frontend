@@ -1,9 +1,9 @@
 import css from './WaterItem.module.css';
 import Icon from '../Icon/Icon.jsx';
 
-const WaterItem = ({ data, formatDate }) => {
+const WaterItem = ({ data, formatTime }) => {
 
-  const time = formatDate(data.date);
+  const time = formatTime(data.date);
 
   if (data < 1) {
     return;
