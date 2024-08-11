@@ -31,20 +31,16 @@ export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
     return thunkAPI.rejectWithValue(error.message);
   }
 });
-export const refresh = createAsyncThunk(
-  'auth/refresh',
-  async (_, thunkApi) => {
-    try {
-      const { data } = await instance.post('/auth/refresh');
-      setToken(data.data.accessToken);
-      return data.data;
-    } catch (error) {
+export const refresh = createAsyncThunk('auth/refresh', async (_, thunkApi) => {
+  try {
+    const { data } = await instance.post('/auth/refresh');
+    setToken(data.data.accessToken);
+    return data.data;
+  } catch (error) {
     return thunkApi.rejectWithValue(error.message);
   }
-  }
-);
-export const getUser = createAsyncThunk('auth/current',
-  async (_, thunkAPI) => {
+});
+export const getUser = createAsyncThunk('auth/current', async (_, thunkAPI) => {
   try {
     const { data } = await instance.get('/auth/current');
     return data;
@@ -66,5 +62,32 @@ export const updateUser = createAsyncThunk(
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
-  }
+  },
+);
+
+export const requestResetEmail = createAsyncThunk(
+  'auth/requestResetEmail',
+  async (data, { rejectWithValue }) => {
+    try {
+      const response = await instance.post('/auth/request-reset-email', data);
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  },
+);
+
+export const resetPassword = createAsyncThunk(
+  'auth/resetPassword',
+  async ({ token, password }, { rejectWithValue }) => {
+    try {
+      const response = await axios.post('/auth/reset-password', {
+        token,
+        password,
+      });
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  },
 );

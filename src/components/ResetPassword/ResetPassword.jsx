@@ -1,17 +1,18 @@
 import * as yup from 'yup';
 import { useDispatch } from 'react-redux';
-import { login, registerUser } from '../../redux/auth/operations.js';
+import { useLocation, useNavigate } from 'react-router-dom';
 import UserForm from '../UserForm/UserForm.jsx';
+import { resetPassword } from '../../redux/auth/operations.js';
 import toast from 'react-hot-toast';
 
-const SignUpForm = () => {
+const ResetPassword = () => {
   const dispatch = useDispatch();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const query = new URLSearchParams(location.search);
+  const token = query.get('token');
 
   const schema = yup.object().shape({
-    email: yup
-      .string()
-      .email('Invalid email format')
-      .required('Email is required'),
     password: yup
       .string()
       .min(8, 'Password must be at least 8 characters')
@@ -19,40 +20,32 @@ const SignUpForm = () => {
     repeatPassword: yup
       .string()
       .oneOf([yup.ref('password'), null], 'Passwords must match')
-      .required('Repeat Password is required'),
+      .required('Repeat password is required'),
   });
 
   const onSubmit = reset => async data => {
-    const { repeatPassword, ...formData } = data;
     try {
-      await dispatch(registerUser(formData)).unwrap();
-      await dispatch(
-        login({ email: formData.email, password: formData.password }),
-      ).unwrap();
+      const { repeatPassword, ...formData } = data;
+      await dispatch(resetPassword({ token, ...formData })).unwrap();
       reset();
+      navigate('/login');
     } catch (error) {
-      toast.error('User with this email already exists.');
+      toast.error('Error resetting password.');
     }
   };
 
   const fields = [
     {
-      name: 'email',
-      label: 'Email',
-      type: 'email',
-      placeholder: 'Enter your email',
-    },
-    {
       name: 'password',
-      label: 'Password',
+      label: 'New password',
       type: 'password',
-      placeholder: 'Enter your password',
+      placeholder: 'Enter new password',
     },
     {
       name: 'repeatPassword',
-      label: 'Repeat Password',
+      label: 'Repeat new password',
       type: 'password',
-      placeholder: 'Repeat password',
+      placeholder: 'Repeat new password',
     },
   ];
 
@@ -61,9 +54,9 @@ const SignUpForm = () => {
       schema={schema}
       onSubmit={onSubmit}
       fields={fields}
-      submitButtonLabel="Sign Up"
+      submitButtonLabel="Reset Password"
     />
   );
 };
 
-export default SignUpForm;
+export default ResetPassword;
