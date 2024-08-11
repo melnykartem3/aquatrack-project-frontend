@@ -20,6 +20,12 @@ const handlePending = state => {
 const slice = createSlice({
   name: 'water',
   initialState: initialState,
+  reducers: {
+    setNewDate: (state, action) => {
+      const newDate = action.payload;
+      state.currentDate = newDate;
+    }
+  },
   extraReducers: builder => {
     builder
       // Додавання води
@@ -56,10 +62,12 @@ const slice = createSlice({
       .addCase(fetchWaterListDaily.fulfilled, (state, action) => {
         state.isLoading = false;
         state.dailyItems.dayItems = action.payload.data;
+        state.dailyItems.totalWaterVolume = action.payload.totalWaterVolume;
       })
       .addCase(fetchWaterListDaily.rejected, handleRejected);
   },
 });
 
+export const { setNewDate} = slice.actions;
 export const waterReducer = slice.reducer;
 
