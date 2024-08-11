@@ -8,6 +8,7 @@ const CalendarPagination = ({
   setToCurrentDate,
   isActive,
   setIsActive,
+  canNavigatePreviousMonth,
 }) => {
   const toggleClass = () => {
     setIsActive(!isActive);
@@ -15,10 +16,14 @@ const CalendarPagination = ({
 
   return (
     <div className={css.calendarHeader}>
-      <span className={css.month}>{isActive ? 'Month' : 'Statistics'}</span>
-
+      <button onClick={setToCurrentDate}>
+        <span className={css.month}>{isActive ? 'Month' : 'Statistics'}</span>
+      </button>
       <div className={css.CalendarPaginationFa}>
-        <button onClick={() => changeMonth(-1)}>
+        <button
+          onClick={() => changeMonth(-1)}
+          disabled={!canNavigatePreviousMonth}
+        >
           <FaChevronLeft className={css.icon} />
         </button>
 
