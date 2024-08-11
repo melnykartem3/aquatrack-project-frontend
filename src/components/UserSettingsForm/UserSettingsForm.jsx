@@ -1,92 +1,111 @@
-import { useRef, useEffect } from 'react';
-import css from './UserSettingsForm.module.css';
-import { useForm } from 'react-hook-form';
-import { icons as sprite } from '../../assets/index.js';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectUser } from '../../redux/auth/selectors.js';
-import { refresh } from '../../redux/auth/operations.js';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
+import { useRef, useEffect, useState } from "react";
+import css from "./UserSettingsForm.module.css";
+import { useForm } from "react-hook-form";
+import { icons as sprite } from "../../assets/index.js";
+import { useDispatch, useSelector } from "react-redux";
+import { selectUser } from "../../redux/auth/selectors.js";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import toast from "react-hot-toast";
+import { closeModal } from "../../redux/ModalSlice.js";
+import { updateUser } from "../../redux/auth/operations.js";
 
 const schema = yup.object().shape({
-  name: yup.string().required('Name is required!'),
-  gender: yup.string().oneOf(['man', 'woman']).required(),
+  name: yup.string().required("Name is required!"),
+  email: yup.string().email("Email is invalid").required("Email is required!"),
+  gender: yup.string().oneOf(["male", "female"]).required(),
   weight: yup
-    .number()
-    .positive('Weight must be positive!')
-    .min(1, 'Weight must be at least 10 kg!')
-    .max(300, 'Weight must be less than 300 kg!'),
+    .number("Please, enter a number")
+    .typeError("Please, enter a number")
+    .min(0, "Weight greater or equal to 0 kg!")
+    .max(300, "Weight must be less than 300 kg!"),
   timeSports: yup
-    .number()
-    .positive('Daily time activity must be positive!')
-    .min(0)
-    .max(8, 'Daily time activity must be less than 8 hours!'),
+    .number("Please, enter a number")
+    .typeError("Please, enter a number")
+    .min(0, "Daily time activity greater or equal to 0 hours!")
+    .max(8, "Daily time activity must be less than 8 hours!"),
   waterRate: yup
-    .number()
-    .positive('Daily norma must be positive!')
-    .min(0)
-    .max(10, 'Daily norma must be less than 10 liters!'),
+    .number("Please, enter a number")
+    .typeError("Please, enter a number")
+    .min(0, "Daily norma greater or equal to 0 liters!")
+    .max(10, "Daily norma must be less than 10 liters!"),
 });
 
 const UserSettingsForm = () => {
+  const [selectedAvatarFile, setSelectedAvatarFile] = useState(null);
+
+  const { name, gender, avatar, weight, email, timeSports, waterRate } =
+    useSelector(selectUser);
   const {
     register,
     handleSubmit,
     formState: { errors },
     watch,
     setValue,
+    getValues,
   } = useForm({
+    defaultValues: {
+      waterRate: waterRate,
+    },
     resolver: yupResolver(schema),
-    mode: 'onChange',
+    mode: "onSubmit",
   });
 
   const userAvatarRef = useRef(null);
   const dispatch = useDispatch();
 
-  const { name, gender, avatar, weight, email, timeSports, waterRate } =
-    useSelector(selectUser);
+  let userGender = watch("gender");
+  let userWeight = watch("weight");
+  let userSportTime = watch("timeSports");
 
   useEffect(() => {
-    if (
-      name &&
-      gender &&
-      avatar &&
-      weight &&
-      timeSports &&
-      waterRate &&
-      email
-    ) {
-      setValue('name', name);
-      setValue('gender', gender);
-      setValue('weight', weight);
-      setValue('timeSports', timeSports);
-      setValue('waterRate', waterRate);
-      if (userAvatarRef.current) {
-        userAvatarRef.current.src = avatar;
-      }
+    if (name) {
+      setValue("name", name);
+      setValue("email", email);
+      setValue("gender", gender);
+      setValue("weight", weight);
+      setValue("timeSports", timeSports);
+      userAvatarRef.current.src = avatar;
     }
-  }, [name, gender, avatar, weight, timeSports, waterRate, email, setValue]);
+  }, [
+    name,
+    gender,
+    avatar,
+    weight,
+    timeSports,
+    waterRate,
+    email,
+    setValue,
+  ]);
 
-  const onSubmit = data => {
+  const onSubmit = async (data) => {
     const formData = new FormData();
     const keys = Object.keys(data);
     for (const key of keys) {
       formData.append(key, data[key]);
     }
 
-    formData.append('userAvatar', userAvatarRef.current.src);
+    if (selectedAvatarFile) {
+      formData.append("avatar", selectedAvatarFile);
+    }
 
-    dispatch(refresh(formData));
+    try {
+      await dispatch(updateUser(formData)).unwrap();
+      dispatch(closeModal());
+      toast.success("The changes were successfully applied!");
+    } catch (error) {
+      toast.error("Failed to apply changes!");
+    }
 
-    console.log(Object.fromEntries(formData.entries()));
+    dispatch(closeModal());
   };
 
-  const handleFileSelect = event => {
+  const handleFileSelect = (event) => {
     const file = event.target.files[0];
-
     if (file) {
       const avatarURL = URL.createObjectURL(file);
       userAvatarRef.current.src = avatarURL;
+      setSelectedAvatarFile(file);
     }
   };
 
@@ -96,32 +115,27 @@ const UserSettingsForm = () => {
 
   const calculateNormaWater = (userGender, userWeight, userSportTime) => {
     let normaWater = 0;
+
     if (userWeight > 0 && userSportTime > 0) {
-      if (userGender === 'woman') {
+      if (userGender === "female") {
         normaWater = roundUpToTwoDecimalPlaces(
-          userWeight * 0.03 + userSportTime * 0.4,
-          3,
+          userWeight * 0.03 + userSportTime * 0.4
         );
-        setValue('waterRate', normaWater);
-        return normaWater;
-      } else if (userGender === 'man') {
+      } else if (userGender === "male") {
         normaWater = roundUpToTwoDecimalPlaces(
-          userWeight * 0.04 + userSportTime * 0.6,
+          userWeight * 0.04 + userSportTime * 0.6
         );
-        setValue('waterRate', normaWater);
-        return normaWater;
       }
-    } else {
-      return;
+      setValue("waterRate", normaWater);
+      return normaWater;
     }
+    return normaWater;
   };
 
-  let userGender = watch('gender');
-  let userWeight = watch('weight');
-  let userSportTime = watch('timeSports');
+  let normaWater = calculateNormaWater(userGender, userWeight, userSportTime);
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} className={css.userSettingsForm}>
       <div className={css.userAvatarContainer}>
         <img
           src=""
@@ -155,9 +169,9 @@ const UserSettingsForm = () => {
               <input
                 type="radio"
                 className={css.genderInput}
-                value="woman"
+                value="female"
                 name="gender"
-                {...register('gender')}
+                {...register("gender")}
               />
               Woman
             </label>
@@ -165,24 +179,24 @@ const UserSettingsForm = () => {
               <input
                 type="radio"
                 className={css.genderInput}
-                value="man"
+                value="male"
                 name="gender"
-                {...register('gender')}
+                {...register("gender")}
               />
               Man
             </label>
           </fieldset>
         </div>
         <div className={css.userInfoContainer}>
-          <label
-            className={`${css.userInfoLabel} ${css.inputTitle} ${css.inputText}`}
-          >
+          <label className={`${css.userInfoLabel} ${css.inputTitle}`}>
             Your name
             <input
               type="text"
               name="name"
-              {...register('name')}
-              className={`${css.userInfoField} ${errors.name && css.error}`}
+              {...register("name")}
+              className={`${css.userInfoField} ${css.inputText} ${
+                errors.name && css.error
+              }`}
             />
             {errors.name && (
               <p className={`${css.inputText} ${css.error}`}>
@@ -190,14 +204,15 @@ const UserSettingsForm = () => {
               </p>
             )}
           </label>
-
           <label className={`${css.userInfoLabel} ${css.inputTitle}`}>
             Email
             <input
               type="email"
               name="email"
-              {...register('email')}
-              className={`${css.userInfoField} ${css.inputText}`}
+              {...register("email")}
+              className={`${css.userInfoField} ${css.inputText} ${
+                errors.email && css.error
+              }`}
             />
             {errors.email && (
               <p className={`${css.inputText} ${css.error}`}>
@@ -230,7 +245,10 @@ const UserSettingsForm = () => {
               terms of loads (in the absence of these, you must set 0)
             </p>
           </div>
-          <div>
+          <div className={css.activeTimeContainer}>
+            <svg width="4.62" height="21.23">
+              <use href={`${sprite}#${`icon-exclamation_point`}`} />
+            </svg>
             <p className={css.inputText}>Active time in hours</p>
           </div>
         </div>
@@ -241,8 +259,10 @@ const UserSettingsForm = () => {
               type="number"
               step="any"
               name="weight"
-              {...register('weight')}
-              className={`${css.userInfoField} ${css.inputText}`}
+              {...register("weight")}
+              className={`${css.userInfoField} ${css.inputText}  ${
+                errors.weight && css.error
+              }`}
             />
             {errors.weight && (
               <p className={`${css.inputText} ${css.error}`}>
@@ -256,8 +276,10 @@ const UserSettingsForm = () => {
               type="number"
               step="any"
               name="timeSports"
-              {...register('timeSports')}
-              className={`${css.userInfoField} ${css.inputText}`}
+              {...register("timeSports")}
+              className={`${css.userInfoField} ${css.inputText}  ${
+                errors.timeSports && css.error
+              }`}
             />
             {errors.timeSports && (
               <p className={`${css.inputText} ${css.error}`}>
@@ -268,10 +290,13 @@ const UserSettingsForm = () => {
         </div>
         <div className={css.userInfoContainer}>
           <div className={css.amountOfWaterContainer}>
-            <p className={`${css.amountOfWaterText} ${css.inputText}`}> </p>{' '}
-            <span className={css.amountOfWaterText}>
-              {calculateNormaWater(userGender, userWeight, userSportTime)}L /{' '}
-            </span>
+            <p
+              className={`${css.amountOfWaterText} ${css.inputText} ${css.formulaDescriptionContainer}`}>
+              The required amount of water in liters per <span>day:</span></p>
+              <span className={css.amountOfWaterText}>
+                {normaWater ? normaWater : getValues("waterRate")}L
+              </span>
+           
           </div>
           <label className={`${css.userInfoLabel} ${css.inputTitle}`}>
             Write down how much water you will drink:
@@ -279,8 +304,10 @@ const UserSettingsForm = () => {
               type="number"
               step="any"
               name="waterRate"
-              {...register('waterRate')}
-              className={`${css.userInfoField} ${css.inputText}`}
+              {...register("waterRate")}
+              className={`${css.userInfoField} ${css.inputText}  ${
+                errors.waterRate && css.error
+              }`}
             />
             {errors.waterRate && (
               <p className={`${css.inputText} ${css.error}`}>
