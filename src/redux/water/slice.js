@@ -41,10 +41,10 @@ const slice = createSlice({
       .addCase(updateWater.fulfilled, (state, action) => {
         state.isLoading = false;
         const index = state.dailyItems.dayItems.findIndex(
-          item => item._id === action.payload._id,
+          item => item._id === action.payload.data._id,
         );
         if (index !== -1) {
-          state.dailyItems.dayItems[index] = action.payload;
+          state.dailyItems.dayItems[index] = action.payload.data;
         }
       })
       .addCase(updateWater.rejected, handleRejected)
