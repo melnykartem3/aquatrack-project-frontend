@@ -19,7 +19,6 @@ const CalendarPagination = ({
       <button onClick={setToCurrentDate}>
         <span className={css.month}>{isActive ? 'Month' : 'Statistics'}</span>
       </button>
-
       <div className={css.CalendarPaginationFa}>
         <button
           onClick={() => changeMonth(-1)}

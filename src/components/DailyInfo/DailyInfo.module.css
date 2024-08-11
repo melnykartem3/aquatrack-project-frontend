@@ -6,9 +6,8 @@
 }
 
 .wraper {
-  padding: 20px;
+  margin: 40px 0;
   background-color: var(--background-grey);
-  padding-bottom: 24px;
 }
 
 .addWaterBtn {
@@ -36,20 +35,15 @@
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-  .addWaterBtn:hover .plus_icon,
-  .addWaterBtn:focus .plus_icon {
-    background-color: var(--basic-dark-blue);
-    color: var(--basic-green);
-  }
+.addWaterBtn:hover .plus_icon,
+.addWaterBtn:focus .plus_icon {
+  background-color: var(--basic-dark-blue);
+  color: var(--basic-green);
+}
 
-  @media screen and (min-width: 768px) {
-    .wraper {
-      padding: 32px;
-    }
-
-    /* Стилі при відкритому Setting, додати клас до Button */
-    .openSettingTablet {
-      display: none;
-    }
-    /* Стилі при відкритому Setting */
+@media screen and (min-width: 768px) {
+  .openSettingTablet {
+    opacity: 0;
+    pointer-events: none;
   }
+}

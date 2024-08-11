@@ -1,97 +1,108 @@
 .waterProgressBar_container {
-    border-radius: 15px;
-    padding: 12px;
-    width: 198px;
-    height: 70px;
-    box-shadow: 0 4px 50px 0 rgba(0, 0, 0, 0.1);
-    background-color: var(--white);
-    margin: 0 auto;
-    margin-top: 48px;
+  border-radius: 15px;
+  padding: 12px;
+  width: 198px;
+  height: 70px;
+  box-shadow: 0 4px 50px 0 rgba(0, 0, 0, 0.1);
+  background-color: var(--white);
+  margin: 0 auto;
+  margin-top: 48px;
 }
 
 .waterProgressBar_h2 {
-    margin-bottom: 8px;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 1;
-    color: var(--basic-dark-blue);
+  margin-bottom: 8px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1;
+  color: var(--basic-dark-blue);
 }
 
 .waterProgressBar {
-    position: relative;
-    background-color: #F0EFF4;
-    border-radius: 9px;
-    width: 174px;
-    height: 6px;
+  position: relative;
+  background-color: #f0eff4;
+  border-radius: 9px;
+  width: 174px;
+  height: 6px;
 }
 
 .progress {
-    height: 100%;
-    border-radius: 10px;
-    background-color: var(--basic-green);
-    transition: width 0.2s ease-in;
+  height: 100%;
+  border-radius: 10px;
+  background-color: var(--basic-green);
+  transition: width 0.2s ease-in;
 }
 
 .thumb {
-    position: absolute;
-    top: -2px;
-    height: 10px;
-    width: 10px;
-    border-radius: 50%;
-    border: 2px solid var(--basic-green);
-    background-color: var(--white);
-    transform: translateX(-50%);
-    transition: left 0.2s ease-in;
+  position: absolute;
+  top: -2px;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  border: 2px solid var(--basic-green);
+  background-color: var(--white);
+  transform: translateX(-50%);
+  transition: left 0.2s ease-in;
 }
 
 .thumb_value {
-    position: absolute;
-    top: -30px;
-    left: 50%;
-    transform: translateX(-50%);
-    white-space: nowrap;
-    font-size: 12px;
-    background-color: var(--white);
-    padding: 2px 4px;
-    border-radius: 4px;
-    color: var(--basic-green);
-    opacity: 0;
-    transition: opacity 0.2s ease-in;
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: 12px;
+  background-color: var(--white);
+  padding: 2px 4px;
+  border-radius: 4px;
+  color: var(--basic-green);
+  opacity: 0;
+  transition: opacity 0.2s ease-in;
 }
 
 .thumb:hover .thumb_value {
-    opacity: 1;
+  opacity: 1;
 }
 
 .progress_labels {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 7px;
-    font-size: 12px;
-    color: var(--text-grey-white);
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  font-size: 10px;
+  line-height: 1;
+  font-weight: 400;
+  color: var(--text-grey-white);
+  height: 10px;
 }
 
 @media screen and (min-width: 768px) {
-    .waterProgressBar_container {
-            width: 295px;
-            height: 106px;
-            padding: 20px;
-            margin-top: 89px;
-        }
+  .waterProgressBar_container {
+    width: 295px;
+    height: 106px;
+    padding: 20px;
+    margin-top: 89px;
+  }
 
-    .waterProgressBar_h2 {
-           font-size: 15px;
-        }
+  .waterProgressBar_h2 {
+    font-size: 15px;
+    line-height: 1.49;
+    margin-bottom: 6px;
+  }
 
-    .waterProgressBar {
-            width: 255px;
-            height: 8px;
-       }
+  .waterProgressBar {
+    width: 255px;
+    height: 8px;
+  }
+
+  .progress_labels {
+    margin-top: 6px;
+    height: 23px;
+    font-size: 12px;
+    line-height: 1.87;
+  }
 }
 
 @media screen and (min-width: 1440px) {
-    .waterProgressBar_container {
-            margin-top: 216px;
-        }
-    
-    }
+  .waterProgressBar_container {
+    margin-top: 216px;
+  }
+}
