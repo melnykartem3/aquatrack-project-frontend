@@ -59,7 +59,7 @@ export const getWaterForMonth = createAsyncThunk(
 
 export const deleteWater = createAsyncThunk(
   'water/deleteWater',
-  async ({ waterId }, thunkAPI) => {
+  async (waterId, thunkAPI) => {
     try {
       const response = await instance.delete(`/water/${waterId}`);
       console.log(response)

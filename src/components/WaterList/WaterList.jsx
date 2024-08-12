@@ -31,7 +31,7 @@ const WaterList = ({ changeDate, userId }) => {
 
   const dispatch = useDispatch();
   
-  const wateritems = useSelector((state) => state.water.dailyItems.data);
+  const wateritems = useSelector((state) => state.water.dailyItems.dayItems);
 
   useEffect(() => {
     dispatch(fetchWaterListDaily({ userId, date }));

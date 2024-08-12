@@ -4,11 +4,14 @@ import css from "./DeleteWaterModal.module.css";
 import { useDispatch } from "react-redux";
 import { deleteWater } from "../../redux/water/operations";
 
-const DeleteWaterModal = ({modalIsOpen,closeModal}) => {
+const DeleteWaterModal = ({modalIsOpen,closeModal,waterId}) => {
+
   const dispatch = useDispatch();
   const handleClick = () => {
-    dispatch(deleteWater);
+    console.log(waterId)
+    dispatch(deleteWater(waterId));
   };
+
   const buttonColorClass  = clsx(
     css.btn,
     css.btnColor

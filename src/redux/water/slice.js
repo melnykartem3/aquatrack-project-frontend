@@ -5,7 +5,7 @@ import {
   updateWater,
   getWaterForMonth,
   fetchWaterListDaily,
-  deleteWater
+  deleteWater,
 } from './operations';
 
 const handleRejected = (state, action) => {
@@ -56,18 +56,19 @@ const slice = createSlice({
       .addCase(fetchWaterListDaily.pending, handlePending)
       .addCase(fetchWaterListDaily.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.dailyItems = action.payload;
+        state.dailyItems.dayItems = action.payload.data;
       })
       .addCase(fetchWaterListDaily.rejected, handleRejected)
 
       // delete water
-      .addCase(deleteWater.pending,handlePending)
-      .addCase(deleteWater.fulfilled,(state,action)=>{
-        console.log(state)
+      .addCase(deleteWater.pending, handlePending)
+      .addCase(deleteWater.fulfilled, (state, action) => {
+        state.isLoading = false;
+        const waterId = action.meta.arg;
+        state.dailyItems.dayItems = state.dailyItems.dayItems.filter(item => item._id !== waterId);
       })
-      .addCase(deleteWater.rejected,handleRejected)
+      .addCase(deleteWater.rejected, handleRejected);
   },
 });
 
 export const waterReducer = slice.reducer;
-
