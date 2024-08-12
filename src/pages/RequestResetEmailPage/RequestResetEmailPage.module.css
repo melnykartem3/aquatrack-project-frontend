@@ -1,0 +1,46 @@
+.containerPage {
+  padding: 16px 0;
+}
+
+.passwordResetSection {
+  background-color: var(--background-grey);
+  border-radius: 30px;
+  padding: 24px 16px 247px 16px;
+}
+.title {
+  font-size: 32px;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  color: var(--basic-dark-blue);
+  margin-bottom: 32px;
+  margin-top: 214px;
+}
+
+@media (min-width: 768px) {
+  .containerPage {
+    padding: 32px 0;
+  }
+
+  .passwordResetSection {
+    width: 704px;
+    padding: 32px 32px 340px 32px;
+  }
+
+  .title {
+    font-size: 36px;
+    margin-top: 300px;
+    margin-left: 102px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .passwordResetSection {
+    width: 1376px;
+    padding: 32px 32px 228px 32px;
+  }
+
+  .title {
+    margin-top: 192px;
+    margin-left: 436px;
+  }
+}

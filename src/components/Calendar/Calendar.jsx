@@ -35,7 +35,7 @@ const Calendar = ({
     return {
       day: day,
       value: dayData
-        ? Math.min((dayData.totalWaterVolume / waterRate) * 100, 100)
+        ? Math.min((dayData.totalWaterVolume / waterRate) * 100, 100).toFixed(0)
         : 0,
       isToday:
         day === currentDay &&

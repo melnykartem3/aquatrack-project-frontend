@@ -3,7 +3,7 @@ import {store} from '../redux/store'
 import { refresh } from '../redux/auth/operations';
 export const instance = axios.create({
   baseURL: 'https://aquatrack-project-backend.onrender.com/',
-  // baseURL: 'http://localhost:3002',
+  // baseURL: 'http://localhost:3001',
   withCredentials: true,
   headers: {
     Accept: 'application/json',

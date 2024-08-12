@@ -30,12 +30,28 @@ const MonthInfo = ({ handleDateChange }) => {
     year: currentDateNow.getFullYear(),
   });
   const [isActive, setIsActive] = useState(true);
-  
+
   const monthlyItems = useSelector(selectWater);
 
   const currentMonthIndex = currentDate.getMonth();
   const currentMonth = monthNames[currentMonthIndex];
   const currentYear = currentDate.getFullYear();
+
+  const earliestRecordDate = useMemo(() => {
+    if (monthlyItems.length > 0) {
+      const earliestItem = monthlyItems.reduce((earliest, item) => {
+        const itemDate = new Date(item.year, item.month - 1, item.day);
+        return itemDate < earliest ? itemDate : earliest;
+      }, new Date());
+      return earliestItem;
+    }
+    return currentDateNow;
+  }, [monthlyItems, currentDateNow]);
+
+  const canNavigatePreviousMonth = useMemo(() => {
+    const previousMonthDate = new Date(currentYear, currentMonthIndex);
+    return previousMonthDate >= earliestRecordDate;
+  }, [currentYear, currentMonthIndex, earliestRecordDate]);
 
   const changeMonth = increment => {
     setCurrentDate(prevDate => {
@@ -93,6 +109,7 @@ const MonthInfo = ({ handleDateChange }) => {
         setToCurrentDate={setToCurrentDate}
         isActive={isActive}
         setIsActive={setIsActive}
+        canNavigatePreviousMonth={canNavigatePreviousMonth}
       />
       {isActive ? (
         <Calendar

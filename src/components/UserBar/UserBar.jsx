@@ -19,9 +19,9 @@ const UserBar = ({ setOpenSetting }) => {
           <p className={css.nameParagraph}>User</p>
           <FaUserCircle className={css.iconUser} />
           {isPopoverOpen ? (
-            <FaAngleUp className={css.iconArrow} />
-          ) : (
             <FaAngleDown className={css.iconArrow} />
+          ) : (
+            <FaAngleUp className={css.iconArrow} />
           )}
         </div>
       </button>

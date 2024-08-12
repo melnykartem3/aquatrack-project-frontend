@@ -1,0 +1,41 @@
+.form {
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form .formWrapper:last-of-type {
+  margin-bottom: 0;
+}
+
+.submitButton {
+  padding: 16px auto;
+  background-color: var(--basic-green);
+  color: var(--basic-dark-blue);
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: -0.01em;
+  line-height: 1.28;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 311px;
+  height: 50px;
+  margin-top: 32px;
+}
+
+.submitButton:hover {
+  background-color: var(--green-hover);
+}
+
+@media (min-width: 768px) {
+  .submitButton {
+    padding: 18px 0px;
+    font-size: 16px;
+    line-height: 1.5;
+    width: 436px;
+    height: 60px;
+  }
+}
