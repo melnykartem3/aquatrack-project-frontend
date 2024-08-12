@@ -3,13 +3,20 @@ import clsx from "clsx";
 import css from "./DeleteWaterModal.module.css";
 import { useDispatch } from "react-redux";
 import { deleteWater } from "../../redux/water/operations";
+import toast from "react-hot-toast";
 
 const DeleteWaterModal = ({modalIsOpen,closeModal,waterId}) => {
 
   const dispatch = useDispatch();
   const handleClick = () => {
     console.log(waterId)
-    dispatch(deleteWater(waterId));
+    dispatch(deleteWater(waterId)).unwrap()
+         .then(() => {
+           toast.success('You successfully delete a water record!');
+      })
+      .catch(error => {
+        toast.error('Failed to delete water record!');
+      });
   };
 
   const buttonColorClass  = clsx(
