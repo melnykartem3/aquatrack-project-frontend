@@ -15,7 +15,7 @@ const WaterItem = ({ data, formatDate }) => {
   }
 
 
-  const time = formatTime(data.date);
+  const time = formatDate(data.date);
 
   if (data < 1) {
     return;
