@@ -1,0 +1,21 @@
+.chartContainer {
+    width: 304px;
+    height: 251px;
+}
+
+@media screen and (min-width: 768px) {
+    .chartContainer {
+        width: 608px;
+        height: 251px;
+        margin-left: 20px;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .chartContainer {
+        width: 588px;
+        height: 273px;
+        margin-left: 20px;
+        margin-top: 49px;
+    }
+}

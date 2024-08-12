@@ -1,6 +1,6 @@
 .userBarWrapper {
   width: 137px;
-  height: 100%;
+  height: 50px;
   margin-top: 20px;
 }
 
@@ -16,8 +16,8 @@
 
 .userBarButton {
   padding: 0;
-  width: 137px;
-  height: 50px;
+  width: 100%;
+  height: 100%;
   background-color: var(--basic-dark-blue);
   border-radius: 30px;
   margin-bottom: 2px;
@@ -31,7 +31,7 @@
   align-items: center;
 }
 
-.icon {
+.iconArrow {
   fill: var(--white);
   justify-content: center;
 }
@@ -40,4 +40,36 @@
   width: 38px;
   height: 38px;
   color: var(--white);
+}
+
+@media screen and (min-width: 768px) {
+  .userBarWrapper {
+    margin: 0;
+    width: 157px;
+    height: 56px;
+  }
+
+  .userBarButton {
+    margin-bottom: 8px;
+  }
+
+  .nameParagraph {
+    font-size: 16px;
+    line-height: 1.5;
+    width: 49px;
+  }
+
+  .btnWrapper {
+    gap: 10px;
+  }
+
+  .iconUser {
+    width: 44px;
+    height: 44px;
+  }
+
+  .iconArrow {
+    width: 20px;
+    height: 20px;
+  }
 }

@@ -1,9 +1,7 @@
 import { useRef, useState } from 'react';
 import { FaAngleDown, FaAngleUp, FaUserCircle } from 'react-icons/fa';
-import { useClickAway } from 'react-use';
 import UserBarPopover from '../UserBarPopover/UserBarPopover';
 import css from './UserBar.module.css';
-
 
 const UserBar = ({ setOpenSetting }) => {
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
@@ -14,22 +12,16 @@ const UserBar = ({ setOpenSetting }) => {
     setOpenSetting(!isPopoverOpen);
   };
 
-  useClickAway(itemRef, () => {
-    setIsPopoverOpen(false);
-  });
-
   return (
     <div className={css.userBarWrapper} ref={itemRef}>
       <button className={css.userBarButton} onClick={togglePopover}>
         <div className={css.btnWrapper}>
           <p className={css.nameParagraph}>User</p>
-          <div>
-            <FaUserCircle className={css.iconUser} />
-          </div>
+          <FaUserCircle className={css.iconUser} />
           {isPopoverOpen ? (
-            <FaAngleUp className={css.icon} />
+            <FaAngleDown className={css.iconArrow} />
           ) : (
-            <FaAngleDown className={css.icon} />
+            <FaAngleUp className={css.iconArrow} />
           )}
         </div>
       </button>

@@ -1,83 +1,100 @@
 .title {
-    color: var(--basic-dark-blue);
-    font-size: 14px;
-    background-color: var(--white);
-    border-radius: 15px;
-    padding: 20px;
-    max-width: 390px;
+  color: var(--basic-dark-blue);
+  font-size: 14px;
+  background-color: var(--white);
+  border-radius: 15px;
+  padding: 20px;
+  max-width: 390px;
+  text-align: center;
 }
 
+::-webkit-scrollbar {
+  background-color: var(--white);
+  height: 8px;
+  border-radius: 30px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--basic-dark-blue);
+  border-radius: 30px;
+  height: 8px;
+}
 
 .wrapper {
-    padding-top: 24px;
-    padding-bottom: 24px;
+  padding-top: 24px;
+  padding-bottom: 24px;
 }
 
-.limited-handles .os-theme-dark>.os-scrollbar-horizontal>.os-scrollbar-track>.os-scrollbar-handle {
-    max-width: 5px;
-    min-width: 5px;
+.limited-handles
+  .os-theme-dark
+  > .os-scrollbar-horizontal
+  > .os-scrollbar-track
+  > .os-scrollbar-handle {
+  max-width: 5px;
+  min-width: 5px;
 }
 
 .container {
-background-color: var(--white);
-padding: 18px 14px;
-border-radius: 15px;
-width: 149px;
-height: 74px;
-display: flex;
-align-items: center;
-gap: 10px;
+  background-color: var(--white);
+  padding: 18px 14px;
+  border-radius: 15px;
+  width: 149px;
+  height: 74px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .iconChangeDelete {
-fill: var(--white);
-stroke: var(--text-grey);
+  fill: var(--white);
+  stroke: var(--text-grey);
 }
 
 .iconsContainer {
-display: flex;
-flex-direction: column;   
-gap: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .info {
-display: flex;
-flex-direction: column;
-gap: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
 .ml {
-font-weight: 700;
-font-size: 14px;
-line-height: 1;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1;
 }
 
 .time {
-font-weight: 400;
-font-size: 12px;
-line-height: 1;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1;
 }
 
 .button {
-    width: 14px;
-    height: 14px;
-    background-color: inherit;
-    padding: 0;
+  width: 14px;
+  height: 14px;
+  background-color: inherit;
+  padding: 0;
 }
 
 .list {
-    display: flex;
-    gap: 8px;
-    flex-wrap: nowrap;
-    overflow-x: auto;
+  display: flex;
+  gap: 8px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding-bottom: 24px;
 }
 
-@media screen and (min-width: 768px) { 
-.title {
+@media screen and (min-width: 768px) {
+  .title {
     font-size: 18px;
     max-width: 490px;
-}
-.list {
+  }
+  .list {
     gap: 32px;
-}
+  }
 }

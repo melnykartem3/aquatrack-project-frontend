@@ -10,6 +10,7 @@
   opacity: 0;
   transform: translateY(-10px);
   transition: opacity 0.5s ease, transform 0.5s ease;
+  margin-top: 2px;
 }
 
 .popoverList.show {
@@ -55,5 +56,14 @@
 }
 
 .icon {
+  width: 16px;
+  height: 16px;
   margin-right: 8px;
+}
+
+@media screen and (min-width: 768px) {
+  .popoverList {
+    width: 157px;
+    height: 82px;
+  }
 }
