@@ -51,6 +51,7 @@
   transition: background-color 0.5s ease;
 }
 
+
 .buttonTryTracker:hover,
 .buttonTryTracker:focus {
   background-color: var(--green-hover);
@@ -135,3 +136,13 @@
     line-height: 76px;
   }
 }
+
+
+@media screen and (max-width: 768px) {
+  .buttonUka {
+    width: 145px;
+    
+  }
+}
+
+

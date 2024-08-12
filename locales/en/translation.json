@@ -1,0 +1,18 @@
+{
+    "home.title": "Home Page",
+    "notFound.message": "Wooops, page is not found!",
+    "welcome": {
+      "recordDailyIntake": "Record daily water intake and track",
+      "trackerTitle": "Water consumption tracker",
+      "tryTracker": "Try Tracker",
+      "signIn": "Sign In"
+    },
+    "advantages": {
+      "happyCustomers": "Our happy customers",
+      "list": {
+        "habitDrive": "Habit drive",
+        "viewStatistics": "View statistics",
+        "personalRateSetting": "Personal rate setting"
+      }
+    }
+  }

@@ -1,0 +1,18 @@
+{
+    "home.title": "Головна сторінка",
+    "notFound.message": "Ой, сторінку не знайдено!",
+    "welcome": {
+      "recordDailyIntake": "Записуйте і відстежуйте щоденне споживання води",
+      "trackerTitle": "Трекер споживання води",
+      "tryTracker": "Спробувати трекер",
+      "signIn": "Увійти"
+    },
+    "advantages": {
+      "happyCustomers": "Наші щасливі клієнти",
+      "list": {
+        "habitDrive": "Режим звички",
+        "viewStatistics": "Перегляд статистики",
+        "personalRateSetting": "Налаштування особистої норми"
+      }
+    }
+  }
