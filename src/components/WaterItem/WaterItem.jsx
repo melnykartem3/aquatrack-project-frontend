@@ -1,7 +1,19 @@
 import css from './WaterItem.module.css';
 import Icon from '../Icon/Icon.jsx';
+import DeleteWaterModal from '../DeleteWaterModal/DeleteWaterModal.jsx';
+import { useState } from 'react';
 
-const WaterItem = ({ data, formatTime }) => {
+const WaterItem = ({ data, formatDate }) => {
+  const [modalIsOpen,setModalIsOpen] = useState(false);
+
+  const openModal = () => {
+    setModalIsOpen(true)
+  }
+
+  const closeModal = () => {
+    setModalIsOpen(false)
+  }
+
 
   const time = formatTime(data.date);
 
@@ -25,7 +37,7 @@ const WaterItem = ({ data, formatTime }) => {
             height="14"
           />
         </button>
-        <button className={css.button}>
+        <button className={css.button} onClick={()=>openModal()}>
           <Icon
             id="icon-delete"
             style={{ fill: 'none', stroke: '#2f2f2f' }} 
@@ -34,6 +46,7 @@ const WaterItem = ({ data, formatTime }) => {
           />
         </button>
       </div>
+      <DeleteWaterModal modalIsOpen={modalIsOpen} closeModal={closeModal} waterId={data._id}></DeleteWaterModal>
     </div>
   );
 };
