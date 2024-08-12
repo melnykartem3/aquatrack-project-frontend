@@ -46,16 +46,16 @@ const WaterList = ({ changeDate, userId }) => {
     );
 }
 
-  const formatUTC = (isoDate) => {
-    return moment(isoDate).utc().format('hh:mm A');
-  }
+  const formatLocalTime = (isoDate) => {
+  return moment(isoDate).format('hh:mm A');
+};
 
   return (
     <>
       <ul className={css.list}>
         {wateritems.map(item => (
           <li className={css.listItem} key={item._id}>
-            <WaterItem data={item} formatTime={formatUTC} />
+            <WaterItem data={item} formatTime={formatLocalTime} />
           </li>
         ))}
       </ul>

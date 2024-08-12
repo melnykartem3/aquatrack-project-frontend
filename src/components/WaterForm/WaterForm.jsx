@@ -15,7 +15,7 @@ const schema = yup.object().shape({
     .number()
     .typeError('Enter a valid amount of water')
     .min(50, 'Minimum amount is 50 ml')
-    .max(300, 'Maximum amount is 300 ml')
+    .max(500, 'Maximum amount is 500 ml')
     .required('Amount is required'),
   time: yup.string().required('Time is required'),
 });
@@ -29,12 +29,12 @@ const WaterForm = ({ closeWaterModal, operationType, item }) => {
     operationType !== 'add' && item
       ? {
           date: item.date,
-          time: new Date(item.date).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', hour12: false }),
+          time: new Date(item.date).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }),
           waterVolume: item.waterVolume,
         }
       : {
           date: new Date().toISOString(),
-          time: new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', hour12: false }),
+          time: new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }),
           waterVolume: 50,
         };
 
@@ -66,8 +66,8 @@ const WaterForm = ({ closeWaterModal, operationType, item }) => {
   const onSubmit =(data) => {
     const date = new Date(data.date);
     const [hours, minutes] = data.time.split(':');
-    date.setUTCHours(hours);
-    date.setUTCMinutes(minutes);
+    date.setHours(hours);
+    date.setMinutes(minutes);
 
     const water = {
       waterVolume: data.waterVolume,
@@ -135,7 +135,7 @@ const WaterForm = ({ closeWaterModal, operationType, item }) => {
               {errors.time && <p className={css.error}>{errors.time.message}</p>}
             <p className={css.waterInput}>Enter the value of the water used:</p>
               <input type="number" name="waterVolume" className={css.amountInput} {...register('waterVolume')}
-            onChange={e => setValue('waterVolume', Number(e.target.value))} min="50" max="300"
+            onChange={e => setValue('waterVolume', Number(e.target.value))} min="50" max="500"
           />
           {errors.waterVolume && <p className={css.error}>{errors.waterVolume.message}</p>}
           <button className={css.saveBtn} type="submit">Save</button>
