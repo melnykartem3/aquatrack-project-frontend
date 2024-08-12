@@ -3,7 +3,7 @@ import Icon from '../Icon/Icon.jsx';
 import DeleteWaterModal from '../DeleteWaterModal/DeleteWaterModal.jsx';
 import { useState } from 'react';
 
-const WaterItem = ({ data, formatDate }) => {
+const WaterItem = ({ data, formatTime }) => {
   const [modalIsOpen,setModalIsOpen] = useState(false);
 
   const openModal = () => {
