@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 import Logo from '../Logo/Logo';
 import { Link } from 'react-router-dom';
 import css from './WelcomeSection.module.css';
+import clsx from 'clsx';
 
 const WelcomeSection = () => {
   const { t, i18n } = useTranslation();

@@ -1,35 +1,86 @@
-import { CiSettings } from "react-icons/ci";
-import { FiLogOut } from "react-icons/fi";
-import LogOutModal from "../LogOutModal/LogOutModal";
-import { useState } from "react";
+import { useEffect, useRef, useState } from 'react';
+import { CiSettings } from 'react-icons/ci';
+import { FiLogOut } from 'react-icons/fi';
+import LogOutModal from '../LogOutModal/LogOutModal';
+import css from './UserBarPopover.module.css';
+import UserSettingsModal from '../UserSettingsModal/UserSettingsModal';
 
 const UserBarPopover = ({ onClose }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const [modalSettingIsOpen, setModalSettingIsOpen] = useState(false);
+
+  const popoverRef = useRef(null);
+
+  useEffect(() => {
+    setIsVisible(true);
+    const handleClickOutside = event => {
+      if (popoverRef.current && !popoverRef.current.contains(event.target)) {
+        setIsVisible(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   const openModal = () => {
     setModalIsOpen(true);
   };
 
+  const openSettingModal = () => {
+    setModalSettingIsOpen(true);
+  };
+
   const closeModal = () => {
-    setModalIsOpen(false)
+    setModalIsOpen(false);
+  };
+
+  const closeSettingModal = () => {
+    setModalSettingIsOpen(false);
+  };
+
+  const toggleVisibility = () => {
+    setIsVisible(prev => !prev);
   };
 
   return (
-    <ul>
-      <li>
-        <button type="button"
-            onClick={() => { console.log('Open setting modal'); onClose() }}>
-          <CiSettings /> Settings
-        </button>
-      </li>
-      <li>
-        <button type="button"
-          onClick={() => {console.log('Open logout modal'); openModal()}}>
-          <FiLogOut /> Log out
-        </button>
-        <LogOutModal modalIsOpen={modalIsOpen} closeModal={closeModal}></LogOutModal>
-      </li>
-    </ul>
+    <>
+      <ul
+        ref={popoverRef}
+        className={`${css.popoverList} ${isVisible ? css.show : ''}`}
+      >
+        <li className={css.popoverListItem}>
+          <button
+            className={css.popoverBtnSetting}
+            type="button"
+            onClick={() => {
+              openSettingModal();
+              toggleVisibility();
+            }}
+          >
+            <CiSettings className={css.icon} /> Setting
+          </button>
+        </li>
+        <li className={css.popoverListItem}>
+          <button
+            className={css.popoverBtnLogOut}
+            type="button"
+            onClick={() => {
+              openModal();
+              toggleVisibility();
+            }}
+          >
+            <FiLogOut className={css.icon} /> Log out
+          </button>
+        </li>
+      </ul>
+      <UserSettingsModal
+        modalSettingIsOpen={modalSettingIsOpen}
+        closeSettingModal={closeSettingModal}
+      />
+      <LogOutModal modalIsOpen={modalIsOpen} closeModal={closeModal} />
+    </>
   );
 };
 

@@ -1,20 +1,24 @@
-import AddWaterBtn from "../AddWaterBtn/AddWaterBtn"
-import ChooseDate from "../ChooseDate/ChooseDate"
-import WaterList from "../WaterList/WaterList"
-import clsx from 'clsx';
-import css from './DailyInfo.module.css'
+import AddWaterBtn from '../AddWaterBtn/AddWaterBtn';
+import ChooseDate from '../ChooseDate/ChooseDate';
+import WaterList from '../WaterList/WaterList';
+import css from './DailyInfo.module.css';
 
-const DailyInfo = ({ changeDate, openSetting }) => {
-
+const DailyInfo = ({ changeDate, openSetting, userId }) => {
   return (
     <div className={css.wraper}>
-      <div className={css.container}> 
-      <ChooseDate changeDate={changeDate} openSetting={openSetting} />
-      <AddWaterBtn containerClassName={css.addWaterBtn_container} buttonClassName={clsx(css.addWaterBtn, { [css.openSettingTablet]: openSetting })} iconClassName={css.plus_icon} />  
+      <div className={css.container}>
+        <ChooseDate changeDate={changeDate} openSetting={openSetting} />
+        <div className={openSetting ? css.openSettingTablet : null}>
+            <AddWaterBtn
+          containerClassName={css.addWaterBtn_container}
+          buttonClassName={css.addWaterBtn}
+          iconClassName={css.plus_icon}
+        />
       </div>
-      <WaterList changeDate={changeDate}/>
+        </div>
+      <WaterList changeDate={changeDate} userId={userId} />
     </div>
-  )
-}
+  );
+};
 
-export default DailyInfo
+export default DailyInfo;

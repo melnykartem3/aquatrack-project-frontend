@@ -1,72 +1,70 @@
 .calendarHeader {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 20px;
-    margin-bottom: 24px;
-    color: #323F47;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  color: #323f47;
 }
 
 .month {
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 120%;
-    letter-spacing: -0.01em;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 120%;
+  letter-spacing: -0.01em;
 }
 
 .data {
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 129%;
-    letter-spacing: -0.01em;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.01em;
 }
 
 .CalendarPaginationFa {
-    display: flex;
-    align-items: center;
-    gap: 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
 .CalendarPaginationFa button {
-    background: none;
-    padding: 0;
+  background: none;
+  padding: 0;
 }
 
 .icon {
-    width: 8px;
-    height: 12px;
+  width: 8px;
+  height: 12px;
 }
 
-
-
 .active {
-    opacity: 0.5;
+  opacity: 0.5;
 }
 
 .pieChart {
-    width: 20px;
-    height: 20px;
+  width: 20px;
+  height: 20px;
 }
 
 @media screen and (min-width: 768px) {
-    .CalendarPaginationFa {
-        gap: 20px;
-    }
+  .CalendarPaginationFa {
+    gap: 20px;
+  }
 
-    .month {
-        font-size: 28px;
-        line-height: 114%;
-    }
+  .month {
+    font-size: 28px;
+    line-height: 114%;
+  }
 
-    .data {
-        font-size: 16px;
-        line-height: 150%;
-    }
+  .data {
+    font-size: 16px;
+    line-height: 150%;
+  }
 
-    .pieChart {
-        width: 24px;
-        height: 24px;
-    }
+  .pieChart {
+    width: 24px;
+    height: 24px;
+  }
 }
 
-@media screen and (min-width: 1440px) {}
+@media screen and (min-width: 1440px) {
+}

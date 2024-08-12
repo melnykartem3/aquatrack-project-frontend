@@ -1,16 +1,24 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import { instance } from "../../utils/axios";
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { instance } from '../../utils/axios';
 
-export const fetchContacts = createAsyncThunk("contacts/fetchAll",
-    async (_, thunkAPI) => {
+export const fetchWaterListDaily = createAsyncThunk(
+  'water/perDay',
+  async ({date}, thunkAPI) => {
     try {
-        const response = await instance.get('/contacts');
-        return response.data;
+      const response = await instance.get(`/water/perDay`, { 
+        params: {
+          day: date
+        }
+        
+      });
+      return response.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
     }
-    catch (error) {
-        return thunkAPI.rejectWithValue(error.message);
-    }
-});
+  }
+);
+
+// ще зробити феч за сьогодні і видалення 
 
 export const addWater = createAsyncThunk(
   'water/addWater',
@@ -21,29 +29,42 @@ export const addWater = createAsyncThunk(
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
-  }
-);
-
-export const deleteContact = createAsyncThunk(
-  'contacts/deleteContact',
-  async (contactId, thunkAPI) => {
-    try {
-        const response = await instance.delete(`/contacts/${contactId}`);
-        return response.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
+  },
 );
 
 export const updateWater = createAsyncThunk(
   'water/updateWater',
-  async ({ id, ...water }, thunkAPI) => {
+  async ({ waterId, ...water }, thunkAPI) => {
     try {
-      const response = await instance.patch(`/water/${id}`, water);
+      const response = await instance.patch(`/water/${waterId}`, water);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
-  }
+  },
+);
+
+export const getWaterForMonth = createAsyncThunk(
+  'water/perMonth',
+  async (month, thunkAPI) => {
+    try {
+      const response = await instance.get(`water/perMonth`, {params: { month },}); //2024-08
+      return response.data.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  },
+);
+
+export const deleteWater = createAsyncThunk(
+  'water/deleteWater',
+  async ({ waterId }, thunkAPI) => {
+    try {
+      const response = await instance.delete(`/water/${waterId}`);
+      console.log(response)
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  },
 );

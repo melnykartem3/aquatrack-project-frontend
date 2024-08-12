@@ -1,12 +1,19 @@
 import { useTranslation } from 'react-i18next';
 import css from './AdvantagesSection.module.css';
-import user1 from '../../images/homePage/user-1.png';
-import user1_2x from '../../images/homePage/user-1@2x.png';
-import user2 from '../../images/homePage/user-2.png';
-import user2_2x from '../../images/homePage/user-2@2x.png';
-import user3 from '../../images/homePage/user-3.png';
-import user3_2x from '../../images/homePage/user-3@2x.png';
 import icon from '../../images/homePage/icon.svg';
+
+import firstUserMobile from '../../images/homePage/user-1-mobile.png';
+import firstUserMobile2x from '../../images/homePage/user-1-mobile@2x.png';
+import secondUserMobile from '../../images/homePage/user-2-mobile.png';
+import secondUserMobile2x from '../../images/homePage/user-2-mobile@2x.png';
+import thirdUserMobile from '../..//images/homePage/user-3-mobile.png';
+import thirdUserMobile2x from '../..//images/homePage/user-3-mobile@2x.png';
+import firstUserTabletAndDesktop from '../../images/homePage/user-1-tablet-desktop.png';
+import firstUserTabletAndDesktop2x from '../../images/homePage/user-1-tablet-desktop@2x.png';
+import secondUserTabletAndDesktop from '../../images/homePage/user-2-tablet-desktop.png';
+import secondUserTabletAndDesktop2x from '../../images/homePage/user-2-tablet-desktop@2x.png';
+import thirdUserTabletAndDesktop from '../..//images/homePage/user-3-tablet-desktop.png';
+import thirdUserTabletAndDesktop2x from '../..//images/homePage/user-3-tablet-desktop@2x.png';
 
 const AdvantagesSection = () => {
   const { t, i18n } = useTranslation();

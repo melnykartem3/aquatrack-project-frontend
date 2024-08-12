@@ -1,59 +1,49 @@
 .container {
-display: flex;
-justify-content: space-between;
-align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
 }
 
 .wraper {
-padding: 20px;
-background-color: var(--background-grey);
+  margin: 40px 0;
+  background-color: var(--background-grey);
 }
 
 .addWaterBtn {
-background-color: transparent;
-border: none;
-font-size: 16px;
-line-height: 1.5;
-letter-spacing: 0.01em;
-text-align: center;
-color: var(--basic-dark-blue);
-display: flex;
-gap: 10px;
-align-items: center;
-font-weight: 700;
+  background-color: transparent;
+  border: none;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+  text-align: center;
+  color: var(--basic-dark-blue);
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-weight: 700;
 }
 
 .plus_icon {
-box-sizing: content-box;
-width: 15px;
-height: 15px;
-background-color: var(--basic-green);
-color: var(--basic-dark-blue);
-border-radius: 50%;
-padding: 10px;
-transition: background-color 0.3s ease, color 0.3s ease;
+  box-sizing: content-box;
+  width: 15px;
+  height: 15px;
+  background-color: var(--basic-green);
+  color: var(--basic-dark-blue);
+  border-radius: 50%;
+  padding: 10px;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .addWaterBtn:hover .plus_icon,
 .addWaterBtn:focus .plus_icon {
-background-color: var(--basic-dark-blue);
-color: var(--basic-green);
+  background-color: var(--basic-dark-blue);
+  color: var(--basic-green);
 }
-
-
 
 @media screen and (min-width: 768px) {
-
-.wraper {
-padding: 32px;
+  .openSettingTablet {
+    opacity: 0;
+    pointer-events: none;
+  }
 }
-
-
-/* Стилі при відкритому Setting, додати клас до Button */
-.openSettingTablet {
-    display: none;
-}
-/* Стилі при відкритому Setting */
-
-}
-
