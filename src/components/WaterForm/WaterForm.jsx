@@ -29,12 +29,12 @@ const WaterForm = ({ closeWaterModal, operationType, item }) => {
     operationType !== 'add' && item
       ? {
           date: item.date,
-          time: new Date(item.date).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', hour12: false }),
+          time: new Date(item.date).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }),
           waterVolume: item.waterVolume,
         }
       : {
           date: new Date().toISOString(),
-          time: new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', hour12: false }),
+          time: new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }),
           waterVolume: 50,
         };
 
@@ -66,8 +66,8 @@ const WaterForm = ({ closeWaterModal, operationType, item }) => {
   const onSubmit =(data) => {
     const date = new Date(data.date);
     const [hours, minutes] = data.time.split(':');
-    date.setUTCHours(hours);
-    date.setUTCMinutes(minutes);
+    date.setHours(hours);
+    date.setMinutes(minutes);
 
     const water = {
       waterVolume: data.waterVolume,
