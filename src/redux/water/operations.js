@@ -3,11 +3,10 @@ import { instance } from '../../utils/axios';
 
 export const fetchWaterListDaily = createAsyncThunk(
   'water/perDay',
-  async ({userId, date}, thunkAPI) => {
+  async ({date}, thunkAPI) => {
     try {
       const response = await instance.get(`/water/perDay`, { 
         params: {
-          userId, 
           day: date
         }
         
@@ -50,7 +49,7 @@ export const getWaterForMonth = createAsyncThunk(
   async (month, thunkAPI) => {
     try {
       const response = await instance.get(`water/perMonth`, {params: { month },}); //2024-08
-      return response.data;
+      return response.data.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

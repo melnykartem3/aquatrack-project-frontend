@@ -1,5 +1,6 @@
 .containerPage {
   display: flex;
+  padding: 32px 0;
 }
 
 .signUpSection {
@@ -41,6 +42,9 @@
 }
 
 @media screen and (min-width: 375px) {
+  .containerPage {
+    padding: 32px 0;
+  }
   .signUpSection {
     width: 343px;
   }

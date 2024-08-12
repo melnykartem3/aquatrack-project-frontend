@@ -21,6 +21,12 @@ const handlePending = state => {
 const slice = createSlice({
   name: 'water',
   initialState: initialState,
+  reducers: {
+    setNewDate: (state, action) => {
+      const newDate = action.payload;
+      state.currentDate = newDate;
+    }
+  },
   extraReducers: builder => {
     builder
       // Додавання води
@@ -36,10 +42,10 @@ const slice = createSlice({
       .addCase(updateWater.fulfilled, (state, action) => {
         state.isLoading = false;
         const index = state.dailyItems.dayItems.findIndex(
-          item => item._id === action.payload._id,
+          item => item._id === action.payload.data._id,
         );
         if (index !== -1) {
-          state.dailyItems.dayItems[index] = action.payload;
+          state.dailyItems.dayItems[index] = action.payload.data;
         }
       })
       .addCase(updateWater.rejected, handleRejected)
@@ -57,6 +63,8 @@ const slice = createSlice({
       .addCase(fetchWaterListDaily.fulfilled, (state, action) => {
         state.isLoading = false;
         state.dailyItems.dayItems = action.payload.data;
+        state.dailyItems.totalWaterVolume = action.payload.totalWaterVolume;
+
       })
       .addCase(fetchWaterListDaily.rejected, handleRejected)
 
@@ -71,4 +79,8 @@ const slice = createSlice({
   },
 });
 
+
+export const { setNewDate} = slice.actions;
 export const waterReducer = slice.reducer;
+
+

@@ -1,13 +1,28 @@
+import { useSelector } from 'react-redux';
 import css from './WaterProgressBar.module.css';
+import {selectChoosenDate, selectDailyItems } from '../../redux/water/selectors';
+import { selectUser } from '../../redux/auth/selectors';
 
 const WaterProgressBar = () => {
+ const formatDate = (date) => {
+    const d = new Date(date);
+    const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    return `${d.getDate()}, ${monthNames[d.getMonth()]}`;
+  };
+  const choosenDate = useSelector(selectChoosenDate);
+  const currentDate = new Date().toISOString().split('T')[0];
+  const waterByDay = useSelector(selectDailyItems)  || 0;
+  const totalWaterVolume = waterByDay.reduce((sum, item) => sum + item.waterVolume, 0);
+  const user = useSelector(selectUser);
+  let persentage = Math.min((totalWaterVolume / (user.waterRate * 1000)) * 100, 100); 
+    persentage = persentage.toFixed(0);
   return (
     <div className={css.waterProgressBar_container}>
-      <h2 className={css.waterProgressBar_h2}>Today</h2>
+      <h2 className={css.waterProgressBar_h2}>{choosenDate === currentDate ? 'Today' : formatDate(choosenDate)}</h2>
       <div className={css.waterProgressBar}>
-        <div className={css.progress}></div>
-        <div className={css.thumb}>
-          <div className={css.thumb_value}>{`0%`}</div>
+        <div className={css.progress} style={{ width: `${persentage}%` }}></div>
+        <div className={css.thumb} style={{ left: `${persentage}%` }}>
+          <div className={css.thumb_value}>{`${persentage}%`}</div>
         </div>
       </div>
       <div className={css.progress_labels}>
@@ -21,4 +36,3 @@ const WaterProgressBar = () => {
 
 export default WaterProgressBar;
 
-// значення процентів буде вираховуватися з загальної кількості випитої води за день/на денну норму, або підрахованого проценту отриманого з бекенду

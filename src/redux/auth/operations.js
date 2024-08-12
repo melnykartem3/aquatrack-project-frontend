@@ -30,6 +30,7 @@ export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
     return thunkAPI.rejectWithValue(error.message);
   }
 });
+
 export const refresh = createAsyncThunk(
   'auth/refresh',
   async (_, thunkApi) => {
@@ -55,17 +56,44 @@ export const getUser = createAsyncThunk('auth/current',
 
 export const updateUser = createAsyncThunk(
   'auth/update',
-  async (user, thunkAPI) => {
-    const userId = user._id;
+  async ({ userId, ...formData }, thunkAPI) => {
     try {
-      const { data } = await instance.patch(`/auth/update/${userId}`, user, {
+      const { data } = await instance.patch(`/auth/update/${userId}`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       });
+      console.log(data);
       return data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
-  }
+  },
+);
+
+export const requestResetEmail = createAsyncThunk(
+  'auth/requestResetEmail',
+  async (data, { rejectWithValue }) => {
+    try {
+      const response = await instance.post('/auth/request-reset-email', data);
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  },
+);
+
+export const resetPassword = createAsyncThunk(
+  'auth/resetPassword',
+  async ({ token, password }, { rejectWithValue }) => {
+    try {
+      const response = await axios.post('/auth/reset-password', {
+        token,
+        password,
+      });
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  },
 );

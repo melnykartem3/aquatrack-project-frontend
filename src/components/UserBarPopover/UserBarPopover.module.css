@@ -1,5 +1,4 @@
 .popoverList {
-  position: absolute;
   border-radius: 15px;
   min-width: 137px;
   height: 64px;
@@ -11,6 +10,7 @@
   opacity: 0;
   transform: translateY(-10px);
   transition: opacity 0.5s ease, transform 0.5s ease;
+  margin-top: 2px;
 }
 
 .popoverList.show {

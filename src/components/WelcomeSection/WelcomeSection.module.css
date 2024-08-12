@@ -4,84 +4,72 @@
   background-color: #f0eff4;
   box-sizing: border-box;
   padding: 24px 16px 67px 16px;
+  width: 100%;
 }
 
 .content {
   margin-top: 74px;
-  display: inline-block;
-  width: 311px;
-  height: 226px;
-  text-align: left;
 }
 
 .text {
   font-size: 14px;
   color: #2f2f2f;
-  line-height: 18px;
+  line-height: 1.29;
+  letter-spacing: 0.06em;
 }
 
 .header {
   margin-top: 16px;
-  font-size: 38px;
-  font-weight: bold;
   color: #323f47;
-  line-height: 38px;
+  font-size: 38px;
+  line-height: 1;
+  letter-spacing: -0.01em;
 }
 
 .buttons {
   display: flex;
   margin-top: 32px;
+  gap: 10px;
 }
 
 .button {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 116px;
   height: 46px;
-  margin-right: 10px;
   border-radius: 30px;
   color: #323f47;
   font-size: 14px;
-  font-weight: bold;
-  line-height: 18px;
-  text-decoration: none;
-  transition: background-color 0.3s, border 0.3s;
-}
-
-.button:hover {
-  border: none;
-  background-color: #9be1a0;
+  font-weight: 700;
+  line-height: 1.29;
+  letter-spacing: -0.01em;
 }
 
 .buttonTryTracker {
   background-color: var(--basic-green);
+  width: 116px;
+  transition: background-color 0.5s ease;
 }
+
+.buttonTryTracker:hover,
+.buttonTryTracker:focus {
+  background-color: var(--green-hover);
+}
+
 .buttonSignIn {
   background-color: transparent;
   border: 1px solid var(--basic-dark-blue);
+  width: 104px;
+  transition: color 0.5s ease, border 0.5s ease;
 }
 
-/* Mobile */
-@media (min-width: 320px) and (max-width: 374px) {
+.buttonSignIn:hover,
+.buttonSignIn:focus {
+  border: 1px solid var(--green-hover);
+  color: var(--green-hover);
 }
 
-/* Mobile (від 375px) */
-@media (min-width: 375px) and (max-width: 767px) {
-  .welcomeSection {
-    max-width: 704px;
-    height: 411px;
-    border: none;
-  }
-
-  .header {
-    font-size: 38px;
-    line-height: 38px;
-  }
-}
-
-/* Tablet */
-@media (min-width: 768px) {
+@media screen and (min-width: 768px) {
   .welcomeSection {
     width: 704px;
     height: 498px;
@@ -91,6 +79,7 @@
 
   .content {
     margin-top: 50px;
+    padding-left: 64px;
   }
 
   .text {
@@ -103,17 +92,28 @@
     line-height: 70px;
   }
 
+  .buttons {
+    gap: 16px;
+  }
+
+  .buttons:last-child {
+    margin-right: 0;
+  }
+
   .button {
     width: 169px;
     height: 60px;
-    margin-right: 16px;
+    margin: 0;
     font-size: 16px;
     line-height: 24px;
   }
+
+  .buttonSignIn {
+    width: 135px;
+  }
 }
 
-/* Desktop */
-@media (min-width: 1440px) {
+@media screen and (min-width: 1440px) {
   .welcomeSection {
     width: 672px;
     height: 736px;

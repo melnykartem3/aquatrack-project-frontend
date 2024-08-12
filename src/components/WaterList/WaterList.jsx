@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { fetchWaterListDaily } from '../../redux/water/operations.js';
 import css from './WaterList.module.css';
 import { isSameDay } from "date-fns";
-import { nanoid } from 'nanoid';
+import moment from 'moment';
 
 const WaterList = ({ changeDate, userId }) => {
   
@@ -38,7 +38,7 @@ const WaterList = ({ changeDate, userId }) => {
   }, [dispatch, userId, date]);
 
 
-  if (!wateritems) {
+  if (!wateritems || wateritems.length === 0) {
     return (
       <h3 className={css.title}>
         There is no consumed water for the selected day
@@ -46,12 +46,16 @@ const WaterList = ({ changeDate, userId }) => {
     );
 }
 
+  const formatUTC = (isoDate) => {
+    return moment(isoDate).utc().format('hh:mm A');
+  }
+
   return (
     <>
       <ul className={css.list}>
         {wateritems.map(item => (
-          <li className={css.listItem} key={nanoid()}>
-            <WaterItem data={item} formatDate={formatDate} />
+          <li className={css.listItem} key={item._id}>
+            <WaterItem data={item} formatTime={formatUTC} />
           </li>
         ))}
       </ul>
@@ -61,3 +65,4 @@ const WaterList = ({ changeDate, userId }) => {
 
 
 export default WaterList;
+

@@ -4,10 +4,10 @@ import css from './UserSettingsModal.module.css'
 
 const UserSettingsModal = ({modalSettingIsOpen,closeSettingModal}) => {
   return (
-    <Modal modalIsOpen={modalSettingIsOpen} closeModal={()=>closeSettingModal()}>
+    <Modal modalIsOpen={modalSettingIsOpen} closeModal={closeSettingModal}>
       <div className={css.settingsModal}>
         <h3 className={css.settingsModalTitle}>Settings</h3>
-        <UserSettingsForm />
+        <UserSettingsForm closeSettingModal={closeSettingModal}/>
       </div>
     </Modal>
   );
