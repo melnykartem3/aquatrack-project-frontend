@@ -55,14 +55,14 @@ export const getUser = createAsyncThunk('auth/current',
 
 export const updateUser = createAsyncThunk(
   'auth/update',
-  async (user, thunkAPI) => {
-    const userId = user._id;
+  async ({ userId, ...formData }, thunkAPI) => {
     try {
-      const { data } = await instance.patch(`/auth/update/${userId}`, user, {
+      const { data } = await instance.patch(`/auth/update/${userId}`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       });
+      console.log(data);
       return data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);

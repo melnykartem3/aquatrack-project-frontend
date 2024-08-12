@@ -7,7 +7,6 @@ import { selectUser } from "../../redux/auth/selectors.js";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import toast from "react-hot-toast";
-import { closeModal } from "../../redux/ModalSlice.js";
 import { updateUser } from "../../redux/auth/operations.js";
 
 const schema = yup.object().shape({
@@ -31,10 +30,10 @@ const schema = yup.object().shape({
     .max(10, "Daily norma must be less than 10 liters!"),
 });
 
-const UserSettingsForm = () => {
+const UserSettingsForm = ({closeSettingModal}) => {
   const [selectedAvatarFile, setSelectedAvatarFile] = useState(null);
 
-  const { name, gender, avatar, weight, email, timeSports, waterRate } =
+  const { name, gender, avatar, weight, email, timeSports, waterRate, _id } =
     useSelector(selectUser);
   const {
     register,
@@ -88,16 +87,14 @@ const UserSettingsForm = () => {
     if (selectedAvatarFile) {
       formData.append("avatar", selectedAvatarFile);
     }
-
+console.log(formData);
     try {
-      await dispatch(updateUser(formData)).unwrap();
-      dispatch(closeModal());
+      await dispatch(updateUser({ userId: _id, ...formData})).unwrap();
       toast.success("The changes were successfully applied!");
     } catch (error) {
       toast.error("Failed to apply changes!");
     }
-
-    dispatch(closeModal());
+    closeSettingModal();
   };
 
   const handleFileSelect = (event) => {
