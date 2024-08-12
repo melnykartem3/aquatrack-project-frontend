@@ -12,7 +12,6 @@
   }
 }
 
-/* Desktop */
 @media (min-width: 1440px) {
   .homePage {
     flex-direction: row;

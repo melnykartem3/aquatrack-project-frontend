@@ -1,29 +1,25 @@
 import * as yup from 'yup';
 import { useDispatch } from 'react-redux';
-import { login } from '../../redux/auth/operations.js';
-import UserForm from '../UserForm/UserForm';
+import UserForm from '../UserForm/UserForm.jsx';
+import { requestResetEmail } from '../../redux/auth/operations.js';
 import toast from 'react-hot-toast';
 
-const SignInForm = () => {
+const RequestResetEmail = () => {
   const dispatch = useDispatch();
 
   const schema = yup.object().shape({
     email: yup
       .string()
-      .email('Invalid email format')
+      .email('Invalid email address')
       .required('Email is required'),
-    password: yup
-      .string()
-      .min(8, 'Password must be at least 8 characters')
-      .required('Password is required'),
   });
 
   const onSubmit = reset => async data => {
     try {
-      await dispatch(login(data)).unwrap();
+      await dispatch(requestResetEmail(data)).unwrap();
       reset();
     } catch (error) {
-      toast.error('Login failed: ' + error.message);
+      toast.error('Error sending reset password email.');
     }
   };
 
@@ -34,12 +30,6 @@ const SignInForm = () => {
       type: 'email',
       placeholder: 'Enter your email',
     },
-    {
-      name: 'password',
-      label: 'Password',
-      type: 'password',
-      placeholder: 'Enter your password',
-    },
   ];
 
   return (
@@ -47,9 +37,9 @@ const SignInForm = () => {
       schema={schema}
       onSubmit={onSubmit}
       fields={fields}
-      submitButtonLabel="Sign In"
+      submitButtonLabel="Request Password Reset"
     />
   );
 };
 
-export default SignInForm;
+export default RequestResetEmail;

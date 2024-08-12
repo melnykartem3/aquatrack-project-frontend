@@ -13,6 +13,12 @@ const SignUpPage = lazy(() => import('../pages/SignUpPage/SignUpPage'));
 const SignInPage = lazy(() => import('../pages/SignInPage/SignInPage'));
 const TrackerPage = lazy(() => import('../pages/TrackerPage/TrackerPage'));
 const NotFoundPage = lazy(() => import('../pages/NotFoundPage/NotFoundPage'));
+const RequestResetEmailPage = lazy(() =>
+  import('../pages/RequestResetEmailPage/RequestResetEmailPage.jsx'),
+);
+const ResetPasswordPage = lazy(() =>
+  import('../pages/ResetPasswordPage/ResetPasswordPage.jsx'),
+);
 
 function App() {
   const dispatch = useDispatch();
@@ -50,6 +56,24 @@ function App() {
               </PrivateRoute>
             }
           />
+          <Route
+            path="/request-reset-email"
+            element={
+              <RestrictedRoute>
+                <RequestResetEmailPage />
+              </RestrictedRoute>
+            }
+          />
+
+          <Route
+            path="/reset-password"
+            element={
+              <RestrictedRoute>
+                <ResetPasswordPage />
+              </RestrictedRoute>
+            }
+          />
+
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </SharedLayout>

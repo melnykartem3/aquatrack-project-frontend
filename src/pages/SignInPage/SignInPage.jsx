@@ -13,7 +13,7 @@ const SignInPage = () => {
         <title>SignIn Page</title>
       </Helmet>
       <div className={css.containerPage}>
-        <div className={css.signInSection}>
+        <section className={css.signInSection}>
           <Logo />
           <h2 className={css.title}>Sign In</h2>
           <SignInForm />
@@ -25,7 +25,15 @@ const SignInPage = () => {
               Sign Up
             </Link>
           </div>
-        </div>
+          <div className={css.textWrapper}>
+            <span className={css.alreadyHaveAccount}>
+              Forgot your password?{' '}
+            </span>
+            <Link to="/request-reset-email" className={css.signInLink}>
+              Reset
+            </Link>
+          </div>
+        </section>
         <div className={css.advSectionWrapper}>
           {' '}
           <AdvantagesSection />
