@@ -1,5 +1,6 @@
 import css from './AdvantagesSection.module.css';
 import icon from '../../images/homePage/icon.svg';
+import { useTranslation } from 'react-i18next';
 
 import firstUserMobile from '../../images/homePage/user-1-mobile.png';
 import firstUserMobile2x from '../../images/homePage/user-1-mobile@2x.png';
@@ -15,6 +16,9 @@ import thirdUserTabletAndDesktop from '../..//images/homePage/user-3-tablet-desk
 import thirdUserTabletAndDesktop2x from '../..//images/homePage/user-3-tablet-desktop@2x.png';
 
 const AdvantagesSection = () => {
+  const { t, i18n } = useTranslation();
+  const isUk = i18n.language === 'uk';
+
   return (
     <section className={css.advantagesSection}>
       <div className={css.customers}>
@@ -72,8 +76,16 @@ const AdvantagesSection = () => {
             />
           </picture>
         </div>
-        <p className={css.advantagesParagraph}>
-          Our <span className={css.span}>happy</span> customers
+        <p className={isUk ? css.ukParagraph : css.advantagesParagraph}>
+          {i18n.language === 'en' ? (
+            <>
+              Our <span className={css.span}>happy</span> customers
+            </>
+          ) : (
+            <>
+              Наші <span className={css.ukSpan}>щасливі</span> клієнти
+            </>
+          )}
         </p>
       </div>
       <ul className={css.advantagesList}>
@@ -84,10 +96,10 @@ const AdvantagesSection = () => {
               <img src={icon} alt="Icon" className={css.dotIcon} />
             </picture>
           </div>
-          Habit drive
+          {t('advantages.list.habitDrive')}
         </li>
-        <li className={css.li_2}>View statistics</li>
-        <li className={css.li_3}>Personal rate setting</li>
+        <li className={css.li_2}>{t('advantages.list.viewStatistics')}</li>
+        <li className={css.li_3}>{t('advantages.list.personalRateSetting')}</li>
       </ul>
     </section>
   );

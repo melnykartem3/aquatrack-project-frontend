@@ -63,6 +63,24 @@
   color: #9be1a0;
 }
 
+.ukSpan {
+  color: #9be1a0;
+}
+
+.ukParagraph {
+  font-size: 14px;
+  line-height: 1.49;
+  font-weight: 700;
+}
+
+@media screen and (max-width: 768px) {
+  .ukParagraph {
+    font-size: 12px;
+    line-height: 1.17;
+    font-weight: 700;
+  }
+}
+
 .advantagesList {
   display: flex;
   flex-wrap: wrap;
