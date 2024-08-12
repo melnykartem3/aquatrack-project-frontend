@@ -58,7 +58,7 @@ export const getUser = createAsyncThunk('auth/current', async (_, thunkAPI) => {
 
 export const updateUser = createAsyncThunk(
   'auth/update',
-  async ({ userId, ...formData }, thunkAPI) => {
+  async ({ userId, formData }, thunkAPI) => {
     try {
       const { data } = await instance.patch(
         `/auth/update/${userId}`,

@@ -12,7 +12,7 @@ import { updateUser } from "../../redux/auth/operations.js";
 const schema = yup.object().shape({
   name: yup.string().required("Name is required!"),
   email: yup.string().email("Email is invalid").required("Email is required!"),
-  gender: yup.string().oneOf(["male", "female"]).required(),
+  gender: yup.string().oneOf(["man", "woman"]).required(),
   weight: yup
     .number("Please, enter a number")
     .typeError("Please, enter a number")
@@ -83,13 +83,14 @@ const UserSettingsForm = ({closeSettingModal}) => {
     for (const key of keys) {
       formData.append(key, data[key]);
     }
+    const userId = _id;
 
     if (selectedAvatarFile) {
       formData.append("avatar", selectedAvatarFile);
     }
 console.log(formData);
     try {
-      await dispatch(updateUser({ userId: _id, ...formData})).unwrap();
+      await dispatch(updateUser({ userId, formData })).unwrap();
       toast.success("The changes were successfully applied!");
     } catch (error) {
       toast.error("Failed to apply changes!");
@@ -114,11 +115,11 @@ console.log(formData);
     let normaWater = 0;
 
     if (userWeight > 0 && userSportTime > 0) {
-      if (userGender === "female") {
+      if (userGender === "woman") {
         normaWater = roundUpToTwoDecimalPlaces(
           userWeight * 0.03 + userSportTime * 0.4
         );
-      } else if (userGender === "male") {
+      } else if (userGender === "man") {
         normaWater = roundUpToTwoDecimalPlaces(
           userWeight * 0.04 + userSportTime * 0.6
         );
@@ -166,7 +167,7 @@ console.log(formData);
               <input
                 type="radio"
                 className={css.genderInput}
-                value="female"
+                value="woman"
                 name="gender"
                 {...register("gender")}
               />
@@ -176,7 +177,7 @@ console.log(formData);
               <input
                 type="radio"
                 className={css.genderInput}
-                value="male"
+                value="man"
                 name="gender"
                 {...register("gender")}
               />

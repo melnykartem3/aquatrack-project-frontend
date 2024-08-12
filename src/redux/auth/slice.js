@@ -69,7 +69,7 @@ const slice = createSlice({
       .addCase(updateUser.pending, handlePending)
       .addCase(updateUser.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.user = { ...state.user, ...action.payload.data.user };
+        state.user = { ...state.user, ...action.payload.data };
       })
       .addCase(updateUser.rejected, handleRejected);
   },
