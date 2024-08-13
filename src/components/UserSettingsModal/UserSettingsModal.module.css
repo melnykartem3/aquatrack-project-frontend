@@ -1,30 +1,39 @@
 .settingsModalTitle {
-    margin-bottom: 20px;
-    color: rgb(50, 63, 71);
-    line-height: 24px;
-    font-size: 20px;
-    font-weight: 700;
-  }
-  
+  margin-bottom: 20px;
+  color: rgb(50, 63, 71);
+  line-height: 24px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.settingsModal {
+  width: 303px;
+  height: auto;
+  background-color: white;
+}
+
+@media screen and (max-width: 374px) {
   .settingsModal {
-    width: 343px;
-    height: auto;
-    background-color: white;
-    padding: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 260px;
   }
-  
-  @media screen and (min-width: 768px) {
-    .settingsModalTitle {
-      font-size: 28px;
-      line-height: 32px;
-    }
-    .settingsModal {
-      width: 648px;
-    }
+}
+
+@media screen and (min-width: 768px) {
+  .settingsModalTitle {
+    font-size: 28px;
+    line-height: 32px;
   }
-  
-  @media screen and (min-width: 1440px) {
-    .settingsModal {
-      width: 920px;
-    }
+
+  .settingsModal {
+    width: 568px;
   }
+}
+
+
+@media screen and (min-width: 1440px) {
+  .settingsModal {
+    width: 840px;
+  }
+}
