@@ -50,7 +50,7 @@ const LanguageSwitcher = () => {
             borderRadius: '10px',
             boxShadow: '0 2px 5px rgba(0,0,0,0.1)',
             zIndex: 1000,
-            padding: '5px',
+            padding: '15px',
             transition: 'opacity 0.3s',
             opacity: visible ? 1 : 0
           }}

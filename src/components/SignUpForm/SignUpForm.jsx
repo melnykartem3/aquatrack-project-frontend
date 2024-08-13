@@ -3,23 +3,25 @@ import { useDispatch } from 'react-redux';
 import { login, registerUser } from '../../redux/auth/operations.js';
 import UserForm from '../UserForm/UserForm.jsx';
 import toast from 'react-hot-toast';
+import { useTranslation } from 'react-i18next';
 
 const SignUpForm = () => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const schema = yup.object().shape({
     email: yup
       .string()
-      .email('Invalid email format')
-      .required('Email is required'),
+      .email(t('signup.invalidEmail'))
+      .required(t('signup.emailRequired')),
     password: yup
       .string()
-      .min(8, 'Password must be at least 8 characters')
-      .required('Password is required'),
+      .min(8, t('signup.passwordMinLength'))
+      .required(t('signup.passwordRequired')),
     repeatPassword: yup
       .string()
-      .oneOf([yup.ref('password'), null], 'Passwords must match')
-      .required('Repeat Password is required'),
+      .oneOf([yup.ref('password'), null], t('signup.passwordsMustMatch'))
+      .required(t('signup.repeatPasswordRequired')),
   });
 
   const onSubmit = reset => async data => {
@@ -31,28 +33,28 @@ const SignUpForm = () => {
       ).unwrap();
       reset();
     } catch (error) {
-      toast.error('User with this email already exists.');
+      toast.error(t('signup.userExists'));
     }
   };
 
   const fields = [
     {
       name: 'email',
-      label: 'Email',
+      label: t('signup.emailLabel'),
       type: 'email',
-      placeholder: 'Enter your email',
+      placeholder: t('signup.emailPlaceholder'),
     },
     {
       name: 'password',
-      label: 'Password',
+      label: t('signup.passwordLabel'),
       type: 'password',
-      placeholder: 'Enter your password',
+      placeholder: t('signup.passwordPlaceholder'),
     },
     {
       name: 'repeatPassword',
-      label: 'Repeat Password',
+      label: t('signup.repeatPasswordLabel'),
       type: 'password',
-      placeholder: 'Repeat password',
+      placeholder: t('signup.repeatPasswordPlaceholder'),
     },
   ];
 
@@ -61,7 +63,7 @@ const SignUpForm = () => {
       schema={schema}
       onSubmit={onSubmit}
       fields={fields}
-      submitButtonLabel="Sign Up"
+      submitButtonLabel={t('signup.submitButtonLabel')}
     />
   );
 };

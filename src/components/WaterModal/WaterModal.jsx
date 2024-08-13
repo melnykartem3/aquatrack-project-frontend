@@ -1,6 +1,7 @@
 import Modal from "../Modal/Modal";
 import WaterForm from "../WaterForm/WaterForm";
 import css from './WaterModal.module.css';
+import { useTranslation } from 'react-i18next';
 
 const WaterModal = ({
   waterModalOpen,
@@ -8,8 +9,9 @@ const WaterModal = ({
   operationType,
   item
 }) => {
-  const title = operationType === 'add' ? 'Add Water' : 'Edit the entered amount of water';
-  const value = operationType === 'add' ? 'Choose a value:' : 'Correct entered data:';
+  const { t } = useTranslation();
+  const title = operationType === 'add' ? t('waterModal.addWaterTitle') : t('waterModal.editWaterTitle');
+  const value = operationType === 'add' ? t('waterModal.chooseValue') : t('waterModal.correctData');
 
   return (
     <Modal modalIsOpen={waterModalOpen} closeModal={closeWaterModal}>
@@ -22,7 +24,7 @@ const WaterModal = ({
   );
 };
 
-export default WaterModal
+export default WaterModal;
 
 // - заголовок, зміст якого залежить від отриманих props, що мають містити інформацію щодо типу операції "add" або "edit"
 // - WaterForm
