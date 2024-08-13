@@ -1,6 +1,10 @@
 import css from './AdvantagesSection.module.css';
 import icon from '../../images/homePage/icon.svg';
 import { useTranslation } from 'react-i18next';
+import { useEffect } from 'react';
+import {getAllUsers} from "../../redux/auth/operations";
+import { useDispatch, useSelector } from 'react-redux';
+import { selectAllUsers } from '../../redux/auth/selectors';
 
 import firstUserMobile from '../../images/homePage/user-1-mobile.png';
 import firstUserMobile2x from '../../images/homePage/user-1-mobile@2x.png';
@@ -18,6 +22,22 @@ import thirdUserTabletAndDesktop2x from '../..//images/homePage/user-3-tablet-de
 const AdvantagesSection = () => {
   const { t, i18n } = useTranslation();
   const isUk = i18n.language === 'uk';
+  const dispatch = useDispatch();
+  const allUsers = useSelector(selectAllUsers);
+
+  useEffect(() => {
+    const fetchUsers = async ()=>{
+      try {
+        const response = dispatch(getAllUsers());
+        console.log(response)
+        return response;
+      } catch (error) {
+        console.log(error.message)
+      }
+    }
+
+    fetchUsers()
+  }, [dispatch]);
 
   return (
     <section className={css.advantagesSection}>
@@ -79,11 +99,11 @@ const AdvantagesSection = () => {
         <p className={isUk ? css.ukParagraph : css.advantagesParagraph}>
           {i18n.language === 'en' ? (
             <>
-              Our <span className={css.span}>happy</span> customers
+              Our <span className={css.span}>{allUsers} happy</span> customers
             </>
           ) : (
             <>
-              Наші <span className={css.ukSpan}>щасливі</span> клієнти
+              Наші <span className={css.ukSpan}>{allUsers} щасливі</span> клієнти
             </>
           )}
         </p>

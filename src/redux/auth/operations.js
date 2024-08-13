@@ -93,10 +93,22 @@ export const resetPassword = createAsyncThunk(
   'auth/resetPassword',
   async ({ token, password }, { rejectWithValue }) => {
     try {
-      const response = await axios.post('/auth/reset-password', {
+      const response = await instance.post('/auth/reset-password', {
         token,
         password,
       });
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  },
+);
+
+export const getAllUsers = createAsyncThunk(
+  'auth/allUsers',
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await instance.get('/auth/users');
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);
