@@ -110,6 +110,7 @@ const SignInForm = () => {
       <button className={css.submitButton} type="submit">
         Sign In
       </button>
+      <span className={css.alreadyHaveAccount}>OR</span>
       <CustomGoogleButton
         onSuccess={handleGoogleLogin}
         onError={() => {

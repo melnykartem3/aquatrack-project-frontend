@@ -3,10 +3,12 @@ import css from './Google.Button.module.css';
 
 
 const CustomGoogleButton = ({ onSuccess, onError }) => (
+  
   <GoogleLogin
     onSuccess={onSuccess}
     onError={onError}
     render={(renderProps) => (
+        
       <button
         className={css.customGoogleButton} 
         onClick={renderProps.onClick}
