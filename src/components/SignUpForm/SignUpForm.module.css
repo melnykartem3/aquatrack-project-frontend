@@ -205,7 +205,11 @@ input::placeholder {
   line-height: 1.28;
   margin-top: 10px;
 }
-
+.alreadyHaveAccount {
+  margin: 20px;
+  color: rgba(47, 47, 47, 0.5);
+  font-size: 14px;
+}
 .submitButton {
   padding: 16px 128px;
   background-color: var(--basic-green);

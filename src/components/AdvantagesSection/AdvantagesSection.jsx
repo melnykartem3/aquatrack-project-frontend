@@ -2,7 +2,7 @@ import css from './AdvantagesSection.module.css';
 import icon from '../../images/homePage/icon.svg';
 import { useTranslation } from 'react-i18next';
 import { useEffect } from 'react';
-import {getAllUsers} from "../../redux/auth/operations";
+import { getAllUsers } from '../../redux/auth/operations';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectAllUsers } from '../../redux/auth/selectors';
 
@@ -26,17 +26,16 @@ const AdvantagesSection = () => {
   const allUsers = useSelector(selectAllUsers);
 
   useEffect(() => {
-    const fetchUsers = async ()=>{
+    const fetchUsers = async () => {
       try {
         const response = dispatch(getAllUsers());
-        console.log(response)
         return response;
       } catch (error) {
-        console.log(error.message)
+        throw new error();
       }
-    }
+    };
 
-    fetchUsers()
+    fetchUsers();
   }, [dispatch]);
 
   return (
@@ -103,7 +102,8 @@ const AdvantagesSection = () => {
             </>
           ) : (
             <>
-              Наші <span className={css.ukSpan}>{allUsers} щасливі</span> клієнти
+              Наші <span className={css.ukSpan}>{allUsers} щасливих</span>{' '}
+              клієнтів
             </>
           )}
         </p>

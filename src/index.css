@@ -50,7 +50,7 @@ button {
   cursor: pointer;
 }
 
-.closeModalBtn{
+.closeModalBtn {
   width: 24px;
   height: 24px;
 
@@ -67,7 +67,5 @@ button {
 
 img {
   display: block;
-  /* max-width: 100%; */
   height: auto;
 }
-

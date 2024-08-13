@@ -3,8 +3,9 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import Input from '../Input/Input.jsx';
 import css from './UserForm.module.css';
-
-const UserForm = ({ schema, onSubmit, fields, submitButtonLabel }) => {
+import CustomGoogleButton from '../GoogleButton/GoggleButton.jsx';
+import { toast } from 'react-hot-toast';
+const UserForm = ({ schema, onSubmit, fields, submitButtonLabel, handleGoogleLogin }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [showRepeatPassword, setShowRepeatPassword] = useState(false);
 
@@ -46,6 +47,14 @@ const UserForm = ({ schema, onSubmit, fields, submitButtonLabel }) => {
       <button className={css.submitButton} type="submit">
         {submitButtonLabel}
       </button>
+      <span className={css.alreadyHaveAccount}>OR</span>
+      <CustomGoogleButton
+        onSuccess={handleGoogleLogin}
+        onError={() => {
+          console.log('Google Login Failed');
+          toast.error('Google login failed. Please try again.');
+        }}
+      />
     </form>
   );
 };

@@ -61,17 +61,6 @@ const MonthInfo = ({ handleDateChange }) => {
     });
   };
 
-  const setToCurrentDate = () => {
-    const newDate = new Date();
-    setCurrentDate(newDate);
-    setSelectedDate({
-      day: newDate.getDate(),
-      month: newDate.getMonth(),
-      year: newDate.getFullYear(),
-    });
-    handleDateChange(newDate);
-  };
-
   const getDaysInMonth = (year, month) =>
     new Date(year, month + 1, 0).getDate();
 
@@ -106,7 +95,6 @@ const MonthInfo = ({ handleDateChange }) => {
         changeMonth={changeMonth}
         currentMonth={currentMonth}
         currentYear={currentYear}
-        setToCurrentDate={setToCurrentDate}
         isActive={isActive}
         setIsActive={setIsActive}
         canNavigatePreviousMonth={canNavigatePreviousMonth}
