@@ -33,8 +33,11 @@ const schema = yup.object().shape({
 
 const UserSettingsForm = ({ closeSettingModal, onAvatarUpdate }) => {
   const [selectedAvatarFile, setSelectedAvatarFile] = useState(null);
-  const [avatarURL, setAvatarURL] = useState(null);
 
+  const { t } = useTranslation();
+
+  const [avatarURL, setAvatarURL] = useState(null);
+  
   const { name, gender, avatar, weight, email, timeSports, waterRate, _id } =
     useSelector(selectUser);
 
@@ -132,7 +135,7 @@ const UserSettingsForm = ({ closeSettingModal, onAvatarUpdate }) => {
     <form onSubmit={handleSubmit(onSubmit)} className={css.userSettingsForm}>
       <div className={css.userAvatarContainer}>
         {avatarURL ? (
-          <img src={avatarURL} alt="User avatar" className={css.userAvatar} />
+          <img src={avatarURL} alt={t('Settings.userAvatar')} className={css.userAvatar} />
         ) : (
           <FaUserCircle className={css.iconUser} />
         )}
@@ -141,7 +144,9 @@ const UserSettingsForm = ({ closeSettingModal, onAvatarUpdate }) => {
             <svg width="20" height="20">
               <use href={`${sprite}#${`icon-upload`}`} />
             </svg>
-            <span className={css.inputText}>Upload a photo</span>
+            <span className={css.inputText}>
+      {t('Settings.uploadPhoto')}
+    </span>
           </div>
           <input
             type="file"
@@ -155,9 +160,9 @@ const UserSettingsForm = ({ closeSettingModal, onAvatarUpdate }) => {
       <div className={css.settingsForm}>
         <div>
           <fieldset className={css.genderContainer}>
-            <legend className={`${css.genderLegend} ${css.inputTitle}`}>
-              Your gender identity
-            </legend>
+          <legend className={`${css.genderLegend} ${css.inputTitle}`}>
+      {t('Settings.yourGenderIdentity')}
+    </legend>
             <label className={`${css.genderLabel} ${css.inputText}`}>
               <input
                 type="radio"
@@ -166,7 +171,7 @@ const UserSettingsForm = ({ closeSettingModal, onAvatarUpdate }) => {
                 name="gender"
                 {...register('gender')}
               />
-              Woman
+             {t('Settings.Woman')}
             </label>
             <label className={`${css.genderLabel} ${css.inputText}`}>
               <input
@@ -176,13 +181,13 @@ const UserSettingsForm = ({ closeSettingModal, onAvatarUpdate }) => {
                 name="gender"
                 {...register('gender')}
               />
-              Man
+              {t('Settings.Man')}
             </label>
           </fieldset>
         </div>
         <div className={css.userInfoContainer}>
           <label className={`${css.userInfoLabel} ${css.inputTitle}`}>
-            Your name
+          {t('Settings.Yourname')}
             <input
               type="text"
               name="name"
@@ -198,7 +203,7 @@ const UserSettingsForm = ({ closeSettingModal, onAvatarUpdate }) => {
             )}
           </label>
           <label className={`${css.userInfoLabel} ${css.inputTitle}`}>
-            Email
+          {t('Settings.Email')}
             <input
               type="email"
               name="email"
@@ -215,39 +220,37 @@ const UserSettingsForm = ({ closeSettingModal, onAvatarUpdate }) => {
           </label>
         </div>
         <div className={css.userInfoContainer}>
-          <h3 className={`${css.inputTitle}`}>My daily norma</h3>
+          <h3 className={`${css.inputTitle}`}>{t('Settings.Mydailynorma')}</h3>
           <div className={css.normaWaterContainer}>
             <div>
               <h4 className={`${css.normaGenderTitle} ${css.inputText}`}>
-                For woman:
+              {t('Settings.ForWoman')}
               </h4>
               <p className={css.greenText}>V=(M*0,03) + (T*0,4)</p>
             </div>
             <div>
               <h4 className={`${css.normaGenderTitle} ${css.inputText}`}>
-                For man:
+              {t('Settings.ForMan')}
               </h4>
               <p className={css.greenText}>V=(M*0,04) + (T*0,6)</p>
             </div>
           </div>
           <div className={css.normaWaterTextContainer}>
-            <p className={`${css.normaWaterText} ${css.formulaDescription}`}>
-              <span className={css.greenText}>*</span> V is the volume of the
-              water norm in liters per day, M is your body weight, T is the time
-              of active sports, or another type of activity commensurate in
-              terms of loads (in the absence of these, you must set 0)
-            </p>
+          <p className={`${css.normaWaterText} ${css.formulaDescription}`}>
+      <span className={css.greenText}>*</span> {t('Settings.waterFormula.note')}
+    </p>
           </div>
           <div className={css.activeTimeContainer}>
             <svg width="4.62" height="21.23">
               <use href={`${sprite}#${`icon-exclamation_point`}`} />
             </svg>
-            <p className={css.inputText}>Active time in hours</p>
+            <p className={css.inputText}>{t('Settings.ActiveTimeInHours')}</p>
           </div>
         </div>
         <div className={css.userInfoContainer}>
           <label className={`${css.userInfoLabel} ${css.inputText}`}>
-            Your weight in kilograms:
+            
+            {t('Settings.YourWeightInKilograms')}
             <input
               type="number"
               step="any"
@@ -264,7 +267,7 @@ const UserSettingsForm = ({ closeSettingModal, onAvatarUpdate }) => {
             )}
           </label>
           <label className={`${css.userInfoLabel} ${css.inputText}`}>
-            The time of active participation in sports:
+            {t('Settings.activeParticipation')}
             <input
               type="number"
               step="any"
@@ -284,16 +287,15 @@ const UserSettingsForm = ({ closeSettingModal, onAvatarUpdate }) => {
         <div className={css.userInfoContainer}>
           <div className={css.amountOfWaterContainer}>
             <p
-              className={`${css.amountOfWaterText} ${css.inputText} ${css.formulaDescriptionContainer}`}
-            >
-              The required amount of water in liters per <span>day:</span>
-            </p>
-            <span className={css.amountOfWaterText}>
-              {normaWater ? normaWater : getValues('waterRate')}L
-            </span>
+              className={`${css.amountOfWaterText} ${css.inputText} ${css.formulaDescriptionContainer}`}>
+                {t('Settings.waterRequirement.amount')}
+              <span></span></p>
+              <span className={css.amountOfWaterText}>
+                {normaWater ? normaWater : getValues("waterRate")}L
+              </span>
           </div>
           <label className={`${css.userInfoLabel} ${css.inputTitle}`}>
-            Write down how much water you will drink:
+          {t('Settings.waterYouWillDrink')} 
             <input
               type="number"
               step="any"
@@ -312,7 +314,7 @@ const UserSettingsForm = ({ closeSettingModal, onAvatarUpdate }) => {
         </div>
       </div>
       <button type="submit" className={`${css.saveBtn} ${css.inputTitle}`}>
-        Save
+      {t('Settings.BtnSave')} 
       </button>
     </form>
   );

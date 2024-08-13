@@ -14,5 +14,122 @@
         "viewStatistics": "Перегляд статистики",
         "personalRateSetting": "Налаштування особистої норми"
       }
-    }
+    },
+      "signup": {
+        "invalidEmail": "Неправильний формат електронної пошти",
+        "emailRequired": "Електронна пошта є обов'язковою",
+        "passwordMinLength": "Пароль повинен містити не менше 8 символів",
+        "passwordRequired": "Пароль є обов'язковим",
+        "passwordsMustMatch": "Паролі повинні співпадати",
+        "repeatPasswordRequired": "Повторіть пароль є обов'язковим",
+        "userExists": "Користувач з цією електронною поштою вже існує.",
+        "emailLabel": "Електронна пошта",
+        "emailPlaceholder": "Введіть вашу електронну пошту",
+        "passwordLabel": "Пароль",
+        "passwordPlaceholder": "Введіть ваш пароль",
+        "repeatPasswordLabel": "Повторіть пароль",
+        "repeatPasswordPlaceholder": "Повторіть пароль",
+        "submitButtonLabel": "Зареєструватися",
+        "title": "Сторінка реєстрації",
+        "alreadyHaveAccount": "Вже є аккаунт?"
+    },
+    "signin": {
+      "invalidEmail": "Неправильний формат електронної пошти",
+      "emailRequired": "Електронна пошта є обов'язковою",
+      "passwordMinLength": "Пароль повинен містити не менше 8 символів",
+      "passwordRequired": "Пароль є обов'язковим",
+      "loginFailed": "Помилка входу: ",
+      "emailLabel": "Електронна пошта",
+      "emailPlaceholder": "Введіть вашу електронну пошту",
+      "passwordLabel": "Пароль",
+      "passwordPlaceholder": "Введіть ваш пароль",
+      "submitButtonLabel": "Увійти",
+      "title": "Сторінка входу",
+      "signInTitle": "Увійти",
+      "noAccount": "Не маєте облікового запису?",
+      "signUpLink": "Зареєструватися",
+      "forgotPassword": "Забули пароль?",
+      "resetLink": "Скинути"
+  },
+  "waterDailyNorma": {
+    "myDailyNorma": "Моя щоденна норма"
+  },
+  "waterProgressBar": {
+    "today": "Сьогодні"
+  },
+  "addWaterBtn": {
+    "addWater": "Додати воду"
+  },
+  "waterModal": {
+    "addWaterTitle": "Додати воду",
+    "editWaterTitle": "Редагувати введену кількість води",
+    "chooseValue": "Оберіть значення:",
+    "correctData": "Виправте введені дані:"
+  },
+    "waterForm": {
+      "amountOfWater": "Кількість води:",
+      "recordingTime": "Час запису:",
+      "enterWaterValue": "Введіть значення використаної води:",
+      "saveButton": "Зберегти"
+  },
+  "common": {
+    "hello": "Привіт"
+  },
+  "commonSecond": {
+    "today": "Сьогодні"
+  },
+  "Settings": {
+    "settingsTitle": "Налаштування",
+    "userAvatar": "Аватар користувача",
+    "uploadPhoto": "Завантажити фото",
+    "yourGenderIdentity": "Ваша гендерна ідентичність",
+    "Woman": "Жінка",
+    "Man": "Чоловік",
+    "Yourname": "Ваше ім'я",
+    "Email": "Електронна пошта",
+    "Mydailynorma": "Моя добова норма",
+    "ForWoman": "Для жінок:",
+    "ForMan": "Для чоловіків:",
+    "waterFormula": {
+    "note": "V — це об'єм норми води в літрах на день, M — ваша вага, T — час активних спортивних занять або іншого типу діяльності, що відповідає за навантаження (у разі їхньої відсутності потрібно вказати 0)"
+  },
+  "ActiveTimeInHours": "Активність у годинах",
+  "YourWeightInKilograms": "Ваша вага у кілограмах:",
+  "activeParticipation":"Час активних занять спортом:",
+  "waterRequirement": {
+    "amount": "Необхідна кількість води в літрах на день:"
+  },
+  "waterYouWillDrink": "Запишіть, скільки води ви будете пити:",
+  "BtnSave": "Зберегти"
+},
+  "logOutModal": {
+    "title": "Вийти",
+    "text": "Ви справді хочете вийти?",
+    "logOut": "Вийти",
+    "cancel": "Скасувати"
+  },
+  "popover": {
+    "logOut": "Вийти",
+    "setting": "Налаштування"
+  },
+  "validation": {
+    "invalidEmail": "Неправильний формат електронної пошти",
+    "emailRequired": "Електронна пошта обов'язкова"
+  },
+  "notification": {
+    "errorSendingResetEmail": "Помилка при надсиланні листа для скидання пароля."
+  },
+  "fields": {
+    "email": "Електронна пошта",
+    "emailPlaceholder": "Введіть вашу електронну пошту"
+  },
+  "buttons": {
+    "requestPasswordReset": "Запросити скидання пароля"
+  },
+  "pageTitles": {
+    "requestPasswordPage": "Сторінка запиту скидання пароля"
+  },
+  "titles": {
+    "requestPasswordReset": "Запит на скидання пароля"
+  }
   }
