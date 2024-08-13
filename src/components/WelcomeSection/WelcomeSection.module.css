@@ -137,14 +137,27 @@
   }
 }
 
+.trackerUk {
+  font-size: 92px;
+}
 
-@media screen and (max-width: 768px) {
-  .buttonUka {
-    width: 145px;
-    
+@media (max-width: 1440px) {
+  .trackerUk {
+    font-size: 64px;
+    line-height: 70px;
   }
 }
 
-.trackerUk{
-  font-size: 92px;
+@media (max-width: 768px) {
+  .trackerUk {
+    margin-top: 16px;
+    color: #323f47;
+    font-size: 38px;
+    line-height: 1;
+    letter-spacing: -0.01em;
+  }
+
+  .buttonUka {
+    width: 145px;
+  }
 }
