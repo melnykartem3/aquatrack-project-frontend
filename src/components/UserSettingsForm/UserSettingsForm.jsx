@@ -9,6 +9,7 @@ import * as yup from 'yup';
 import toast from 'react-hot-toast';
 import { updateUser } from '../../redux/auth/operations.js';
 import { FaUserCircle } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
 
 const schema = yup.object().shape({
   name: yup.string().required('Name is required!'),
@@ -37,7 +38,7 @@ const UserSettingsForm = ({ closeSettingModal, onAvatarUpdate }) => {
   const { t } = useTranslation();
 
   const [avatarURL, setAvatarURL] = useState(null);
-  
+
   const { name, gender, avatar, weight, email, timeSports, waterRate, _id } =
     useSelector(selectUser);
 
@@ -135,7 +136,11 @@ const UserSettingsForm = ({ closeSettingModal, onAvatarUpdate }) => {
     <form onSubmit={handleSubmit(onSubmit)} className={css.userSettingsForm}>
       <div className={css.userAvatarContainer}>
         {avatarURL ? (
-          <img src={avatarURL} alt={t('Settings.userAvatar')} className={css.userAvatar} />
+          <img
+            src={avatarURL}
+            alt={t('Settings.userAvatar')}
+            className={css.userAvatar}
+          />
         ) : (
           <FaUserCircle className={css.iconUser} />
         )}
@@ -144,9 +149,7 @@ const UserSettingsForm = ({ closeSettingModal, onAvatarUpdate }) => {
             <svg width="20" height="20">
               <use href={`${sprite}#${`icon-upload`}`} />
             </svg>
-            <span className={css.inputText}>
-      {t('Settings.uploadPhoto')}
-    </span>
+            <span className={css.inputText}>{t('Settings.uploadPhoto')}</span>
           </div>
           <input
             type="file"
@@ -160,9 +163,9 @@ const UserSettingsForm = ({ closeSettingModal, onAvatarUpdate }) => {
       <div className={css.settingsForm}>
         <div>
           <fieldset className={css.genderContainer}>
-          <legend className={`${css.genderLegend} ${css.inputTitle}`}>
-      {t('Settings.yourGenderIdentity')}
-    </legend>
+            <legend className={`${css.genderLegend} ${css.inputTitle}`}>
+              {t('Settings.yourGenderIdentity')}
+            </legend>
             <label className={`${css.genderLabel} ${css.inputText}`}>
               <input
                 type="radio"
@@ -171,7 +174,7 @@ const UserSettingsForm = ({ closeSettingModal, onAvatarUpdate }) => {
                 name="gender"
                 {...register('gender')}
               />
-             {t('Settings.Woman')}
+              {t('Settings.Woman')}
             </label>
             <label className={`${css.genderLabel} ${css.inputText}`}>
               <input
@@ -187,7 +190,7 @@ const UserSettingsForm = ({ closeSettingModal, onAvatarUpdate }) => {
         </div>
         <div className={css.userInfoContainer}>
           <label className={`${css.userInfoLabel} ${css.inputTitle}`}>
-          {t('Settings.Yourname')}
+            {t('Settings.Yourname')}
             <input
               type="text"
               name="name"
@@ -203,7 +206,7 @@ const UserSettingsForm = ({ closeSettingModal, onAvatarUpdate }) => {
             )}
           </label>
           <label className={`${css.userInfoLabel} ${css.inputTitle}`}>
-          {t('Settings.Email')}
+            {t('Settings.Email')}
             <input
               type="email"
               name="email"
@@ -224,21 +227,22 @@ const UserSettingsForm = ({ closeSettingModal, onAvatarUpdate }) => {
           <div className={css.normaWaterContainer}>
             <div>
               <h4 className={`${css.normaGenderTitle} ${css.inputText}`}>
-              {t('Settings.ForWoman')}
+                {t('Settings.ForWoman')}
               </h4>
               <p className={css.greenText}>V=(M*0,03) + (T*0,4)</p>
             </div>
             <div>
               <h4 className={`${css.normaGenderTitle} ${css.inputText}`}>
-              {t('Settings.ForMan')}
+                {t('Settings.ForMan')}
               </h4>
               <p className={css.greenText}>V=(M*0,04) + (T*0,6)</p>
             </div>
           </div>
           <div className={css.normaWaterTextContainer}>
-          <p className={`${css.normaWaterText} ${css.formulaDescription}`}>
-      <span className={css.greenText}>*</span> {t('Settings.waterFormula.note')}
-    </p>
+            <p className={`${css.normaWaterText} ${css.formulaDescription}`}>
+              <span className={css.greenText}>*</span>{' '}
+              {t('Settings.waterFormula.note')}
+            </p>
           </div>
           <div className={css.activeTimeContainer}>
             <svg width="4.62" height="21.23">
@@ -249,7 +253,6 @@ const UserSettingsForm = ({ closeSettingModal, onAvatarUpdate }) => {
         </div>
         <div className={css.userInfoContainer}>
           <label className={`${css.userInfoLabel} ${css.inputText}`}>
-            
             {t('Settings.YourWeightInKilograms')}
             <input
               type="number"
@@ -287,15 +290,17 @@ const UserSettingsForm = ({ closeSettingModal, onAvatarUpdate }) => {
         <div className={css.userInfoContainer}>
           <div className={css.amountOfWaterContainer}>
             <p
-              className={`${css.amountOfWaterText} ${css.inputText} ${css.formulaDescriptionContainer}`}>
-                {t('Settings.waterRequirement.amount')}
-              <span></span></p>
-              <span className={css.amountOfWaterText}>
-                {normaWater ? normaWater : getValues("waterRate")}L
-              </span>
+              className={`${css.amountOfWaterText} ${css.inputText} ${css.formulaDescriptionContainer}`}
+            >
+              {t('Settings.waterRequirement.amount')}
+              <span></span>
+            </p>
+            <span className={css.amountOfWaterText}>
+              {normaWater ? normaWater : getValues('waterRate')}L
+            </span>
           </div>
           <label className={`${css.userInfoLabel} ${css.inputTitle}`}>
-          {t('Settings.waterYouWillDrink')} 
+            {t('Settings.waterYouWillDrink')}
             <input
               type="number"
               step="any"
@@ -314,7 +319,7 @@ const UserSettingsForm = ({ closeSettingModal, onAvatarUpdate }) => {
         </div>
       </div>
       <button type="submit" className={`${css.saveBtn} ${css.inputTitle}`}>
-      {t('Settings.BtnSave')} 
+        {t('Settings.BtnSave')}
       </button>
     </form>
   );
