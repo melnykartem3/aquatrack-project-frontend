@@ -28,7 +28,7 @@ const ResetPassword = () => {
       const { repeatPassword, ...formData } = data;
       await dispatch(resetPassword({ token, ...formData })).unwrap();
       reset();
-      navigate('/login');
+      navigate('/signin');
     } catch (error) {
       toast.error('Error resetting password.');
     }
