@@ -103,3 +103,15 @@ export const resetPassword = createAsyncThunk(
     }
   },
 );
+
+export const getAllUsers = createAsyncThunk(
+  'auth/allUsers',
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await instance.get('/auth/users');
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  },
+);

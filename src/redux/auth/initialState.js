@@ -8,6 +8,7 @@ export const INITIAL_STATE = {
     avatar: null,
     timeSports: null,
   },
+  allUsers: null,
   accessToken: null,
   isLoading: false,
   isLoggedIn: false,
