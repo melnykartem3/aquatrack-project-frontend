@@ -19,8 +19,11 @@
 
 .customers {
   display: flex;
-  padding: 10px 0 10px 14px;
+  padding: 6px 10px 6px 10px;
+  justify-content: center;
+  align-items: center;
   border-radius: 30px;
+  text-align: center;
   color: #323f47;
   background-color: white;
   position: absolute;
@@ -167,6 +170,7 @@
     padding: 10px 20px;
     top: 283px;
     left: 32px;
+    border-radius: 45px;
   }
 
   .iconWrapper {
