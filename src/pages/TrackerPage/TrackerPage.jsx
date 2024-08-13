@@ -3,7 +3,7 @@ import WaterMainInfo from '../../components/WaterMainInfo/WaterMainInfo';
 import WaterDetailedInfo from '../../components/WaterDetailedInfo/WaterDetailedInfo';
 import css from './TrackerPage.module.css';
 import { useDispatch } from 'react-redux';
-import { getUser} from '../../redux/auth/operations';
+import { getUser } from '../../redux/auth/operations';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { selectUser } from '../../redux/auth/selectors';
@@ -15,13 +15,8 @@ const TrackerPage = () => {
   const userId = user._id;
 
   useEffect(() => {
-   dispatch(getUser());
-    }
-  , [dispatch]);
-
-  // useEffect(() => {
-  //   console.log(user);
-  // }, [user]);
+    dispatch(getUser());
+  }, [dispatch]);
 
   return (
     <>

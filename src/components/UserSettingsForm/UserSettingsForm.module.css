@@ -45,7 +45,7 @@ legend {
 }
 
 .genderInput::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 50%;
   left: 50%;
@@ -58,7 +58,7 @@ legend {
 }
 
 .genderInput:checked::after {
-  content: "";
+  content: '';
   position: absolute;
   top: 50%;
   left: 50%;
@@ -70,7 +70,7 @@ legend {
   visibility: visible;
 }
 
-input[type="radio"] {
+input[type='radio'] {
   position: relative;
   height: 20px;
   width: 20px;
@@ -179,6 +179,8 @@ input[type="radio"] {
 .userAvatar {
   width: 75px;
   height: 75px;
+  border-radius: 100%;
+  border: 1px solid black;
 }
 
 .userInfoField {
@@ -199,6 +201,17 @@ input[type="radio"] {
   font-size: 14px;
   font-weight: 400;
   line-height: 18px;
+}
+
+.iconUser {
+  width: 75px;
+  height: 75px;
+  color: rgb(73, 72, 72);
+}
+
+.saveBtn:hover,
+.saveBtn:focus {
+  background: rgb(135, 210, 141);
 }
 
 @media screen and (min-width: 768px) {
@@ -240,14 +253,20 @@ input[type="radio"] {
     align-items: end;
     gap: 5px;
   }
+
+  .userAvatarContainer {
+    height: 134px;
+  }
+
   .userAvatar {
     width: 100px;
     height: 100px;
   }
-}
-.saveBtn:hover,
-.saveBtn:focus {
-  background: rgb(135, 210, 141);
+
+  .iconUser {
+    width: 100px;
+    height: 100px;
+  }
 }
 
 @media screen and (min-width: 1440px) {

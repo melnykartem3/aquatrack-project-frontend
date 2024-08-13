@@ -1,5 +1,3 @@
-import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
 import { lazy } from 'react';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
@@ -8,7 +6,6 @@ import { Route, Routes } from 'react-router-dom';
 import RestrictedRoute from './RestrictedRoute/RestrictedRoute';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import SharedLayout from './SharedLayout/SharedLayout';
-import Modal from './Modal/Modal';
 import LanguageSwitcher from './LanguageSwitcher/LanguageSwitcher.jsx';
 
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
@@ -24,15 +21,9 @@ const ResetPasswordPage = lazy(() =>
 );
 
 function App() {
-  const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   dispatch(refreshUser());
-  // }, [dispatch]);
-
   return (
     <>
-     <LanguageSwitcher />
+      <LanguageSwitcher />
       <SharedLayout>
         <Routes>
           <Route path="/" element={<HomePage />} />

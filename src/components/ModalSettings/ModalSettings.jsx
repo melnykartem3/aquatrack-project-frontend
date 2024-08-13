@@ -1,9 +1,10 @@
 import ModalReact from 'react-modal';
-import css from '../Modal/Modal.module.css';
+import css from '../ModalSettings/ModalSettings.module.css';
 import clsx from 'clsx';
 import { IoClose } from 'react-icons/io5';
 
-const Modal = ({ modalIsOpen, closeModal, children }) => {
+const ModalSettings = ({ modalIsOpen, closeModal, children }) => {
+
   const overlayClass = clsx(css.ReactModal_Overlay, modalIsOpen && css.isOpen);
 
   return (
@@ -24,4 +25,4 @@ const Modal = ({ modalIsOpen, closeModal, children }) => {
   );
 };
 
-export default Modal;
+export default ModalSettings;

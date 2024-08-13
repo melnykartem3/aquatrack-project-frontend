@@ -18,8 +18,6 @@ export const fetchWaterListDaily = createAsyncThunk(
   }
 );
 
-// ще зробити феч за сьогодні і видалення 
-
 export const addWater = createAsyncThunk(
   'water/addWater',
   async (water, thunkAPI) => {

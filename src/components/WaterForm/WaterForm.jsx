@@ -7,9 +7,8 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { addWater, updateWater } from '../../redux/water/operations';
 import toast from 'react-hot-toast';
+import { useTranslation } from 'react-i18next';
 
-
-// схема валідації
 const schema = yup.object().shape({
   waterVolume: yup
     .number()
@@ -21,20 +20,25 @@ const schema = yup.object().shape({
 });
 
 const WaterForm = ({ closeWaterModal, operationType, item }) => {
-
+  const { t, i18n } = useTranslation();
   const dispatch = useDispatch();
 
-//початкові значення в залежності чи операція add чи edit, і нормалузуємо час 
-   const defaultValues =
+  const defaultValues =
     operationType !== 'add' && item
       ? {
           date: item.date,
-          time: new Date(item.date).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }),
+          time: new Date(item.date).toLocaleTimeString('en-GB', {
+            hour: '2-digit',
+            minute: '2-digit',
+          }),
           waterVolume: item.waterVolume,
         }
       : {
           date: new Date().toISOString(),
-          time: new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }),
+          time: new Date().toLocaleTimeString('en-GB', {
+            hour: '2-digit',
+            minute: '2-digit',
+          }),
           waterVolume: 50,
         };
 
@@ -52,18 +56,21 @@ const WaterForm = ({ closeWaterModal, operationType, item }) => {
     mode: 'onChange',
   });
 
-  //відображаємо актуальні дані у формі при її відкритті для редагування
   useEffect(() => {
     if (operationType !== 'add' && item) {
       reset({
         date: item.date,
-        time: new Date(item.date).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', hour12: false }),
+        time: new Date(item.date).toLocaleTimeString('en-GB', {
+          hour: '2-digit',
+          minute: '2-digit',
+          hour12: false,
+        }),
         waterVolume: item.waterVolume,
       });
     }
   }, [operationType, item, reset]);
 
-  const onSubmit =(data) => {
+  const onSubmit = data => {
     const date = new Date(data.date);
     const [hours, minutes] = data.time.split(':');
     date.setHours(hours);
@@ -72,77 +79,101 @@ const WaterForm = ({ closeWaterModal, operationType, item }) => {
     const water = {
       waterVolume: data.waterVolume,
       date: date.toISOString(),
-    }
+    };
 
-//нотифікаціz для користувача і закрити модальне вікно closeWaterModal
-       if (operationType === 'add') {
-         dispatch(addWater(water))
-         .unwrap()
-         .then(() => {
-           toast.success('You successfully add a water record!');
-           console.log('Add Water:', water);
-      })
-      .catch(error => {
-        toast.error('Failed to add water record!');
-      });
-      closeWaterModal();
-       } else {
-         dispatch(updateWater({ waterId: item._id, ...water }))
+    if (operationType === 'add') {
+      dispatch(addWater(water))
         .unwrap()
-         .then(() => {
-           toast.success('You successfully update a water record!');
-           console.log('Edit Water:', water);
-      })
-      .catch(error => {
-        toast.error('Failed to update water record!');
-      });
+        .then(() => {
+          toast.success('You successfully add a water record!');
+          console.log('Add Water:', water);
+        })
+        .catch(error => {
+          toast.error('Failed to add water record!');
+        });
       closeWaterModal();
-        }
+    } else {
+      dispatch(updateWater({ waterId: item._id, ...water }))
+        .unwrap()
+        .then(() => {
+          toast.success('You successfully update a water record!');
+          console.log('Edit Water:', water);
+        })
+        .catch(error => {
+          toast.error('Failed to update water record!');
+        });
+      closeWaterModal();
+    }
   };
-  
 
-  
-  //кнопка збіьшення води
-    const plusWaterVolume = () => {
-      const currentAmount = parseInt(getValues('waterVolume'), 10);
-      setValue('waterVolume', currentAmount + 10);
-    };
+  const plusWaterVolume = () => {
+    const currentAmount = parseInt(getValues('waterVolume'), 10);
+    setValue('waterVolume', currentAmount + 10);
+  };
 
-  //кнопка зменшення води
-    const minusWaterVolume = () => {
-      const currentAmount = parseInt(getValues('waterVolume'), 10);
-      setValue('waterVolume', Math.max(50, currentAmount - 10));
-    };
+  const minusWaterVolume = () => {
+    const currentAmount = parseInt(getValues('waterVolume'), 10);
+    setValue('waterVolume', Math.max(50, currentAmount - 10));
+  };
 
-    return (
-      <>
-        <form className={css.waterForm} onSubmit={handleSubmit(onSubmit)}>
-          <div>
-            <p>Amount of water:</p>
-            <div className={css.waterCounter}>
-              <button type="button"  className={css.waterCountBtn}  onClick={minusWaterVolume}>
-                <CiCircleMinus size={42} />
-              </button>
-              <div className={css.waterAmount}>{`${watch('waterVolume')} ml`}</div>
-              <button type="button" className={css.waterCountBtn}  onClick={plusWaterVolume}>
-                <CiCirclePlus  size={42} />
-              </button>
-            </div>
-            {errors.waterVolume && (<p className={css.error}>{errors.waterVolume.message}</p>)}
+  const saveButtonClass =
+    i18n.language === 'uk' ? `${css.saveBtn} ${css.saveBtnUk}` : css.saveBtn;
+
+  return (
+    <>
+      <form className={css.waterForm} onSubmit={handleSubmit(onSubmit)}>
+        <div>
+          <p>{t('waterForm.amountOfWater')}</p>
+          <div className={css.waterCounter}>
+            <button
+              type="button"
+              className={css.waterCountBtn}
+              onClick={minusWaterVolume}
+            >
+              <CiCircleMinus size={42} />
+            </button>
+            <div className={css.waterAmount}>{`${watch(
+              'waterVolume',
+            )} ml`}</div>
+            <button
+              type="button"
+              className={css.waterCountBtn}
+              onClick={plusWaterVolume}
+            >
+              <CiCirclePlus size={42} />
+            </button>
           </div>
-            <p>Recording time:</p>
-              <input type="time" name="time" className={css.timeInput} {...register('time')} />
-              {errors.time && <p className={css.error}>{errors.time.message}</p>}
-            <p className={css.waterInput}>Enter the value of the water used:</p>
-              <input type="number" name="waterVolume" className={css.amountInput} {...register('waterVolume')}
-            onChange={e => setValue('waterVolume', Number(e.target.value))} min="50" max="500"
-          />
-          {errors.waterVolume && <p className={css.error}>{errors.waterVolume.message}</p>}
-          <button className={css.saveBtn} type="submit">Save</button>
-        </form>
-      </>
-    );
-  };
+          {errors.waterVolume && (
+            <p className={css.error}>{errors.waterVolume.message}</p>
+          )}
+        </div>
+        <p>{t('waterForm.recordingTime')}</p>
+        <input
+          type="time"
+          name="time"
+          className={css.timeInput}
+          {...register('time')}
+        />
+        {errors.time && <p className={css.error}>{errors.time.message}</p>}
+        <p className={css.waterInput}>{t('waterForm.enterWaterValue')}</p>
+        <input
+          type="number"
+          name="waterVolume"
+          className={css.amountInput}
+          {...register('waterVolume')}
+          onChange={e => setValue('waterVolume', Number(e.target.value))}
+          min="50"
+          max="500"
+        />
+        {errors.waterVolume && (
+          <p className={css.error}>{errors.waterVolume.message}</p>
+        )}
+        <button className={saveButtonClass} type="submit">
+          {t('waterForm.saveButton')}
+        </button>
+      </form>
+    </>
+  );
+};
 
-export default WaterForm
-
+export default WaterForm;

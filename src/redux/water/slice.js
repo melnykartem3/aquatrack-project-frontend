@@ -25,11 +25,10 @@ const slice = createSlice({
     setNewDate: (state, action) => {
       const newDate = action.payload;
       state.currentDate = newDate;
-    }
+    },
   },
   extraReducers: builder => {
     builder
-      // Додавання води
       .addCase(addWater.pending, handlePending)
       .addCase(addWater.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -37,7 +36,6 @@ const slice = createSlice({
       })
       .addCase(addWater.rejected, handleRejected)
 
-      // Редагування води
       .addCase(updateWater.pending, handlePending)
       .addCase(updateWater.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -50,7 +48,6 @@ const slice = createSlice({
       })
       .addCase(updateWater.rejected, handleRejected)
 
-      // Отримання води за місяць
       .addCase(getWaterForMonth.pending, handlePending)
       .addCase(getWaterForMonth.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -58,29 +55,25 @@ const slice = createSlice({
       })
       .addCase(getWaterForMonth.rejected, handleRejected)
 
-      // Отримання списку води за день
       .addCase(fetchWaterListDaily.pending, handlePending)
       .addCase(fetchWaterListDaily.fulfilled, (state, action) => {
         state.isLoading = false;
         state.dailyItems.dayItems = action.payload.data;
         state.dailyItems.totalWaterVolume = action.payload.totalWaterVolume;
-
       })
       .addCase(fetchWaterListDaily.rejected, handleRejected)
 
-      // delete water
       .addCase(deleteWater.pending, handlePending)
       .addCase(deleteWater.fulfilled, (state, action) => {
         state.isLoading = false;
         const waterId = action.meta.arg;
-        state.dailyItems.dayItems = state.dailyItems.dayItems.filter(item => item._id !== waterId);
+        state.dailyItems.dayItems = state.dailyItems.dayItems.filter(
+          item => item._id !== waterId,
+        );
       })
       .addCase(deleteWater.rejected, handleRejected);
   },
 });
 
-
-export const { setNewDate} = slice.actions;
+export const { setNewDate } = slice.actions;
 export const waterReducer = slice.reducer;
-
-

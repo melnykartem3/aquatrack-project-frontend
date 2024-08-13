@@ -13,7 +13,13 @@ const WelcomeSection = () => {
       <Logo />
       <div className={css.content}>
         <p className={css.text}>{t('welcome.recordDailyIntake')}</p>
-        <h1 className={css.header}>{t('welcome.trackerTitle')}</h1>
+        <h1 
+          className={clsx(css.header, {
+            [css.trackerUk]: currentLanguage === 'uk',
+          })}
+        >
+          {t('welcome.trackerTitle')}
+        </h1>
         <div className={css.buttons}>
           <Link 
             to="/signup" 

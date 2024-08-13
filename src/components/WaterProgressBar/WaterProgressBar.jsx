@@ -2,8 +2,10 @@ import { useSelector } from 'react-redux';
 import css from './WaterProgressBar.module.css';
 import {selectChoosenDate, selectDailyItems } from '../../redux/water/selectors';
 import { selectUser } from '../../redux/auth/selectors';
+import { useTranslation } from 'react-i18next';
 
 const WaterProgressBar = () => {
+  const { t } = useTranslation();
  const formatDate = (date) => {
     const d = new Date(date);
     const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -18,7 +20,7 @@ const WaterProgressBar = () => {
     persentage = persentage.toFixed(0);
   return (
     <div className={css.waterProgressBar_container}>
-      <h2 className={css.waterProgressBar_h2}>{choosenDate === currentDate ? 'Today' : formatDate(choosenDate)}</h2>
+      <h2 className={css.waterProgressBar_h2}>{choosenDate === currentDate ? t('waterProgressBar.today') : formatDate(choosenDate)}</h2>
       <div className={css.waterProgressBar}>
         <div className={css.progress} style={{ width: `${persentage}%` }}></div>
         <div className={css.thumb} style={{ left: `${persentage}%` }}>
