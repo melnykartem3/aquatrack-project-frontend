@@ -23,9 +23,9 @@ const UserBar = ({ setOpenSetting, shortDisplayName, avatarURL }) => {
             <FaUserCircle className={css.iconUser} />
           )}
           {isPopoverOpen ? (
-            <FaAngleDown className={css.iconArrow} />
-          ) : (
             <FaAngleUp className={css.iconArrow} />
+          ) : (
+            <FaAngleDown className={css.iconArrow} />
           )}
         </div>
       </button>
