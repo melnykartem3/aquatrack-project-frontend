@@ -4,8 +4,10 @@ import { FiLogOut } from 'react-icons/fi';
 import LogOutModal from '../LogOutModal/LogOutModal';
 import css from './UserBarPopover.module.css';
 import UserSettingsModal from '../UserSettingsModal/UserSettingsModal';
+import { useTranslation } from 'react-i18next';
 
 const UserBarPopover = ({ onClose }) => {
+  const { t } = useTranslation();
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [modalSettingIsOpen, setModalSettingIsOpen] = useState(false);
@@ -34,10 +36,12 @@ const UserBarPopover = ({ onClose }) => {
 
   const closeModal = () => {
     setModalIsOpen(false);
+    onClose();
   };
 
   const closeSettingModal = () => {
     setModalSettingIsOpen(false);
+    onClose();
   };
 
   const toggleVisibility = () => {
@@ -59,7 +63,7 @@ const UserBarPopover = ({ onClose }) => {
               toggleVisibility();
             }}
           >
-            <CiSettings className={css.icon} /> Setting
+            <CiSettings className={css.icon} /> {t('popover.setting')}
           </button>
         </li>
         <li className={css.popoverListItem}>
@@ -71,7 +75,7 @@ const UserBarPopover = ({ onClose }) => {
               toggleVisibility();
             }}
           >
-            <FiLogOut className={css.icon} /> Log out
+            <FiLogOut className={css.icon} /> {t('popover.logOut')}
           </button>
         </li>
       </ul>

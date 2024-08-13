@@ -2,18 +2,20 @@ import { useEffect, useState } from 'react';
 import { format, isSameDay } from 'date-fns';
 import css from './ChooseDate.module.css';
 import clsx from 'clsx';
+import { useTranslation } from 'react-i18next';
 
 const ChooseDate = ({ changeDate, openSetting }) => {
-  const [date, setDate] = useState('Today');
+  const { t } = useTranslation();
+  const [date, setDate] = useState(t('commonSecond.today'));
 
   useEffect(() => {
     const today = new Date();
     if (!changeDate || isSameDay(changeDate, today)) {
-      setDate('Today');
+      setDate(t('commonSecond.today'));
     } else {
       setDate(format(changeDate, 'd, MMMM'));
     }
-  }, [changeDate]);
+  }, [changeDate, t]);
 
   return (
     <>

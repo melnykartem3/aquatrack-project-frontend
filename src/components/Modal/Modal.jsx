@@ -4,17 +4,7 @@ import clsx from 'clsx';
 import { IoClose } from 'react-icons/io5';
 
 const Modal = ({ modalIsOpen, closeModal, children }) => {
-  // const customStyles = {
-  //   overlay: {
-  //     backgroundColor: 'rgba(47, 47, 47, 0.6)',
-      
-  //   },
-  // };
-
-  const overlayClass = clsx(
-    css.ReactModal_Overlay,
-    modalIsOpen && css.isOpen
-  )
+  const overlayClass = clsx(css.ReactModal_Overlay, modalIsOpen && css.isOpen);
 
   return (
     <ModalReact
@@ -24,7 +14,7 @@ const Modal = ({ modalIsOpen, closeModal, children }) => {
       onRequestClose={closeModal}
       ariaHideApp={false}
       className={css.reactModal_Content}
-      bodyOpenClassName={css.ReactModal__Body} 
+      bodyOpenClassName={css.ReactModal__Body}
     >
       <button className={css.closeBtn} onClick={closeModal}>
         <IoClose className={css.closeIcon} />

@@ -5,8 +5,11 @@ import { getUser } from '../../redux/auth/operations.js';
 
 import UserBar from '../UserBar/UserBar';
 import css from './UserPanel.module.css';
+import { useTranslation } from 'react-i18next';
 
 const UserPanel = ({ setOpenSetting }) => {
+
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
 
@@ -33,7 +36,7 @@ const UserPanel = ({ setOpenSetting }) => {
   return (
     <div className={css.panelWrapper}>
       <h2 className={css.title}>
-        Hello
+        {t('common.hello')}
         <span className={css.secondaryText}>, {displayName}!</span>
       </h2>
       <UserBar

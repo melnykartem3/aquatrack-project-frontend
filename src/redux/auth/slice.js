@@ -22,13 +22,11 @@ const slice = createSlice({
   initialState: INITIAL_STATE,
   extraReducers: builder => {
     builder
-      //register
       .addCase(registerUser.pending, handlePending)
       .addCase(registerUser.fulfilled, (state, action) => {
         state.isLoading = false;
       })
       .addCase(registerUser.rejected, handleRejected)
-      // Login
       .addCase(login.pending, handlePending)
       .addCase(login.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -39,13 +37,11 @@ const slice = createSlice({
         state.isLoading = false;
         state.error = action.payload;
       })
-      // logout
       .addCase(logout.pending, handlePending)
       .addCase(logout.fulfilled, () => {
         return INITIAL_STATE;
       })
       .addCase(logout.rejected, handleRejected)
-      //refresh
       .addCase(refresh.pending, handlePending, state => {
         state.isRefreshing = true;
       })
@@ -58,28 +54,24 @@ const slice = createSlice({
       .addCase(refresh.rejected, handleRejected, state => {
         state.isRefreshing = true;
       })
-      // getUser
       .addCase(getUser.pending, handlePending)
       .addCase(getUser.fulfilled, (state, action) => {
         state.isLoading = false;
         state.user = { ...state.user, ...action.payload.data.user };
       })
       .addCase(getUser.rejected, handleRejected)
-
-      // updateUser
       .addCase(updateUser.pending, handlePending)
       .addCase(updateUser.fulfilled, (state, action) => {
         state.isLoading = false;
         state.user = { ...state.user, ...action.payload.data };
       })
       .addCase(updateUser.rejected, handleRejected)
-      // getAllUsers
       .addCase(getAllUsers.pending, handlePending)
-      .addCase(getAllUsers.fulfilled, (state,action)=>{
-        state.isLoading = false
-        state.allUsers = action.payload.data
+      .addCase(getAllUsers.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.allUsers = action.payload.data;
       })
-      .addCase(getAllUsers.rejected,handleRejected)
+      .addCase(getAllUsers.rejected, handleRejected);
   },
 });
 export const authReducer = slice.reducer;
