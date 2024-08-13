@@ -2,7 +2,6 @@ import * as yup from 'yup';
 import { useDispatch } from 'react-redux';
 import UserForm from '../UserForm/UserForm.jsx';
 import { requestResetEmail } from '../../redux/auth/operations.js';
-import toast from 'react-hot-toast';
 
 const RequestResetEmail = () => {
   const dispatch = useDispatch();
@@ -18,9 +17,7 @@ const RequestResetEmail = () => {
     try {
       await dispatch(requestResetEmail(data)).unwrap();
       reset();
-    } catch (error) {
-      toast.error('Error sending reset password email.');
-    }
+    } catch (error) {}
   };
 
   const fields = [
