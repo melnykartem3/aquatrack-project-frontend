@@ -1,4 +1,6 @@
 import { lazy } from 'react';
+import { GoogleOAuthProvider } from '@react-oauth/google';
+
 
 import { Route, Routes } from 'react-router-dom';
 import RestrictedRoute from './RestrictedRoute/RestrictedRoute';
@@ -29,7 +31,9 @@ function App() {
             path="/signup"
             element={
               <RestrictedRoute>
+                 <GoogleOAuthProvider clientId="692299041068-ifdkf2uemu5p4kpfobs1vp4i9g9d6pbj.apps.googleusercontent.com">
                 <SignUpPage />
+    </GoogleOAuthProvider>
               </RestrictedRoute>
             }
           />
@@ -37,7 +41,9 @@ function App() {
             path="/signin"
             element={
               <RestrictedRoute>
+                <GoogleOAuthProvider clientId="692299041068-ifdkf2uemu5p4kpfobs1vp4i9g9d6pbj.apps.googleusercontent.com">
                 <SignInPage />
+    </GoogleOAuthProvider>
               </RestrictedRoute>
             }
           />

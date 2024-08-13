@@ -36,10 +36,12 @@ const UserBarPopover = ({ onClose }) => {
 
   const closeModal = () => {
     setModalIsOpen(false);
+    onClose();
   };
 
   const closeSettingModal = () => {
     setModalSettingIsOpen(false);
+    onClose();
   };
 
   const toggleVisibility = () => {
