@@ -65,6 +65,14 @@
   transition: transform 300ms ease-in-out;
 }
 
+@media screen and (max-width: 374px) {
+  .reactModal_Content {
+    width: calc(100% - 32px);
+    min-width: auto;
+    padding: 40px 5px;
+  }
+}
+
 @media screen and (min-width: 768px) {
   .reactModal_Content {
     padding: 40px 40px;
