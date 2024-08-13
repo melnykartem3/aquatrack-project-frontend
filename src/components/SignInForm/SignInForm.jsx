@@ -2,8 +2,9 @@ import * as yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { login } from '../../redux/auth/operations.js';
 import UserForm from '../UserForm/UserForm';
-import toast from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
+
+
 
 const SignInForm = () => {
   const dispatch = useDispatch();
@@ -20,14 +21,12 @@ const SignInForm = () => {
       .min(8, t('signin.passwordMinLength'))
       .required(t('signin.passwordRequired')),
   });
-
   const onSubmit = reset => async data => {
     try {
       await dispatch(login(data)).unwrap();
       reset();
-    } catch (error) {
-      toast.error(t('signin.loginFailed') + error.message);
-    }
+    } catch (error) {}
+
   };
 
   const fields = [

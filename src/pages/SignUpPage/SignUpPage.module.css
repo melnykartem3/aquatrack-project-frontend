@@ -92,5 +92,6 @@
 
   .advSectionWrapper {
     display: flex;
+    width: 672px;
   }
 }

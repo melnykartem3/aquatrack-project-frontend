@@ -2,8 +2,8 @@ import * as yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { login, registerUser } from '../../redux/auth/operations.js';
 import UserForm from '../UserForm/UserForm.jsx';
-import toast from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
+
 
 const SignUpForm = () => {
   const dispatch = useDispatch();
@@ -32,9 +32,7 @@ const SignUpForm = () => {
         login({ email: formData.email, password: formData.password }),
       ).unwrap();
       reset();
-    } catch (error) {
-      toast.error(t('signup.userExists'));
-    }
+    } catch (error) {}
   };
 
   const fields = [

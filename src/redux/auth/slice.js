@@ -1,5 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getUser, login, logout, refresh, registerUser, updateUser } from './operations';
+import {
+  getUser,
+  login,
+  logout,
+  refresh,
+  registerUser,
+  updateUser,
+} from './operations';
 import { INITIAL_STATE } from './initialState';
 const handleRejected = (state, action) => {
   state.isLoading = false;
@@ -26,6 +33,10 @@ const slice = createSlice({
         state.isLoading = false;
         state.accessToken = action.payload.accessToken;
         state.isLoggedIn = true;
+      })
+      .addCase(login.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
       })
       // logout
       .addCase(logout.pending, handlePending)
@@ -58,7 +69,7 @@ const slice = createSlice({
       .addCase(updateUser.pending, handlePending)
       .addCase(updateUser.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.user = { ...state.user, ...action.payload.data.user };
+        state.user = { ...state.user, ...action.payload.data };
       })
       .addCase(updateUser.rejected, handleRejected);
   },
