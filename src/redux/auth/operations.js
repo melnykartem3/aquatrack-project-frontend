@@ -23,7 +23,6 @@ export const login = createAsyncThunk(
     } catch (error) {
       const errorMessage = error.response?.data?.data?.message || error.message;
 
-      // console.log('Error message from backend:', errorMessage);
       toast.error(errorMessage);
       return thunkAPI.rejectWithValue(errorMessage);
     }
@@ -84,6 +83,9 @@ export const requestResetEmail = createAsyncThunk(
       const response = await instance.post('/auth/request-reset-email', data);
       return response.data;
     } catch (error) {
+      const errorMessage = error.response?.data?.data?.message || error.message;
+
+      toast.error(errorMessage);
       return rejectWithValue(error.response.data);
     }
   },
