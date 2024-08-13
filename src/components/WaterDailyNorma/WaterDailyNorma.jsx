@@ -19,5 +19,3 @@ const WaterDailyNorma = () => {
 };
 
 export default WaterDailyNorma;
-
-// значення денної норми буде братися з redux user-waterRate

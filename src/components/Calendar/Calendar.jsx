@@ -43,7 +43,6 @@ const dayData = monthlyItems.find(item => item.day === day) || {
     const dayValue = dayData
       ? Math.min((dayData.totalWaterVolume / waterRate) * 100, 100).toFixed(0)
       : 0;
-    console.log(dayData.totalWaterVolume);
     
     return {
       day: day,
