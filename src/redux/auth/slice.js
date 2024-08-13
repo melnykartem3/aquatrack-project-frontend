@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
+  getAllUsers,
   getUser,
   login,
   logout,
@@ -71,7 +72,14 @@ const slice = createSlice({
         state.isLoading = false;
         state.user = { ...state.user, ...action.payload.data };
       })
-      .addCase(updateUser.rejected, handleRejected);
+      .addCase(updateUser.rejected, handleRejected)
+      // getAllUsers
+      .addCase(getAllUsers.pending, handlePending)
+      .addCase(getAllUsers.fulfilled, (state,action)=>{
+        state.isLoading = false
+        state.allUsers = action.payload.data
+      })
+      .addCase(getAllUsers.rejected,handleRejected)
   },
 });
 export const authReducer = slice.reducer;

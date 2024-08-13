@@ -1,42 +1,46 @@
-import { useRef, useEffect, useState } from "react";
-import css from "./UserSettingsForm.module.css";
-import { useForm } from "react-hook-form";
-import { icons as sprite } from "../../assets/index.js";
-import { useDispatch, useSelector } from "react-redux";
-import { selectUser } from "../../redux/auth/selectors.js";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
-import toast from "react-hot-toast";
-import { updateUser } from "../../redux/auth/operations.js";
-import { useTranslation } from 'react-i18next';
+import { useEffect, useState } from 'react';
+import css from './UserSettingsForm.module.css';
+import { useForm } from 'react-hook-form';
+import { icons as sprite } from '../../assets/index.js';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectUser } from '../../redux/auth/selectors.js';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+import toast from 'react-hot-toast';
+import { updateUser } from '../../redux/auth/operations.js';
+import { FaUserCircle } from 'react-icons/fa';
 
 const schema = yup.object().shape({
-  name: yup.string().required("Name is required!"),
-  email: yup.string().email("Email is invalid").required("Email is required!"),
-  gender: yup.string().oneOf(["man", "woman"]).required(),
+  name: yup.string().required('Name is required!'),
+  email: yup.string().email('Email is invalid').required('Email is required!'),
+  gender: yup.string().oneOf(['man', 'woman']).required(),
   weight: yup
-    .number("Please, enter a number")
-    .typeError("Please, enter a number")
-    .min(0, "Weight greater or equal to 0 kg!")
-    .max(300, "Weight must be less than 300 kg!"),
+    .number('Please, enter a number')
+    .typeError('Please, enter a number')
+    .min(0, 'Weight greater or equal to 0 kg!')
+    .max(300, 'Weight must be less than 300 kg!'),
   timeSports: yup
-    .number("Please, enter a number")
-    .typeError("Please, enter a number")
-    .min(0, "Daily time activity greater or equal to 0 hours!")
-    .max(8, "Daily time activity must be less than 8 hours!"),
+    .number('Please, enter a number')
+    .typeError('Please, enter a number')
+    .min(0, 'Daily time activity greater or equal to 0 hours!')
+    .max(8, 'Daily time activity must be less than 8 hours!'),
   waterRate: yup
-    .number("Please, enter a number")
-    .typeError("Please, enter a number")
-    .min(0, "Daily norma greater or equal to 0 liters!")
-    .max(10, "Daily norma must be less than 10 liters!"),
+    .number('Please, enter a number')
+    .typeError('Please, enter a number')
+    .min(0, 'Daily norma greater or equal to 0 liters!')
+    .max(10, 'Daily norma must be less than 10 liters!'),
 });
 
-const UserSettingsForm = ({closeSettingModal}) => {
+const UserSettingsForm = ({ closeSettingModal, onAvatarUpdate }) => {
   const [selectedAvatarFile, setSelectedAvatarFile] = useState(null);
+
   const { t } = useTranslation();
 
+  const [avatarURL, setAvatarURL] = useState(null);
+  
   const { name, gender, avatar, weight, email, timeSports, waterRate, _id } =
     useSelector(selectUser);
+
   const {
     register,
     handleSubmit,
@@ -49,37 +53,29 @@ const UserSettingsForm = ({closeSettingModal}) => {
       waterRate: waterRate,
     },
     resolver: yupResolver(schema),
-    mode: "onSubmit",
+    mode: 'onSubmit',
   });
 
-  const userAvatarRef = useRef(null);
   const dispatch = useDispatch();
 
-  let userGender = watch("gender");
-  let userWeight = watch("weight");
-  let userSportTime = watch("timeSports");
+  let userGender = watch('gender');
+  let userWeight = watch('weight');
+  let userSportTime = watch('timeSports');
 
   useEffect(() => {
     if (name) {
-      setValue("name", name);
-      setValue("email", email);
-      setValue("gender", gender);
-      setValue("weight", weight);
-      setValue("timeSports", timeSports);
-      userAvatarRef.current.src = avatar;
+      setValue('name', name);
+      setValue('email', email);
+      setValue('gender', gender);
+      setValue('weight', weight);
+      setValue('timeSports', timeSports);
+      if (avatar) {
+        setAvatarURL(avatar);
+      }
     }
-  }, [
-    name,
-    gender,
-    avatar,
-    weight,
-    timeSports,
-    waterRate,
-    email,
-    setValue,
-  ]);
+  }, [name, gender, avatar, weight, timeSports, waterRate, email, setValue]);
 
-  const onSubmit = async (data) => {
+  const onSubmit = async data => {
     const formData = new FormData();
     const keys = Object.keys(data);
     for (const key of keys) {
@@ -88,23 +84,24 @@ const UserSettingsForm = ({closeSettingModal}) => {
     const userId = _id;
 
     if (selectedAvatarFile) {
-      formData.append("avatar", selectedAvatarFile);
+      formData.append('avatar', selectedAvatarFile);
     }
-console.log(formData);
+    console.log(formData);
     try {
       await dispatch(updateUser({ userId, formData })).unwrap();
-      toast.success("The changes were successfully applied!");
+      toast.success('The changes were successfully applied!');
+      if (avatarURL) onAvatarUpdate(avatarURL);
     } catch (error) {
-      toast.error("Failed to apply changes!");
+      toast.error('Failed to apply changes!');
     }
     closeSettingModal();
   };
 
-  const handleFileSelect = (event) => {
+  const handleFileSelect = event => {
     const file = event.target.files[0];
     if (file) {
       const avatarURL = URL.createObjectURL(file);
-      userAvatarRef.current.src = avatarURL;
+      setAvatarURL(avatarURL);
       setSelectedAvatarFile(file);
     }
   };
@@ -117,16 +114,16 @@ console.log(formData);
     let normaWater = 0;
 
     if (userWeight > 0 && userSportTime > 0) {
-      if (userGender === "woman") {
+      if (userGender === 'woman') {
         normaWater = roundUpToTwoDecimalPlaces(
-          userWeight * 0.03 + userSportTime * 0.4
+          userWeight * 0.03 + userSportTime * 0.4,
         );
-      } else if (userGender === "man") {
+      } else if (userGender === 'man') {
         normaWater = roundUpToTwoDecimalPlaces(
-          userWeight * 0.04 + userSportTime * 0.6
+          userWeight * 0.04 + userSportTime * 0.6,
         );
       }
-      setValue("waterRate", normaWater);
+      setValue('waterRate', normaWater);
       return normaWater;
     }
     return normaWater;
@@ -137,12 +134,11 @@ console.log(formData);
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={css.userSettingsForm}>
       <div className={css.userAvatarContainer}>
-        <img
-          src=""
-          alt={t('Settings.userAvatar')}
-          ref={userAvatarRef}
-          className={css.userAvatar}
-        />
+        {avatarURL ? (
+          <img src={avatarURL} alt={t('Settings.userAvatar')} className={css.userAvatar} />
+        ) : (
+          <FaUserCircle className={css.iconUser} />
+        )}
         <button className={css.uploadPhotoBtn}>
           <div className={css.btnIconContainer}>
             <svg width="20" height="20">
@@ -173,7 +169,7 @@ console.log(formData);
                 className={css.genderInput}
                 value="woman"
                 name="gender"
-                {...register("gender")}
+                {...register('gender')}
               />
              {t('Settings.Woman')}
             </label>
@@ -183,7 +179,7 @@ console.log(formData);
                 className={css.genderInput}
                 value="man"
                 name="gender"
-                {...register("gender")}
+                {...register('gender')}
               />
               {t('Settings.Man')}
             </label>
@@ -195,7 +191,7 @@ console.log(formData);
             <input
               type="text"
               name="name"
-              {...register("name")}
+              {...register('name')}
               className={`${css.userInfoField} ${css.inputText} ${
                 errors.name && css.error
               }`}
@@ -211,7 +207,7 @@ console.log(formData);
             <input
               type="email"
               name="email"
-              {...register("email")}
+              {...register('email')}
               className={`${css.userInfoField} ${css.inputText} ${
                 errors.email && css.error
               }`}
@@ -259,7 +255,7 @@ console.log(formData);
               type="number"
               step="any"
               name="weight"
-              {...register("weight")}
+              {...register('weight')}
               className={`${css.userInfoField} ${css.inputText}  ${
                 errors.weight && css.error
               }`}
@@ -276,7 +272,7 @@ console.log(formData);
               type="number"
               step="any"
               name="timeSports"
-              {...register("timeSports")}
+              {...register('timeSports')}
               className={`${css.userInfoField} ${css.inputText}  ${
                 errors.timeSports && css.error
               }`}
@@ -297,7 +293,6 @@ console.log(formData);
               <span className={css.amountOfWaterText}>
                 {normaWater ? normaWater : getValues("waterRate")}L
               </span>
-           
           </div>
           <label className={`${css.userInfoLabel} ${css.inputTitle}`}>
           {t('Settings.waterYouWillDrink')} 
@@ -305,7 +300,7 @@ console.log(formData);
               type="number"
               step="any"
               name="waterRate"
-              {...register("waterRate")}
+              {...register('waterRate')}
               className={`${css.userInfoField} ${css.inputText}  ${
                 errors.waterRate && css.error
               }`}
