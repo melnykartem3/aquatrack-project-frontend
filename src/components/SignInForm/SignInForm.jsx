@@ -3,12 +3,17 @@ import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+
+
+import axios from 'axios';
 import { FiEyeOff, FiEye } from 'react-icons/fi';
 import { toast } from 'react-hot-toast';
 import clsx from 'clsx';
 import css from './SignInForm.module.css';
 import { login } from '../../redux/auth/operations.js';
 import { useNavigate } from 'react-router-dom';
+import CustomGoogleButton from '../GoogleButton/GoggleButton.jsx';
+
 const schema = yup.object().shape({
   email: yup
     .string()
@@ -21,6 +26,7 @@ const schema = yup.object().shape({
 });
 const SignInForm = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
   const {
     register,
     reset,
@@ -38,6 +44,34 @@ const SignInForm = () => {
       toast.error('Login failed: ' + error.message);
     }
   };
+
+  const handleGoogleLogin = async (response) => {
+
+    const idToken = response.credential; // Отримання idToken
+
+    try {
+      const result = await axios.post('https://aquatrack-project-backend.onrender.com/auth/confirm-google-auth', {
+        idToken: idToken,
+      });
+
+      if (result.status === 200) {
+        localStorage.setItem('accessToken', result.data.data.accessToken);
+        navigate('/tracker'); 
+      } else {
+        console.log('Login failed:', result.data.message);
+        toast.error('Google login failed: ' + result.data.message);
+      }
+      console.log('Received accessToken:', result.data.data.accessToken);
+    } catch (error) {
+      console.error('Login failed:', error);
+      if (error.response) {
+        console.error('Server responded with an error:', error.response.data);
+      }
+      toast.error('Google login failed. Please try again.');
+    }
+  };
+
+
   return (
     <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
       <div className={css.formWrapper}>
@@ -76,6 +110,13 @@ const SignInForm = () => {
       <button className={css.submitButton} type="submit">
         Sign In
       </button>
+      <CustomGoogleButton
+        onSuccess={handleGoogleLogin}
+        onError={() => {
+          console.log('Google Login Failed');
+          toast.error('Google login failed. Please try again.');
+        }}
+      />
     </form>
   );
 };
