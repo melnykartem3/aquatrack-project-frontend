@@ -46,32 +46,35 @@
 
 .thumb_value {
   position: absolute;
-  top: -30px;
+  top: 10px;
   left: 50%;
   transform: translateX(-50%);
   white-space: nowrap;
-  font-size: 12px;
+  font-size: 8px;
   background-color: var(--white);
-  padding: 2px 4px;
+  padding:0px;
   border-radius: 4px;
   color: var(--basic-green);
-  opacity: 0;
+  opacity: 1;
   transition: opacity 0.2s ease-in;
 }
 
-.thumb:hover .thumb_value {
-  opacity: 1;
+.hidden {
+  opacity: 0;
 }
 
 .progress_labels {
   display: flex;
   justify-content: space-between;
-  margin-top: 8px;
+  padding-top: 15px;
   font-size: 10px;
   line-height: 1;
   font-weight: 400;
   color: var(--text-grey-white);
   height: 10px;
+}
+.label{
+  margin-left: 15px;
 }
 
 @media screen and (min-width: 768px) {
@@ -94,11 +97,14 @@
   }
 
   .progress_labels {
-    margin-top: 6px;
+    padding-top: 12px;
     height: 23px;
     font-size: 12px;
     line-height: 1.87;
   }
+    .thumb_value {
+    font-size: 10px; 
+}
 }
 
 @media screen and (min-width: 1440px) {

@@ -17,19 +17,20 @@ const WaterProgressBar = () => {
   const totalWaterVolume = waterByDay.reduce((sum, item) => sum + item.waterVolume, 0);
   const user = useSelector(selectUser);
   let persentage = Math.min((totalWaterVolume / (user.waterRate * 1000)) * 100, 100); 
-    persentage = persentage.toFixed(0);
+  persentage = persentage.toFixed(0);
+  const thumbValueClass = persentage === '0' || persentage === '50' || persentage === '100' ? `${css.thumb_value} ${css.hidden}` : css.thumb_value;
   return (
     <div className={css.waterProgressBar_container}>
       <h2 className={css.waterProgressBar_h2}>{choosenDate === currentDate ? t('waterProgressBar.today') : formatDate(choosenDate)}</h2>
       <div className={css.waterProgressBar}>
         <div className={css.progress} style={{ width: `${persentage}%` }}></div>
         <div className={css.thumb} style={{ left: `${persentage}%` }}>
-          <div className={css.thumb_value}>{`${persentage}%`}</div>
+          <div className={thumbValueClass}>{`${persentage}%`}</div>
         </div>
       </div>
       <div className={css.progress_labels}>
         <span>0%</span>
-        <span>50%</span>
+        <spanc className={css.label}>50%</spanc>
         <span>100%</span>
       </div>
     </div>
