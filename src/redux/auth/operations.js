@@ -3,7 +3,7 @@ import { instance } from '../../utils/axios';
 import toast from 'react-hot-toast';
 import axios from 'axios';
 
- export const registerUser = createAsyncThunk(
+export const registerUser = createAsyncThunk(
   'auth/signup',
   async (formData, thunkAPI) => {
     try {
@@ -25,7 +25,7 @@ export const login = createAsyncThunk(
     } catch (error) {
       const errorMessage = error.response?.data?.data?.message || error.message;
 
-      toast.error(errorMessage);
+      toast.error('Wrong email or password!');
       return thunkAPI.rejectWithValue(errorMessage);
     }
   },
@@ -123,27 +123,33 @@ export const handleGoogleSignUp = createAsyncThunk(
   'auth/googleSignIn',
   async (code, thunkAPI) => {
     try {
-      const response = await axios.post('https://aquatrack-project-frontend.vercel.app//auth/confirm-oauth', {
-        code,
-      });
+      const response = await axios.post(
+        'https://aquatrack-project-frontend.vercel.app//auth/confirm-oauth',
+        {
+          code,
+        },
+      );
       const { accessToken } = response.data.data;
 
       return accessToken;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
-  }
+  },
 );
 export const activateUser = createAsyncThunk(
   'auth/activateUser',
   async (activationToken, thunkAPI) => {
     try {
-      const { data } = await axios.post('https://aquatrack-project-frontend.vercel.app/auth/activate', {
-        activationToken,
-      });
+      const { data } = await axios.post(
+        'https://aquatrack-project-frontend.vercel.app/auth/activate',
+        {
+          activationToken,
+        },
+      );
       return data.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
-  }
+  },
 );
