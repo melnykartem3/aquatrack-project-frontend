@@ -95,6 +95,13 @@
   gap: 4px;
 }
 
+@media screen and (max-width:375px) {
+  .advantagesList{
+    bottom: 15px;
+  }
+}
+
+
 .li_1,
 .li_2,
 .li_3 {
