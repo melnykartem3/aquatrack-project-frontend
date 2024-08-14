@@ -49,6 +49,7 @@ const WaterForm = ({ closeWaterModal, operationType, item }) => {
     watch,
     setValue,
     getValues,
+    clearErrors,
     reset,
   } = useForm({
     resolver: yupResolver(schema),
@@ -109,11 +110,21 @@ const WaterForm = ({ closeWaterModal, operationType, item }) => {
   const plusWaterVolume = () => {
     const currentAmount = parseInt(getValues('waterVolume'), 10);
     setValue('waterVolume', currentAmount + 10);
+    clearErrors('waterVolume');
   };
 
   const minusWaterVolume = () => {
     const currentAmount = parseInt(getValues('waterVolume'), 10);
     setValue('waterVolume', Math.max(50, currentAmount - 10));
+    clearErrors('waterVolume');
+  };
+
+ const handleWaterVolumeChange = e => {
+    const value = Number(e.target.value);
+    setValue('waterVolume', value);
+    if (value >= 50 && value <= 500) {
+      clearErrors('waterVolume');
+    }
   };
 
   const saveButtonClass =
@@ -161,7 +172,7 @@ const WaterForm = ({ closeWaterModal, operationType, item }) => {
           name="waterVolume"
           className={css.amountInput}
           {...register('waterVolume')}
-          onChange={e => setValue('waterVolume', Number(e.target.value))}
+          onChange={handleWaterVolumeChange}
         />
         {errors.waterVolume && (
           <p className={css.error}>{errors.waterVolume.message}</p>
