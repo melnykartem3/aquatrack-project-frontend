@@ -30,7 +30,7 @@ const WaterProgressBar = () => {
       </div>
       <div className={css.progress_labels}>
         <span>0%</span>
-        <spanc className={css.label}>50%</spanc>
+        <span className={css.label}>50%</span>
         <span>100%</span>
       </div>
     </div>
