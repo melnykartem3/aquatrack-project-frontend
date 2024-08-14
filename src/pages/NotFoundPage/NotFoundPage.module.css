@@ -1,0 +1,37 @@
+.notFoundPage_wrapper{
+    border-radius: 30px;
+    background-color: var(--basic-green);
+    background-image: url('../../images/NotFound/not_found_min.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 262px 335px;
+    padding: 24px 16px 32px 16px;
+    height: 100vh;
+}
+
+.notFoundPager{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px 0;
+}
+
+.notFoundPage_text{
+display: flex;
+justify-content: center;
+    color: var(--basic-dark-blue);
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 1.29;
+    letter-spacing: -0.01em;
+    padding-top:60px;
+    text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+    .notFoundPager {
+        padding: 32px 0;
+    }
+
+}
+
