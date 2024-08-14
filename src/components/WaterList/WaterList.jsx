@@ -5,8 +5,10 @@ import { fetchWaterListDaily } from '../../redux/water/operations.js';
 import css from './WaterList.module.css';
 import { isSameDay } from 'date-fns';
 import moment from 'moment';
+import { useTranslation } from 'react-i18next';
 
 const WaterList = ({ changeDate, userId }) => {
+  const { t } = useTranslation();
   const formatDate = date => {
     const d = new Date(date);
     const year = d.getFullYear();
@@ -38,8 +40,8 @@ const WaterList = ({ changeDate, userId }) => {
   if (!wateritems || wateritems.length === 0) {
     return (
       <h3 className={css.title}>
-        There is no consumed water for the selected day
-      </h3>
+      {t('noConsumedWater')}
+    </h3>
     );
   }
 
