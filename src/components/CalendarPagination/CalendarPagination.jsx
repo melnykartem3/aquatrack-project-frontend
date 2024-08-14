@@ -1,5 +1,6 @@
 import css from './CalendarPagination.module.css';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa6';
+import { useTranslation } from 'react-i18next';
 
 const CalendarPagination = ({
   changeMonth,
@@ -9,13 +10,22 @@ const CalendarPagination = ({
   setIsActive,
   canNavigatePreviousMonth,
 }) => {
+  const { t, i18n } = useTranslation(); // Use the translation hook
   const toggleClass = () => {
     setIsActive(!isActive);
   };
 
+  // Function to translate month names
+  const translateMonth = (month) => {
+    const months = t('calendarPagination.months', { returnObjects: true });
+    return months[month] || month;
+  };
+
   return (
     <div className={css.calendarHeader}>
-      <span className={css.month}>{isActive ? 'Month' : 'Statistics'}</span>
+      <span className={css.month}>
+        {isActive ? t('calendarPagination.month') : t('calendarPagination.statistics')}
+      </span>
       <div className={css.CalendarPaginationFa}>
         <button
           onClick={() => changeMonth(-1)}
@@ -25,14 +35,14 @@ const CalendarPagination = ({
         </button>
 
         <span className={css.data}>
-          {currentMonth}, {currentYear}
+          {translateMonth(currentMonth)}, {currentYear}
         </span>
         <button onClick={() => changeMonth(1)}>
           <FaChevronRight className={css.icon} />
         </button>
 
         <button className={isActive ? css.active : ''} onClick={toggleClass}>
-          <svg className={css.pieChart} viewBox="0 0 32 32" aria-label="Графік">
+          <svg className={css.pieChart} viewBox="0 0 32 32" aria-label={t('calendarPagination.chart')}>
             <path
               fill="none"
               stroke="#323f47"

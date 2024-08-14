@@ -1,55 +1,55 @@
 {
-    "home.title": "Home Page",
-    "notFound.message": "Wooops, page is not found!",
-    "welcome": {
-      "recordDailyIntake": "Record daily water intake and track",
-      "trackerTitle": "Water consumption tracker",
-      "tryTracker": "Try Tracker",
-      "signIn": "Sign In"
-    },
-    "advantages": {
-      "happyCustomers": "Our happy customers",
-      "list": {
-        "habitDrive": "Habit drive",
-        "viewStatistics": "View statistics",
-        "personalRateSetting": "Personal rate setting"
-      }
-    },
-      "signup": {
-        "invalidEmail": "Invalid email format",
-        "emailRequired": "Email is required",
-        "passwordMinLength": "Password must be at least 8 characters",
-        "passwordRequired": "Password is required",
-        "passwordsMustMatch": "Passwords must match",
-        "repeatPasswordRequired": "Repeat Password is required",
-        "userExists": "User with this email already exists.",
-        "emailLabel": "Email",
-        "emailPlaceholder": "Enter your email",
-        "passwordLabel": "Password",
-        "passwordPlaceholder": "Enter your password",
-        "repeatPasswordLabel": "Repeat Password",
-        "repeatPasswordPlaceholder": "Repeat password",
-        "submitButtonLabel": "Sign Up",
-        "title": "SignUp Page",
-        "alreadyHaveAccount": "Already have an account?"
-    },
-    "signin": {
-      "invalidEmail": "Invalid email format",
-      "emailRequired": "Email is required",
-      "passwordMinLength": "Password must be at least 8 characters",
-      "passwordRequired": "Password is required",
-      "loginFailed": "Login failed: ",
-      "emailLabel": "Email",
-      "emailPlaceholder": "Enter your email",
-      "passwordLabel": "Password",
-      "passwordPlaceholder": "Enter your password",
-      "submitButtonLabel": "Sign In",
-      "title": "SignIn Page",
-      "signInTitle": "Sign In",
-      "noAccount": "Don’t have an account?",
-      "signUpLink": "Sign Up",
-      "forgotPassword": "Forgot your password?",
-      "resetLink": "Reset"
+  "home.title": "Home Page",
+  "notFound.message": "Wooops, page is not found!",
+  "welcome": {
+    "recordDailyIntake": "Record daily water intake and track",
+    "trackerTitle": "Water consumption tracker",
+    "tryTracker": "Try Tracker",
+    "signIn": "Sign In"
+  },
+  "advantages": {
+    "happyCustomers": "Our happy customers",
+    "list": {
+      "habitDrive": "Habit drive",
+      "viewStatistics": "View statistics",
+      "personalRateSetting": "Personal rate setting"
+    }
+  },
+  "signup": {
+    "invalidEmail": "Invalid email format",
+    "emailRequired": "Email is required",
+    "passwordMinLength": "Password must be at least 8 characters",
+    "passwordRequired": "Password is required",
+    "passwordsMustMatch": "Passwords must match",
+    "repeatPasswordRequired": "Repeat Password is required",
+    "userExists": "User with this email already exists.",
+    "emailLabel": "Email",
+    "emailPlaceholder": "Enter your email",
+    "passwordLabel": "Password",
+    "passwordPlaceholder": "Enter your password",
+    "repeatPasswordLabel": "Repeat Password",
+    "repeatPasswordPlaceholder": "Repeat password",
+    "submitButtonLabel": "Sign Up",
+    "title": "SignUp Page",
+    "alreadyHaveAccount": "Already have an account?"
+  },
+  "signin": {
+    "invalidEmail": "Invalid email format",
+    "emailRequired": "Email is required",
+    "passwordMinLength": "Password must be at least 8 characters",
+    "passwordRequired": "Password is required",
+    "loginFailed": "Login failed: ",
+    "emailLabel": "Email",
+    "emailPlaceholder": "Enter your email",
+    "passwordLabel": "Password",
+    "passwordPlaceholder": "Enter your password",
+    "submitButtonLabel": "Sign In",
+    "title": "SignIn Page",
+    "signInTitle": "Sign In",
+    "noAccount": "Don’t have an account?",
+    "signUpLink": "Sign Up",
+    "forgotPassword": "Forgot your password?",
+    "resetLink": "Reset"
   },
   "waterDailyNorma": {
     "myDailyNorma": "My daily norma"
@@ -91,17 +91,17 @@
     "ForWoman": "For woman:",
     "ForMan": "For man:",
     "waterFormula": {
-    "note": "V is the volume of the water norm in liters per day, M is your body weight, T is the time of active sports, or another type of activity commensurate in terms of loads (in the absence of these, you must set 0)"
+      "note": "V is the volume of the water norm in liters per day, M is your body weight, T is the time of active sports, or another type of activity commensurate in terms of loads (in the absence of these, you must set 0)"
+    },
+    "ActiveTimeInHours": "Active time in hours",
+    "YourWeightInKilograms": "Your weight in kilograms:",
+    "activeParticipation": "The time of active participation in sports:",
+    "waterRequirement": {
+      "amount": "The required amount of water in liters per day:"
+    },
+    "waterYouWillDrink": "Write down how much water you will drink:",
+    "BtnSave": "Save"
   },
-  "ActiveTimeInHours": "Active time in hours",
-  "YourWeightInKilograms": "Your weight in kilograms:",
-  "activeParticipation":"The time of active participation in sports:",
-  "waterRequirement": {
-    "amount": "The required amount of water in liters per day:"
-  },
-  "waterYouWillDrink": "Write down how much water you will drink:",
-  "BtnSave": "Save"
-},
   "logOutModal": {
     "title": "Log out",
     "text": "Do you really want to leave?",
@@ -131,5 +131,32 @@
   },
   "titles": {
     "requestPasswordReset": "Request Password Reset"
-  }
-  }
+  },
+  "deleteModal": {
+    "header": "Delete entry",
+    "text": "Are you sure you want to delete the entry?",
+    "delete": "Delete",
+    "cancel": "Cancel"
+  },
+  "noConsumedWater": "There is no consumed water for the selected day",
+
+  "calendarPagination": {
+    "month": "Month",
+    "statistics": "Statistics",
+    "months": {
+      "January": "January",
+      "February": "February",
+      "March": "March",
+      "April": "April",
+      "May": "May",
+      "June": "June",
+      "July": "July",
+      "August": "August",
+      "September": "September",
+      "October": "October",
+      "November": "November",
+      "December": "December"
+    }
+  },
+  "notFoundPage": "Wooops, page is not found!"
+}

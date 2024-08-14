@@ -1,55 +1,55 @@
 {
-    "home.title": "Головна сторінка",
-    "notFound.message": "Ой, сторінку не знайдено!",
-    "welcome": {
-      "recordDailyIntake": "Записуйте і відстежуйте щоденне споживання води",
-      "trackerTitle": "Трекер споживання води",
-      "tryTracker": "Спробувати трекер",
-      "signIn": "Увійти"
-    },
-    "advantages": {
-      "happyCustomers": "Наші щасливі клієнти",
-      "list": {
-        "habitDrive": "Режим звички",
-        "viewStatistics": "Перегляд статистики",
-        "personalRateSetting": "Налаштування особистої норми"
-      }
-    },
-      "signup": {
-        "invalidEmail": "Неправильний формат електронної пошти",
-        "emailRequired": "Електронна пошта є обов'язковою",
-        "passwordMinLength": "Пароль повинен містити не менше 8 символів",
-        "passwordRequired": "Пароль є обов'язковим",
-        "passwordsMustMatch": "Паролі повинні співпадати",
-        "repeatPasswordRequired": "Повторіть пароль є обов'язковим",
-        "userExists": "Користувач з цією електронною поштою вже існує.",
-        "emailLabel": "Електронна пошта",
-        "emailPlaceholder": "Введіть вашу електронну пошту",
-        "passwordLabel": "Пароль",
-        "passwordPlaceholder": "Введіть ваш пароль",
-        "repeatPasswordLabel": "Повторіть пароль",
-        "repeatPasswordPlaceholder": "Повторіть пароль",
-        "submitButtonLabel": "Зареєструватися",
-        "title": "Сторінка реєстрації",
-        "alreadyHaveAccount": "Вже є аккаунт?"
-    },
-    "signin": {
-      "invalidEmail": "Неправильний формат електронної пошти",
-      "emailRequired": "Електронна пошта є обов'язковою",
-      "passwordMinLength": "Пароль повинен містити не менше 8 символів",
-      "passwordRequired": "Пароль є обов'язковим",
-      "loginFailed": "Помилка входу: ",
-      "emailLabel": "Електронна пошта",
-      "emailPlaceholder": "Введіть вашу електронну пошту",
-      "passwordLabel": "Пароль",
-      "passwordPlaceholder": "Введіть ваш пароль",
-      "submitButtonLabel": "Увійти",
-      "title": "Сторінка входу",
-      "signInTitle": "Увійти",
-      "noAccount": "Не маєте облікового запису?",
-      "signUpLink": "Зареєструватися",
-      "forgotPassword": "Забули пароль?",
-      "resetLink": "Скинути"
+  "home.title": "Головна сторінка",
+  "notFound.message": "Ой, сторінку не знайдено!",
+  "welcome": {
+    "recordDailyIntake": "Записуйте і відстежуйте щоденне споживання води",
+    "trackerTitle": "Трекер споживання води",
+    "tryTracker": "Спробувати трекер",
+    "signIn": "Увійти"
+  },
+  "advantages": {
+    "happyCustomers": "Наші щасливі клієнти",
+    "list": {
+      "habitDrive": "Режим звички",
+      "viewStatistics": "Перегляд статистики",
+      "personalRateSetting": "Налаштування особистої норми"
+    }
+  },
+  "signup": {
+    "invalidEmail": "Неправильний формат електронної пошти",
+    "emailRequired": "Електронна пошта є обов'язковою",
+    "passwordMinLength": "Пароль повинен містити не менше 8 символів",
+    "passwordRequired": "Пароль є обов'язковим",
+    "passwordsMustMatch": "Паролі повинні співпадати",
+    "repeatPasswordRequired": "Повторіть пароль є обов'язковим",
+    "userExists": "Користувач з цією електронною поштою вже існує.",
+    "emailLabel": "Електронна пошта",
+    "emailPlaceholder": "Введіть вашу електронну пошту",
+    "passwordLabel": "Пароль",
+    "passwordPlaceholder": "Введіть ваш пароль",
+    "repeatPasswordLabel": "Повторіть пароль",
+    "repeatPasswordPlaceholder": "Повторіть пароль",
+    "submitButtonLabel": "Зареєструватися",
+    "title": "Сторінка реєстрації",
+    "alreadyHaveAccount": "Вже є аккаунт?"
+  },
+  "signin": {
+    "invalidEmail": "Неправильний формат електронної пошти",
+    "emailRequired": "Електронна пошта є обов'язковою",
+    "passwordMinLength": "Пароль повинен містити не менше 8 символів",
+    "passwordRequired": "Пароль є обов'язковим",
+    "loginFailed": "Помилка входу: ",
+    "emailLabel": "Електронна пошта",
+    "emailPlaceholder": "Введіть вашу електронну пошту",
+    "passwordLabel": "Пароль",
+    "passwordPlaceholder": "Введіть ваш пароль",
+    "submitButtonLabel": "Увійти",
+    "title": "Сторінка входу",
+    "signInTitle": "Увійти",
+    "noAccount": "Не маєте облікового запису?",
+    "signUpLink": "Зареєструватися",
+    "forgotPassword": "Забули пароль?",
+    "resetLink": "Скинути"
   },
   "waterDailyNorma": {
     "myDailyNorma": "Моя щоденна норма"
@@ -66,11 +66,11 @@
     "chooseValue": "Оберіть значення:",
     "correctData": "Виправте введені дані:"
   },
-    "waterForm": {
-      "amountOfWater": "Кількість води:",
-      "recordingTime": "Час запису:",
-      "enterWaterValue": "Введіть значення використаної води:",
-      "saveButton": "Зберегти"
+  "waterForm": {
+    "amountOfWater": "Кількість води:",
+    "recordingTime": "Час запису:",
+    "enterWaterValue": "Введіть значення використаної води:",
+    "saveButton": "Зберегти"
   },
   "common": {
     "hello": "Привіт"
@@ -91,17 +91,17 @@
     "ForWoman": "Для жінок:",
     "ForMan": "Для чоловіків:",
     "waterFormula": {
-    "note": "V — це об'єм норми води в літрах на день, M — ваша вага, T — час активних спортивних занять або іншого типу діяльності, що відповідає за навантаження (у разі їхньої відсутності потрібно вказати 0)"
+      "note": "V — це об'єм норми води в літрах на день, M — ваша вага, T — час активних спортивних занять або іншого типу діяльності, що відповідає за навантаження (у разі їхньої відсутності потрібно вказати 0)"
+    },
+    "ActiveTimeInHours": "Активність у годинах",
+    "YourWeightInKilograms": "Ваша вага у кілограмах:",
+    "activeParticipation": "Час активних занять спортом:",
+    "waterRequirement": {
+      "amount": "Необхідна кількість води в літрах на день:"
+    },
+    "waterYouWillDrink": "Запишіть, скільки води ви будете пити:",
+    "BtnSave": "Зберегти"
   },
-  "ActiveTimeInHours": "Активність у годинах",
-  "YourWeightInKilograms": "Ваша вага у кілограмах:",
-  "activeParticipation":"Час активних занять спортом:",
-  "waterRequirement": {
-    "amount": "Необхідна кількість води в літрах на день:"
-  },
-  "waterYouWillDrink": "Запишіть, скільки води ви будете пити:",
-  "BtnSave": "Зберегти"
-},
   "logOutModal": {
     "title": "Вийти",
     "text": "Ви справді хочете вийти?",
@@ -131,5 +131,32 @@
   },
   "titles": {
     "requestPasswordReset": "Запит на скидання пароля"
-  }
-  }
+  },
+  "deleteModal": {
+    "header": "Видалити запис",
+    "text": "Ви впевнені, що хочете видалити запис?",
+    "delete": "Видалити",
+    "cancel": "Скасувати"
+  },
+  "noConsumedWater": "Немає спожитої води за вибраний день",
+
+  "calendarPagination": {
+    "month": "Місяць",
+    "statistics": "Статистика",
+    "months": {
+      "January": "Січень",
+      "February": "Лютий",
+      "March": "Березень",
+      "April": "Квітень",
+      "May": "Травень",
+      "June": "Червень",
+      "July": "Липень",
+      "August": "Серпень",
+      "September": "Вересень",
+      "October": "Жовтень",
+      "November": "Листопад",
+      "December": "Грудень"
+    }
+  },
+  "notFoundPage": "ой-ой, сторінку не знайдено!"
+}

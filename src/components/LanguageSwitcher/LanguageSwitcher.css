@@ -1,0 +1,13 @@
+.language-switcher {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+  }
+  
+  @media (max-width: 768px) {
+    .language-switcher {
+      top: 0px;
+      left: 0px;
+    }
+  }
