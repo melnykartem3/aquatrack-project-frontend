@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { MdOutlineLanguage } from 'react-icons/md';
+import './LanguageSwitcher.css';
 
 const LanguageSwitcher = () => {
   const { i18n } = useTranslation();
@@ -24,12 +25,7 @@ const LanguageSwitcher = () => {
   }, []);
 
   return (
-    <div style={{
-      position: 'fixed',
-      top: '20px',
-      left: '20px',
-      zIndex: 1000
-    }}>
+    <div className="language-switcher">
       <MdOutlineLanguage
         size={24}
         onClick={() => setVisible(!visible)}

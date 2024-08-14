@@ -4,22 +4,23 @@ import css from "./DeleteWaterModal.module.css";
 import { useDispatch } from "react-redux";
 import { deleteWater } from "../../redux/water/operations";
 import toast from "react-hot-toast";
+import { useTranslation } from "react-i18next";
 
-const DeleteWaterModal = ({modalIsOpen,closeModal,waterId}) => {
-
+const DeleteWaterModal = ({ modalIsOpen, closeModal, waterId }) => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
+
   const handleClick = () => {
-    console.log(waterId)
     dispatch(deleteWater(waterId)).unwrap()
-         .then(() => {
-           toast.success('You successfully delete a water record!');
+      .then(() => {
+        toast.success(t('deleteModal.success'));
       })
       .catch(error => {
-        toast.error('Failed to delete water record!');
+        toast.error(t('deleteModal.error'));
       });
   };
 
-  const buttonColorClass  = clsx(
+  const buttonColorClass = clsx(
     css.btn,
     css.btnColor
   );
@@ -31,16 +32,20 @@ const DeleteWaterModal = ({modalIsOpen,closeModal,waterId}) => {
 
   return (
     <Modal modalIsOpen={modalIsOpen} closeModal={closeModal}>
-    <div className={css.modal}>
-        <h3 className={css.modalHead}>Delete entry</h3>
-        <p className={css.modalText}>Are you sure you want to delete the entry?</p>
+      <div className={css.modal}>
+        <h3 className={css.modalHead}>{t('deleteModal.header')}</h3>
+        <p className={css.modalText}>{t('deleteModal.text')}</p>
         <div className={css.logOutButtons}>
-                <button className={buttonColorClass} onClick={()=>handleClick()}>Delete</button>
-                <button className={buttonGreyClass} onClick={()=>closeModal()}>Cancel</button>
+          <button className={buttonColorClass} onClick={handleClick}>
+            {t('deleteModal.delete')}
+          </button>
+          <button className={buttonGreyClass} onClick={closeModal}>
+            {t('deleteModal.cancel')}
+          </button>
         </div>
-    </div>
+      </div>
     </Modal>
-  )
+  );
 };
 
 export default DeleteWaterModal;
