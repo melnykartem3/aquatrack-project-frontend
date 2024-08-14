@@ -5,7 +5,7 @@
 .passwordResetSection {
   background-color: var(--background-grey);
   border-radius: 30px;
-  padding: 24px 16px 247px 16px;
+  padding: 24px 16px 191px 16px;
 }
 .title {
   font-size: 32px;
@@ -13,7 +13,7 @@
   letter-spacing: -0.01em;
   color: var(--basic-dark-blue);
   margin-bottom: 32px;
-  margin-top: 214px;
+  margin-top: 158px;
 }
 
 @media (min-width: 768px) {
@@ -23,12 +23,12 @@
 
   .passwordResetSection {
     width: 704px;
-    padding: 32px 32px 340px 32px;
+    padding: 32px 32px 279px 32px;
   }
 
   .title {
     font-size: 36px;
-    margin-top: 300px;
+    margin-top: 240px;
     margin-left: 102px;
   }
 }
@@ -36,11 +36,11 @@
 @media (min-width: 1440px) {
   .passwordResetSection {
     width: 1376px;
-    padding: 32px 32px 228px 32px;
+    padding: 32px 32px 165px 32px;
   }
 
   .title {
-    margin-top: 192px;
+    margin-top: 130px;
     margin-left: 436px;
   }
 }

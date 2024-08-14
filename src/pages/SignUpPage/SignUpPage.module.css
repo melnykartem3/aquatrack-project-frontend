@@ -1,12 +1,11 @@
 .containerPage {
-  display: flex;
   padding: 32px 0;
 }
 
 .signUpSection {
   background-color: var(--background-grey);
   border-radius: 30px;
-  padding: 24px 16px 170px 16px;
+  padding: 24px 16px 94px 16px;
 }
 
 .advSectionWrapper {
@@ -19,7 +18,7 @@
   letter-spacing: -0.01em;
   color: var(--basic-dark-blue);
   margin-bottom: 32px;
-  margin-top: 126px;
+  margin-top: 33px;
 }
 
 .textWrapper {
@@ -43,7 +42,7 @@
 
 @media screen and (min-width: 375px) {
   .containerPage {
-    padding: 32px 0;
+    display: flex;
   }
   .signUpSection {
     width: 343px;
@@ -53,7 +52,7 @@
 @media (min-width: 768px) {
   .signUpSection {
     width: 704px;
-    padding: 32px 32px 227px 32px;
+    padding: 32px 32px 135px 32px;
   }
   .alreadyHaveAccount {
     font-size: 16px;
@@ -70,7 +69,7 @@
 
   .title {
     font-size: 36px;
-    margin-top: 171px;
+    margin-top: 80px;
     margin-left: 102px;
   }
 }
@@ -82,12 +81,12 @@
 
   .signUpSection {
     width: 672px;
-    padding: 32px 32px 100px 32px;
+    padding: 32px 32px 40px 32px;
   }
 
   .title {
     margin-left: 86px;
-    margin-top: 74px;
+    margin-top: 15px;
   }
 
   .advSectionWrapper {
