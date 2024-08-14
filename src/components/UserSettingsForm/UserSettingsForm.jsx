@@ -91,7 +91,7 @@ const UserSettingsForm = ({ closeSettingModal, onAvatarUpdate }) => {
     try {
       await dispatch(updateUser({ userId, formData })).unwrap();
       toast.success('The changes were successfully applied!');
-      if (avatarURL) onAvatarUpdate(avatarURL);
+      // if (avatarURL) onAvatarUpdate(avatarURL);
     } catch (error) {
       toast.error('Failed to apply changes!');
     }
