@@ -21,7 +21,15 @@ export const login = createAsyncThunk(
       const response = await instance.post('/auth/signin', loginData);
       return response.data.data;
     } catch (error) {
-      const errorMessage = error.response?.data?.data?.message || error.message;
+      // const errorMessage = error.response?.data?.data?.message || error.message;
+      let errorMessage;
+      if (error.response?.status === 401) {
+        errorMessage = 'Invalid password. Please try again.';
+      } else if (error.response?.status === 404) {
+        errorMessage = 'No user with this email was found.';
+      } else {
+        errorMessage = 'An error occurred. Try again later.';
+      }
 
       toast.error(errorMessage);
       return thunkAPI.rejectWithValue(errorMessage);
