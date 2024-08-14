@@ -1,0 +1,20 @@
+.button {
+    height: 50px;
+    width: 100%;
+    border-radius: 30px;
+    background-color: var(--primary-green-color);
+    font-weight: 700;
+    line-height: 1.28;
+    transition: all var(--transition-duration) var(--transition-timing-function);
+  
+    @media (min-width:768px) {
+      height: 60px;
+      line-height: 1.5;
+    }
+  }
+  
+  .button:hover {
+    @media (min-width:1440px) {
+      background-color: var(--hover-green-color);
+    }
+  }

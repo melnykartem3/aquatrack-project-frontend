@@ -7,7 +7,8 @@ import {
   refresh,
   registerUser,
   updateUser,
-} from './operations';
+  handleGoogleSignUp
+} from './operations.js';
 import { INITIAL_STATE } from './initialState';
 const handleRejected = (state, action) => {
   state.isLoading = false;
@@ -22,6 +23,9 @@ const slice = createSlice({
   initialState: INITIAL_STATE,
   extraReducers: builder => {
     builder
+    .addCase(handleGoogleSignUp.fulfilled, (state, action) => {
+      state.token = action.payload;
+    })
       .addCase(registerUser.pending, handlePending)
       .addCase(registerUser.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -71,7 +75,8 @@ const slice = createSlice({
         state.isLoading = false;
         state.allUsers = action.payload.data;
       })
-      .addCase(getAllUsers.rejected, handleRejected);
-  },
-});
+      .addCase(getAllUsers.rejected, handleRejected)
+      
+  }});
+
 export const authReducer = slice.reducer;

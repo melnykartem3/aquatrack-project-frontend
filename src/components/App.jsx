@@ -1,5 +1,5 @@
 import { lazy } from 'react';
-import { GoogleOAuthProvider } from '@react-oauth/google';
+import AuthCallbackPage from './GoogleBtn/GoogleBtn.jsx';
 
 import { Route, Routes } from 'react-router-dom';
 import RestrictedRoute from './RestrictedRoute/RestrictedRoute';
@@ -21,8 +21,7 @@ const ResetPasswordPage = lazy(() =>
 
 function App() {
   return (
-    <GoogleOAuthProvider clientId="692299041068-ifdkf2uemu5p4kpfobs1vp4i9g9d6pbj.apps.googleusercontent.com">
-      <LanguageSwitcher />
+<>       <LanguageSwitcher />
       <SharedLayout>
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -71,7 +70,7 @@ function App() {
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </SharedLayout>
-    </GoogleOAuthProvider>
+      </>
   );
 }
 
