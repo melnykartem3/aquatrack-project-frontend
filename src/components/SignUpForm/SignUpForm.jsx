@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { login, registerUser } from '../../redux/auth/operations.js';
 import UserForm from '../UserForm/UserForm.jsx';
 import { useTranslation } from 'react-i18next';
-import RedirectLink from '../RestrictedRoute/RedirectLink.jsx';
+// import RedirectLink from '../RestrictedRoute/RedirectLink.jsx';
 
 const SignUpForm = () => {
   const dispatch = useDispatch();
@@ -55,17 +55,16 @@ const SignUpForm = () => {
       placeholder: t('signup.repeatPasswordPlaceholder'),
     },
   ];
-  
 
-  return (<>
- 
-    <UserForm
-      schema={schema}
-      onSubmit={onSubmit}
-      fields={fields}
-      submitButtonLabel={t('signup.submitButtonLabel')}
-    />
-    <RedirectLink redirect={'/signup'}/>
+  return (
+    <>
+      <UserForm
+        schema={schema}
+        onSubmit={onSubmit}
+        fields={fields}
+        submitButtonLabel={t('signup.submitButtonLabel')}
+      />
+      {/* <RedirectLink redirect={'/signup'}/> */}
     </>
   );
 };

@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { login } from '../../redux/auth/operations.js';
 import UserForm from '../UserForm/UserForm';
 import { useTranslation } from 'react-i18next';
-import RedirectLink from '../RestrictedRoute/RedirectLink.jsx';
+// import RedirectLink from '../RestrictedRoute/RedirectLink.jsx';
 
 const SignInForm = () => {
   const dispatch = useDispatch();
@@ -24,7 +24,6 @@ const SignInForm = () => {
       await dispatch(login(data)).unwrap();
       reset();
     } catch (error) {}
-
   };
 
   const fields = [
@@ -41,19 +40,16 @@ const SignInForm = () => {
       placeholder: t('signin.passwordPlaceholder'),
     },
   ];
-  
-    
-    
-  return (<>
 
-    <UserForm
-      schema={schema}
-      onSubmit={onSubmit}
-      fields={fields}
-      submitButtonLabel={t('signin.submitButtonLabel')}
-      
-    />
-    <RedirectLink redirect={'/signin'}/>
+  return (
+    <>
+      <UserForm
+        schema={schema}
+        onSubmit={onSubmit}
+        fields={fields}
+        submitButtonLabel={t('signin.submitButtonLabel')}
+      />
+      {/* <RedirectLink redirect={'/signin'} /> */}
     </>
   );
 };

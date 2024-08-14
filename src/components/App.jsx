@@ -1,5 +1,5 @@
 import { lazy } from 'react';
-import AuthCallbackPage from './GoogleBtn/GoogleBtn.jsx';
+// import AuthCallbackPage from './GoogleBtn/GoogleBtn.jsx';
 
 import { Route, Routes } from 'react-router-dom';
 import RestrictedRoute from './RestrictedRoute/RestrictedRoute';
@@ -21,7 +21,9 @@ const ResetPasswordPage = lazy(() =>
 
 function App() {
   return (
-<>       <LanguageSwitcher />
+    <>
+      {' '}
+      <LanguageSwitcher />
       <SharedLayout>
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -70,7 +72,7 @@ function App() {
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </SharedLayout>
-      </>
+    </>
   );
 }
 

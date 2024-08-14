@@ -46,8 +46,7 @@ const UserForm = ({ schema, onSubmit, fields, submitButtonLabel }) => {
       <button className={css.submitButton} type="submit">
         {submitButtonLabel}
       </button>
-      <span className={css.alreadyHaveAccount}>OR</span>
-      
+      {/* <span className={css.alreadyHaveAccount}>OR</span> */}
     </form>
   );
 };

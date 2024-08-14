@@ -38,7 +38,6 @@ const SignInPage = () => {
           </div>
         </section>
         <div className={css.advSectionWrapper}>
-          {' '}
           <AdvantagesSection />
         </div>
       </div>
