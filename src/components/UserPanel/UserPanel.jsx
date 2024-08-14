@@ -17,31 +17,31 @@ const UserPanel = ({ setOpenSetting }) => {
     dispatch(getUser());
   }, [dispatch]);
 
-  const getDisplayName = (name, email) => {
-    if (name && name !== 'User') {
-      return name;
-    } else if (email) {
-      return email.split('@')[0];
-    } else {
-      return 'User';
-    }
-  };
+  // const getDisplayName = (name, email) => {
+  //   if (name && name !== 'User') {
+  //     return name;
+  //   } else if (email) {
+  //     return email.split('@')[0];
+  //   } else {
+  //     return 'User';
+  //   }
+  // };
 
-  const email = user?.email;
-  const name = user?.name;
-  const displayName = getDisplayName(name, email);
-  const shortDisplayName = displayName.substring(0, 5);
+  // const email = user?.email;
+  // const name = user?.name;
+  // const displayName = getDisplayName(name, email);
+  // const shortDisplayName = displayName.substring(0, 5);
   const avatarURL = user?.avatar;
 
   return (
     <div className={css.panelWrapper}>
       <h2 className={css.title}>
         {t('common.hello')}
-        <span className={css.secondaryText}>, {displayName}!</span>
+        <span className={css.secondaryText}>, {user.name}!</span>
       </h2>
       <UserBar
         setOpenSetting={setOpenSetting}
-        shortDisplayName={shortDisplayName}
+        // shortDisplayName={shortDisplayName}
         avatarURL={avatarURL}
       />
     </div>

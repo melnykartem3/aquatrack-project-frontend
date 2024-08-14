@@ -1,6 +1,6 @@
 .popoverList {
   border-radius: 15px;
-  min-width: 137px;
+  max-width: 137px;
   height: 64px;
   display: flex;
   flex-direction: column;
@@ -63,7 +63,7 @@
 
 @media screen and (min-width: 768px) {
   .popoverList {
-    width: 157px;
+    max-width: 157px;
     height: 82px;
   }
 }

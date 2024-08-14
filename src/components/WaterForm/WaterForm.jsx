@@ -162,8 +162,6 @@ const WaterForm = ({ closeWaterModal, operationType, item }) => {
           className={css.amountInput}
           {...register('waterVolume')}
           onChange={e => setValue('waterVolume', Number(e.target.value))}
-          min="50"
-          max="500"
         />
         {errors.waterVolume && (
           <p className={css.error}>{errors.waterVolume.message}</p>
